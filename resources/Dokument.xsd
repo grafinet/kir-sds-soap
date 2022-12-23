@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Dokument"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"
+           version="1.0">
+  <xs:import schemaLocation="BazoweTypy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"/>
+
+  <xs:complexType name="DokumentType">
+    <xs:sequence>
+      <xs:element name="NadawcaKomunikatu" maxOccurs="1" minOccurs="1" type="tns:NadawcaKomunikatuType"/>
+      <xs:element name="AdresatKomunikatu" maxOccurs="1" minOccurs="1" type="tns:UczestnikType"/>
+      <xs:element name="TrescPisma" maxOccurs="1" minOccurs="1" type="tns:TrescPismaPodpisType"/>
+      <xs:element name="Zalaczniki" maxOccurs="1" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Zalacznik" maxOccurs="1" minOccurs="0" type="tns:ZalacznikType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="typKomunikatu" type="tns:TypDokumentuType" use="required"/>
+    <xs:attribute name="nazwaKomunikatu" type="xs:string" use="required"/>
+    <xs:attribute name="dataKomunikatu" type="xs:dateTime"/>
+    <xs:attribute name="idKomunikatu" type="tns:idKomunikatuType" use="required"/>
+    <xs:attribute name="idKomunikatuPowiazanego" type="tns:idKomunikatuType" use="required"/>
+    <xs:attribute name="idZamowieniaPowiazanego" type="tns:idKomunikatuType"/>
+    <xs:attribute name="kodSDS" type="tns:KodSDSType"/>
+    <xs:attribute name="potwierdzenieOdbioru" type="tns:PotwierdzenieOdbioruType" use="required"/>
+    <xs:attribute name="wersjaKomunikatu" type="tns:wersjaKomunikatuType" use="required"/>
+    <xs:attribute name="idProfilu" type="tns:wersjaKomunikatuType" use="required"/>
+  </xs:complexType>
+
+</xs:schema>
+

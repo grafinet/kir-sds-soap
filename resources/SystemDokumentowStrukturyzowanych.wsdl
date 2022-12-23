@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="SystemDokumentowStrukturyzowanych"
+                  targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych"
+                  xmlns:tns="https://www.kir.pl/SystemDokumentowStrukturyzowanych"
+                  xmlns:base="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"
+                  xmlns:dok="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Dokument"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               version="1.0">
+      <xs:import schemaLocation="BazoweTypy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"/>
+      <xs:import schemaLocation="Dokument.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Dokument"/>
+      <xs:import schemaLocation="ZapytanieOfertowe.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZapytanieOfertowe"/>
+      <xs:import schemaLocation="ZapytanieOfertoweStatusFinansujacy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZapytanieOfertoweStatusFinansujacy"/>
+      <xs:import schemaLocation="ZapytanieOfertoweStatusDealer.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZapytanieOfertoweStatusDealer"/>
+      <xs:import schemaLocation="Oferta.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Oferta"/>
+      <xs:import schemaLocation="OfertaStatusFinansujacy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/OfertaStatusFinansujacy"/>
+      <xs:import schemaLocation="OfertaStatusDealer.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/OfertaStatusDealer"/>
+      <xs:import schemaLocation="Zamowienie.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Zamowienie"/>
+      <xs:import schemaLocation="ZamowienieStatusFinansujacy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZamowienieStatusFinansujacy"/>
+      <xs:import schemaLocation="ZamowienieStatusDealer.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZamowienieStatusDealer"/>
+      <xs:import schemaLocation="PotwierdzenieZamowienia.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/PotwierdzenieZamowienia"/>
+      <xs:import schemaLocation="PotwierdzenieZamowieniaStatusFinansujacy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/PotwierdzenieZamowieniaStatusFinansujacy"/>
+      <xs:import schemaLocation="PotwierdzenieZamowieniaStatusDealer.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/PotwierdzenieZamowieniaStatusDealer"/>
+      <xs:import schemaLocation="PotwierdzenieDanychPrzedmiotu.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/PotwierdzenieDanychPrzedmiotu"/>
+      <xs:import schemaLocation="PotwierdzenieDanychPrzedmiotuStatusFinansujacy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/PotwierdzenieDanychPrzedmiotuStatusFinansujacy"/>
+      <xs:import schemaLocation="PotwierdzenieDanychPrzedmiotuStatusDealer.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/PotwierdzenieDanychPrzedmiotuStatusDealer"/>
+      <xs:import schemaLocation="PotwierdzenieRejestracji.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/PotwierdzenieRejestracji"/>
+      <xs:import schemaLocation="ProtokolOdbioru.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ProtokolOdbioru"/>
+      <xs:import schemaLocation="ProtokolOdbioruStatusFinansujacy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ProtokolOdbioruStatusFinansujacy"/>
+      <xs:import schemaLocation="ProtokolOdbioruStatusDealer.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ProtokolOdbioruStatusDealer"/>
+      <xs:import schemaLocation="FakturaStatusDealer.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/FakturaStatusDealer"/>
+      <xs:import schemaLocation="FakturaStatusFinansujacy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/FakturaStatusFinansujacy"/>
+      <xs:element name="WyslijDokumentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="dokument" type="dok:DokumentType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="WyslijDokumentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="idKomunikatu" type="base:idKomunikatuType"/>
+            <xs:element name="kodSDS" type="base:KodSDSType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PobierzDokumentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="idKomunikatu" type="base:idKomunikatuType"/>
+            <xs:element name="kodSDS" type="base:KodSDSType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PobierzDokumentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="dokument" minOccurs="0" type="dok:DokumentType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="WyszukajDokumentyRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="kodSDS" minOccurs="0" type="base:KodSDSType"/>
+            <xs:element name="typKomunikatu" minOccurs="0" type="base:TypDokumentuType"/>
+            <xs:element name="kodUczestnika" minOccurs="0" type="base:KodUczestnikaType"/>
+            <xs:element name="dataKomunikatuPo" minOccurs="0" type="xs:date"/>
+            <xs:element name="dataKomunikatuPrzed" minOccurs="0" type="xs:date"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="base:StronicowanieRequestAttributeGroup"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="WyszukajDokumentyResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="dokumenty" type="base:SzczegolyDokumentuType"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="base:StronicowanieResponseAttributeGroup"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="WyszukajDealerowRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="marka" minOccurs="0" type="xs:string"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="base:StronicowanieRequestAttributeGroup"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="WyszukajDealerowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="dealerzy" type="base:SzczegolyDealeraType"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="base:StronicowanieResponseAttributeGroup"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="WyslijDokumentRequest">
+    <wsdl:part name="request" element="tns:WyslijDokumentRequest"/>
+  </wsdl:message>
+  <wsdl:message name="WyslijDokumentResponse">
+    <wsdl:part name="response" element="tns:WyslijDokumentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PobierzDokumentRequest">
+    <wsdl:part name="request" element="tns:PobierzDokumentRequest"/>
+  </wsdl:message>
+  <wsdl:message name="PobierzDokumentResponse">
+    <wsdl:part name="response" element="tns:PobierzDokumentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="WyszukajDokumentyRequest">
+    <wsdl:part name="request" element="tns:WyszukajDokumentyRequest"/>
+  </wsdl:message>
+  <wsdl:message name="WyszukajDokumentyResponse">
+    <wsdl:part name="response" element="tns:WyszukajDokumentyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="WyszukajDealerowRequest">
+    <wsdl:part name="request" element="tns:WyszukajDealerowRequest"/>
+  </wsdl:message>
+  <wsdl:message name="WyszukajDealerowResponse">
+    <wsdl:part name="response" element="tns:WyszukajDealerowResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="SystemDokumentowStrukturyzowanychPortType">
+    <wsdl:operation name="wyslijDokument">
+      <wsdl:input message="tns:WyslijDokumentRequest"/>
+      <wsdl:output message="tns:WyslijDokumentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="pobierzDokument">
+      <wsdl:input message="tns:PobierzDokumentRequest"/>
+      <wsdl:output message="tns:PobierzDokumentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="wyszukajDokumenty">
+      <wsdl:input message="tns:WyszukajDokumentyRequest"/>
+      <wsdl:output message="tns:WyszukajDokumentyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="wyszukajDealerow">
+      <wsdl:input message="tns:WyszukajDealerowRequest"/>
+      <wsdl:output message="tns:WyszukajDealerowResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SystemDokumentowStrukturyzowanychBinding" type="tns:SystemDokumentowStrukturyzowanychPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="wyslijDokument">
+      <soap:operation style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pobierzDokument">
+      <soap:operation style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wyszukajDokumenty">
+      <soap:operation style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wyszukajDealerow">
+      <soap:operation style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SystemDokumentowStrukturyzowanychService">
+    <wsdl:port name="SystemDokumentowStrukturyzowanychPort" binding="tns:SystemDokumentowStrukturyzowanychBinding">
+      <soap:address location="https://www.sds.kir.pl/SystemDokumentowStrukturyzowanychService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

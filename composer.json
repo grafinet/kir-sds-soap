@@ -1,0 +1,19 @@
+{
+    "name": "grafinet/kir-sds-soap-api",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "pl\\kir\\sds\\soap\\api": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Grafinet sp. z o.o."
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-soap": "*"
+    }
+}

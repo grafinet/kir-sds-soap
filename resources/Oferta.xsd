@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Oferta"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"
+           version="1.0">
+  <xs:import schemaLocation="BazoweTypy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"/>
+
+  <xs:element name="TrescPisma">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Naglowek" type="tns:NaglowekType" maxOccurs="1" minOccurs="1"/>
+        <xs:element name="DaneIdentyfikacyjne" type="tns:DaneIdentyfikacyjneZapytanieOfertoweType"/>
+        <xs:element name="DokumntyPowiazane" type="tns:DokumentyPowiazaneType"/>
+        <xs:element maxOccurs="unbounded" name="DaneDostawcy" type="tns:DaneDostawcyType"/>
+        <xs:element maxOccurs="unbounded" name="DaneNabywcy" type="tns:DaneNabywcyType"/>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="DaneOdbiorcy " type="tns:DaneOdbiorcyType"/>
+        <xs:element maxOccurs="unbounded" name="PrzedmiotUsluga" type="tns:PrzedmiotUslugaZapytanieType"/>
+        <xs:element name="Podsumowanie" type="tns:PodsumowaniePrzedmiotuUslugaType"/>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="Klauzule" type="tns:KlauzulaType"/>
+        <xs:element name="Stopka" type="tns:StopkaType" maxOccurs="1" minOccurs="1"/>
+        <xs:element name="Zalaczniki" type="tns:ZalacznikiType" maxOccurs="1" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="Zawartosc" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Tresc"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

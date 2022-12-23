@@ -1,0 +1,1395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"
+           version="1.0">
+
+  <!-- definicje typów -->
+  <xs:simpleType name="TypDokumentuType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1101"/>
+      <xs:enumeration value="1199"/>
+      <xs:enumeration value="1299"/>
+      <xs:enumeration value="1301"/>
+      <xs:enumeration value="1399"/>
+      <xs:enumeration value="1499"/>
+      <xs:enumeration value="1599"/>
+      <xs:enumeration value="1699"/>
+      <xs:enumeration value="1799"/>
+      <xs:enumeration value="2199"/>
+      <xs:enumeration value="2201"/>
+      <xs:enumeration value="2299"/>
+      <xs:enumeration value="2399"/>
+      <xs:enumeration value="2401"/>
+      <xs:enumeration value="2499"/>
+      <xs:enumeration value="2501"/>
+      <xs:enumeration value="2502"/>
+      <xs:enumeration value="2599"/>
+      <xs:enumeration value="2601"/>
+      <xs:enumeration value="2699"/>
+      <xs:enumeration value="2799"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="NadawcaKomunikatuType">
+    <xs:sequence>
+      <xs:element name="Uczestnik" type="tns:UczestnikType"/>
+      <xs:element name="Uzytkownik" type="tns:UzytkownikType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UczestnikType">
+    <xs:sequence>
+      <xs:element name="KodUczestnika" type="tns:KodUczestnikaType"/>
+      <xs:element name="NazwaUczestnika" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="AdresUczestnika" type="tns:AdresType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UzytkownikType">
+    <xs:sequence>
+      <xs:element name="KodUzytkownika" type="tns:ZmiennaTekstowa100Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NaglowekType">
+    <xs:sequence>
+      <xs:element name="Miejscowosc" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DataWystawieniaDokumentuKomunikatu" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdresDoFakturowaniaType">
+    <xs:sequence>
+      <xs:element name="Adres" type="tns:AdresType"/>
+      <xs:element name="AdresUwzgledniajacyFakturowanie" type="tns:TakNieType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdresType">
+    <xs:sequence>
+      <xs:element name="Miejscowosc" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Ulica" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="NrDomu" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="NrLokalu" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="KodPocztowy" maxOccurs="1" minOccurs="1" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="KodKraju" type="tns:KodKrajuType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StopkaType">
+    <xs:sequence>
+      <xs:element name="Uzytkownik" type="tns:UzytkownikType"/>
+      <xs:element name="ImieINazwisko" type="tns:ZmiennaTekstowa100Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TrescPismaPodpisType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="Zawartosc" use="required" type="tns:ZawartoscTresciType"/>
+        <xs:attribute name="Typ" use="required" type="tns:TypTresciType"/>
+        <xs:attribute name="Kodowanie" use="required" type="tns:KodowanieTresciType"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ZawartoscTresciType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Podpis"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TypTresciType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="XadesBes"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KodowanieTresciType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Base64"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="DaneIdentyfikacyjneZapytanieOfertoweType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="DataPlatnosci" type="xs:date"/>
+      <xs:element minOccurs="0" name="TerminPlatnosci" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataWykonaniaUslugi" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataWystawieniaFaktury" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataWaznosciDokumentu" type="xs:date"/>
+      <xs:element minOccurs="1" name="WalutaDokumentu" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="KursWalutowyDokumentu" type="tns:KursWalutowyDokumentuType"/>
+      <xs:element maxOccurs="1" name="KursDokumentuZDnia" type="xs:date" minOccurs="0"/>
+      <xs:element minOccurs="0" name="KomentarzDoDokumentu" type="tns:PoleOpisoweType"/>
+      <xs:element minOccurs="0" name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DaneIdentyfikacyjneZamowienieType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="TerminPlatnosci" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataWykonaniaUslugi" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataWystawieniaFaktury" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataWaznosciDokumentu" type="xs:date"/>
+      <xs:element minOccurs="1" name="WalutaDokumentu" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="KursWalutowyDokumentu" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element maxOccurs="1" name="KursDokumentuZDnia" type="xs:date" minOccurs="0"/>
+      <xs:element minOccurs="0" name="RodzajKursuDokumentuWaluty" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="WalutaPlatnosci" type="tns:KodWalutyType" minOccurs="0"/>
+      <xs:element minOccurs="0" name="KursWalutowyPlatnosci" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="KursPlatnosciZDnia" type="xs:date"/>
+      <xs:element minOccurs="0" name="RodzajKursuPlatnosciWaluty" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="KodWalutyPodatkuVAT" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="DataPowstaniaZobowazaniaPodatkowego" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataPowstaniaOkresuFakturowania" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataKoncaOkresuFakturowania" type="xs:date"/>
+      <xs:element minOccurs="0" name="KomentarzDoDokumentu" type="tns:PoleOpisoweType"/>
+      <xs:element minOccurs="0" name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DaneIdentyfikacyjneProtokolOdbioruType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="TerminPlatnosci" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataWykonaniaUslugi" type="xs:date"/>
+      <xs:element name="CzyKlientOdebral" type="tns:TakNieType"/>
+      <xs:element minOccurs="1" name="DataWystawieniaFaktury" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataWaznosciDokumentu" type="xs:date"/>
+      <xs:element minOccurs="1" name="WalutaDokumentu" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="KursWalutowyDokumentu" type="tns:KursWalutowyDokumentuType"/>
+      <xs:element maxOccurs="1" name="KursDokumentuZDnia" type="xs:date" minOccurs="0"/>
+      <xs:element minOccurs="0" name="RodzajKursuDokumentuWaluty" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="WalutaPlatnosci" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="KursWalutowyPlatnosci" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="KursPlatnosciZDnia" type="xs:date"/>
+      <xs:element minOccurs="0" name="RodzajKursuPlatnosciWaluty" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DaneIdentKodWalutyPodatkuVAT" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="DataPowstaniaZobowazaniaPodatkowego" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataPowstaniaOkresuFakturowania" type="xs:date"/>
+      <xs:element minOccurs="0" name="DataKoncaOkresuFakturowania" type="xs:date"/>
+      <xs:element minOccurs="0" name="KomentarzDoDokumentu" type="tns:PoleOpisoweType"/>
+      <xs:element minOccurs="0" name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DokumentyPowiazaneType">
+    <xs:sequence>
+      <xs:element name="NumerUmowy" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element minOccurs="0" name="NumerOferty" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element minOccurs="0" name="NumerPotwierdzenia" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="InnyDokument" type="tns:IdentyfikatorPowiazaniaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DokumentyPowiazane2Type">
+    <xs:sequence>
+      <xs:element name="NumerUmowy" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element name="NumerZamowienia" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element minOccurs="0" name="NumerOferty" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element minOccurs="0" name="NumerPotwierdzenia" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="InnyDokument" type="tns:IdentyfikatorPowiazaniaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentyfikatorPowiazaniaType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="IdentyfikatorDokumentu" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="KodTypuDokumentu" type="tns:ZmiennaTekstowa100Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NIPType">
+    <xs:choice>
+      <xs:element name="NIPPolski" type="tns:NIPPolskiType"/>
+      <xs:element name="NIPZagraniczny" type="tns:ZmiennaTekstowa100Type"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="DaneDostawcyType">
+    <xs:sequence>
+      <xs:element name="TypDostawcy">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Sprzedawca"/>
+            <xs:enumeration value="Dostawca"/>
+            <xs:enumeration value="Dealer"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="NazwaFirmy" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="NIP" type="tns:NIPType"/>
+      <xs:element minOccurs="0" name="REGON" type="tns:REGONType"/>
+      <xs:element name="Adres" type="tns:AdresType"/>
+      <xs:element minOccurs="0" name="NrTelefonu" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element minOccurs="0" name="ImieINazwiskoWystawcyDokumentu" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerRachunkuPlatnoscWWalucieObcej" type="tns:NumerRachunkuPlatnoscWWalucieObcejType"/>
+      <xs:element minOccurs="0" name="NumerRachunkuPlatnoscwPLN" type="tns:NumerRachunkuPlatnoscwPLNType"/>
+      <xs:element minOccurs="0" name="Swift" type="tns:KodSwiftType"/>
+      <xs:element minOccurs="0" name="AdresDoKorespondencji" type="tns:AdresType"/>
+      <xs:element name="AdresEmailType" type="tns:AdresEmailType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DaneNabywcyType">
+    <xs:sequence>
+      <xs:element name="TypNabywcy">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Nabywca"/>
+            <xs:enumeration value="Kupujacy"/>
+            <xs:enumeration value="Leasing"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="NazwaFirmy" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="NIP" type="tns:NIPType"/>
+      <xs:element name="Adres" type="tns:AdresDoFakturowaniaType"/>
+      <xs:element minOccurs="0" name="AdresKorespondencyjny" type="tns:AdresType"/>
+      <xs:element minOccurs="0" name="AdresOddzialu" type="tns:AdresDoFakturowaniaType"/>
+      <xs:element name="AdresEmail" type="tns:AdresEmailType"/>
+      <xs:element name="AdresDostawyDokumenowDoRejestracji" type="tns:AdresType" minOccurs="0"/>
+      <xs:element name="AdresDostawyDokumentowPoRejestracji" type="tns:AdresType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DaneOdbiorcyType">
+    <xs:sequence>
+      <xs:element name="TypOdbiorcy">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Odbiorca"/>
+            <xs:enumeration value="Korzystajacy"/>
+            <xs:enumeration value="Klient"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="NazwaFirmy" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NIP" type="tns:NIPType"/>
+      <xs:element minOccurs="0" name="REGON" type="tns:REGONType"/>
+      <xs:element minOccurs="0" name="Adres" type="tns:AdresType"/>
+      <xs:element name="AdresEmail" type="tns:AdresEmailType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PrzedmiotUslugaZapytanieType">
+    <xs:sequence>
+      <xs:element name="LiczbaPorzadkowaLinia" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuZapytanieType"/>
+      <xs:element maxOccurs="1" name="DaneUslugiLinia" type="tns:DaneUslugiType"/>
+      <xs:element minOccurs="0" name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="1" name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="OpisPrzedmiotuLinia" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element minOccurs="0" name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="IloscNaLinii" type="tns:IloscNaLiniiType"/>
+      <xs:element minOccurs="0" name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia"/>
+      <xs:element minOccurs="0" name="KwotaNettoLinia" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="RabatLinia" type="tns:RabatLiniaType"/>
+      <xs:element minOccurs="0" name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType"/>
+      <xs:element minOccurs="0" name="PodatekVATLinia" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="KwotaBruttoLinia" type="tns:KwotaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PrzedmiotUslugaZamowienieType">
+    <xs:sequence>
+      <xs:element name="LiczbaPorzadkowaLinia" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuZamowienieType"/>
+      <xs:element maxOccurs="1" name="DaneUslugiLinia" type="tns:DaneUslugiType"/>
+      <xs:element minOccurs="0" name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="1" name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="OpisPrzedmiotuLinia" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element minOccurs="0" name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="IloscNaLinii" type="tns:IloscNaLiniiType"/>
+      <xs:element minOccurs="0" name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia"/>
+      <xs:element minOccurs="0" name="KwotaNettoLinia" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="RabatLinia" type="tns:RabatLiniaType"/>
+      <xs:element minOccurs="0" name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType"/>
+      <xs:element minOccurs="0" name="PodatekVATLinia" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="KwotaBruttoLinia" type="tns:KwotaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PrzedmiotUslugaPotwierdznieRejestracjiType">
+    <xs:sequence>
+      <xs:element name="LiczbaPorzadkowaLinia" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuPotwierdzenieRejestracjiType"/>
+      <xs:element maxOccurs="1" name="DaneUslugiLinia" type="tns:DaneUslugiType"/>
+      <xs:element minOccurs="0" name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="1" name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="OpisPrzedmiotuLinia" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element minOccurs="0" name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="IloscNaLinii" type="tns:IloscNaLiniiType"/>
+      <xs:element minOccurs="0" name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia"/>
+      <xs:element minOccurs="0" name="KwotaNettoLinia" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="RabatLinia" type="tns:RabatLiniaType"/>
+      <xs:element minOccurs="0" name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType"/>
+      <xs:element minOccurs="0" name="PodatekVATLinia" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="KwotaBruttoLinia" type="tns:KwotaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DanePrzedmiotuZapytanieType">
+    <xs:sequence>
+      <xs:element name="LiczbaPorzadkowaPrzedmiotu" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element name="CzyPojazd" type="tns:TakNieType"/>
+      <xs:element name="ZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType"/>
+      <xs:element name="CzyPrzedmiotRejestrowalny" type="tns:TakNieType"/>
+      <xs:element name="CzyPrzedmiotUprzednioZarejestrowany" type="tns:TakNieType"/>
+      <xs:element name="Marka" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="Model" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="Typ" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="VIN" type="tns:NrVINType"/>
+      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType"/>
+      <xs:element minOccurs="0" name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuZapytanieKonfiguracjaType"/>
+      <xs:element minOccurs="0" name="ListaWyposazenia" type="tns:ListaWyposazeniaType"/>
+      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DanePrzedmiotuZamowienieType">
+    <xs:sequence>
+      <xs:element name="LiczbaPorzadkowaPrzedmiotu" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element name="CzyPojazd" type="tns:TakNieType"/>
+      <xs:element name="CzyZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType"/>
+      <xs:element name="CzyPrzedmiotRejestrowalny" type="tns:TakNieType"/>
+      <xs:element name="CzyPrzedmiotUprzednioZarejestrowany" type="tns:TakNieType"/>
+      <xs:element name="Marka" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="Model" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="Typ" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="VIN" type="tns:NrVINType"/>
+      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType"/>
+      <xs:element minOccurs="0" name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuZamowienieKonfiguracjaType"/>
+      <xs:element minOccurs="0" name="ListaWyposazenia" type="tns:ListaWyposazeniaType"/>
+      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DanePrzedmiotuPotwierdzenieRejestracjiType">
+    <xs:sequence>
+      <xs:element name="LiczbaPorzadkowaPrzedmiotu" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element name="CzyPojazd" type="tns:TakNieType"/>
+      <xs:element name="ZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType"/>
+      <xs:element name="CzyPrzedmiotZarejestrowany" type="tns:TakNieType"/>
+      <xs:element name="Marka" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="Model" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="Typ" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="VIN" type="tns:NrVINType"/>
+      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType"/>
+      <xs:element minOccurs="0" name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType"/>
+      <xs:element minOccurs="0" name="ListaWyposazenia" type="tns:ListaWyposazeniaType"/>
+      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DaneUslugiType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="NazwaUslugi" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element minOccurs="0" name="OkresPrzyporzadkowanydoUslugi" type="tns:ZmiennaTekstowa100Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PodsumowaniePrzedmiotuUslugaType">
+    <xs:sequence>
+      <xs:element name="KwotaNettoPodsumowanie" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="PodatekVATPodsumowanie" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="KwotaBruttoPodsumowanie" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="SlownieWartoscFakturydoZaplaty" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element minOccurs="0" name="TerminPlatnosci" type="xs:date"/>
+      <xs:element minOccurs="0" name="SposobRodzajPlatnosci" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="KwotaZaliczki" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="WalutaZaliczki" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="WplacajacyZaliczke" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element minOccurs="0" name="DataZaliczki" type="xs:date"/>
+      <xs:element minOccurs="0" name="PozostalaKwotaDoZaplaty" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="OgolnyRabatNaDokumencie" type="tns:KwotaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DanePrzedmiotuZapytanieKonfiguracjaType">
+    <xs:sequence>
+      <xs:element name="IloscKluczykowPilotowKart" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="KodKluczykow" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="IloscZabezpieczen" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="0"/>
+      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="MiejsceOdbioruPojazdu" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="Rekojmia" type="tns:TakNieType" minOccurs="0"/>
+      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0"/>
+      <xs:element name="DMC" type="tns:DMC"/>
+      <xs:element minOccurs="0" name="DMCZespolu" type="tns:DMCZespoluType"/>
+      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
+      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
+      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0"/>
+      <xs:element name="RodzajNadwozia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="KodProducenta" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerSilnika" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="KartaPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="Homologacja" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="MaksymalnaPredkosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element minOccurs="0" name="Ladownosc" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="Przebieg" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="KodKoloru" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="PodstawowyRodzajPaliwa">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="LPG"/>
+            <xs:enumeration value="CNG"/>
+            <xs:enumeration value="LNG"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="BD"/>
+            <xs:enumeration value="E85"/>
+            <xs:enumeration value="EE"/>
+            <xs:enumeration value="999"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="AlternatywnyRodzajPaliwa" maxOccurs="unbounded" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="LPG"/>
+            <xs:enumeration value="CNG"/>
+            <xs:enumeration value="LNG"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="BD"/>
+            <xs:enumeration value="E85"/>
+            <xs:enumeration value="EE"/>
+            <xs:enumeration value="999"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Opony" type="tns:OponyRozmiarType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DanePrzedmiotuZamowienieKonfiguracjaType">
+    <xs:sequence>
+      <xs:element name="IloscKluczykowPilotowKart" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="KodKluczykow" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="IloscZabezpieczen" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="0"/>
+      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="Rekojmia" type="tns:TakNieType" minOccurs="0"/>
+      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0"/>
+      <xs:element name="DMC" type="tns:DMC"/>
+      <xs:element minOccurs="0" name="DMCZespolu" type="tns:DMCZespoluType"/>
+      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
+      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
+      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0"/>
+      <xs:element name="RodzajNadwozia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DedykowanyNumerRejestracyjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="KsztaltTablicRejestracyjnych" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="KodProducenta" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="EuroKod" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerSilnika" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="KartaPojazdu  " type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="Homologacja" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="MaksymalnaPredkosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element minOccurs="0" name="Ladownosc" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="Przebieg" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="KodKoloru" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="PodstawowyRodzajPaliwa">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="LPG"/>
+            <xs:enumeration value="CNG"/>
+            <xs:enumeration value="LNG"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="BD"/>
+            <xs:enumeration value="E85"/>
+            <xs:enumeration value="EE"/>
+            <xs:enumeration value="999"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="AlternatywnyRodzajPaliwa" maxOccurs="unbounded" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="LPG"/>
+            <xs:enumeration value="CNG"/>
+            <xs:enumeration value="LNG"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="BD"/>
+            <xs:enumeration value="E85"/>
+            <xs:enumeration value="EE"/>
+            <xs:enumeration value="999"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Opony" type="tns:OponyRozmiarType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType">
+    <xs:sequence>
+      <xs:element name="IloscKluczykowPilotowKart" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="KodKluczykow" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="IloscZabezpieczen" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="1"/>
+      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
+      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
+      <xs:element minOccurs="0" name="MiejsceOdbioruPojazdu" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="Rekojmia" type="tns:TakNieType" minOccurs="1"/>
+      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0"/>
+      <xs:element name="DMC" type="tns:DMC"/>
+      <xs:element minOccurs="0" name="DMCZespolu" type="tns:DMCZespoluType"/>
+      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
+      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
+      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0"/>
+      <xs:element name="RodzajNadwozia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element minOccurs="0" name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="1" name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="KodProducenta" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="EuroKod" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NumerSilnika" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="KartaPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
+      <xs:element minOccurs="0" name="Homologacja" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="MaksymalnaPredkosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element minOccurs="0" name="Ladownosc" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="Przebieg" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="KodKoloru" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="PodstawowyRodzajPaliwa">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="LPG"/>
+            <xs:enumeration value="CNG"/>
+            <xs:enumeration value="LNG"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="BD"/>
+            <xs:enumeration value="E85"/>
+            <xs:enumeration value="EE"/>
+            <xs:enumeration value="999"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="AlternatywnyRodzajPaliwa" maxOccurs="unbounded" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="LPG"/>
+            <xs:enumeration value="CNG"/>
+            <xs:enumeration value="LNG"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="BD"/>
+            <xs:enumeration value="E85"/>
+            <xs:enumeration value="EE"/>
+            <xs:enumeration value="999"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Opony" type="tns:OponyRozmiarType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OponyRozmiarType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LiczbaPorzadkowa" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element minOccurs="0" name="Os" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="OponySzerokosc" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element minOccurs="0" name="OponyProfil" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element minOccurs="0" name="OponySrednica" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element minOccurs="0" name="IndeksPredkosci" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="IndeksNosnosci" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="OponyRodzaj" type="tns:ZmiennaTekstowa100Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListaWyposazeniaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="KodKonfiguracji" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="LinkDoKonfiguracji" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="ListaWyposazeniaLinia" type="tns:LisaWyposazeniaLiniaType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="ListaWyposazeniaPodsumowanie" type="tns:ListaWyposazeniaPodsumowanieType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LisaWyposazeniaLiniaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ListaPorzadkowa" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element minOccurs="0" name="KodWyposazenia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element minOccurs="0" name="OpisWyposazenia" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element minOccurs="0" name="CenaWyposazenia" type="tns:ZmiennaLiczbowaDecimalType"/>
+      <xs:element minOccurs="0" name="WalutaCenyWyposazenia" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="TypWyposazenia" type="tns:ZmiennaTekstowa100Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListaWyposazeniaPodsumowanieType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CenaPodstawowaSamochodu" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="CenaOpcjiDodatkowych" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="CenaSuma" type="tns:KwotaType"/>
+      <xs:element minOccurs="0" name="WalutaCenyWyposazenia" type="tns:KodWalutyType"/>
+      <xs:element minOccurs="0" name="TypCenyWyposazenia" type="tns:ZmiennaTekstowa100Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KlauzulaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ListaPorzadkowaKlauzuli" type="tns:LiczbaPorzadkowaType"/>
+      <xs:element minOccurs="0" name="TrescKlauzuli" type="tns:PoleOpisoweType"/>
+      <xs:element minOccurs="0" name="DataKlauzuli" type="tns:DataKlauzuliType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ZalacznikiType">
+    <xs:sequence>
+      <xs:element name="Zalacznik" type="tns:ZalacznikType" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ZalacznikType">
+    <xs:sequence>
+      <xs:element name="Zalacznik" maxOccurs="1" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ListaPorzadkowaZalacznikow" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Base64"/>
+          <xs:pattern value="[0-9]{1,3}"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Nazwa" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃó ÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽž ŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x201C; &amp;#x201D;&amp;#x2013;&amp;#x2014]{1,100} "></xs:pattern>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="OpisDokumentu" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\p{L}\d\s!@#$%\(\)\*\+,\.\-:;=\?\[\]\\\^_\{\}\|~`&amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x00AC;&amp;#x00AE;&amp;#x00FF;&amp;#x0100;&amp;#x017f;&amp;#x0180;&amp;#x024f;&amp;#x0250;&amp;#x02af;&amp;#x02b0;&amp;#x02ff;&amp;#x0300;&amp;#x036f;&amp;#x201E;&amp;#x201D;&amp;#x2013;&amp;#x2014;]{1,5000}"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+
+  </xs:complexType>
+  <xs:simpleType name="AdresEmailType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataKlauzuliType">
+    <xs:restriction base="xs:dateTime">
+      <xs:pattern value="RRRR-MM-DDTGG:MM:SS"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataStatusDokumentuType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="RRRR-MM-DDTGG:MM:SS "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="idKomunikatuType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-zA-Z][-_(.)\\/0-9a-zA-Z]*[0-9a-zA-Z]{1,40}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IloscNaLiniiType">
+    <xs:restriction base="xs:int">
+      <xs:pattern value="[0-9]{1,6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KodUczestnikaType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹ ÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+: \?!%\*;{}~-¬`˘°@#-̲–Ő\|&amp;#x0022;&amp;#x0026;&amp;#x0027; &amp;#x00A0;&amp;#x201C;&amp;#x201D;&amp;#x2013;&amp;#x2014]{1,512} "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KodKrajuType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{2}"/>
+      <xs:enumeration value="AF"/>
+      <xs:enumeration value="AL"/>
+      <xs:enumeration value="DZ"/>
+      <xs:enumeration value="AD"/>
+      <xs:enumeration value="AO"/>
+      <xs:enumeration value="AI"/>
+      <xs:enumeration value="AQ"/>
+      <xs:enumeration value="AG"/>
+      <xs:enumeration value="SA"/>
+      <xs:enumeration value="AR"/>
+      <xs:enumeration value="AM"/>
+      <xs:enumeration value="AW"/>
+      <xs:enumeration value="AU"/>
+      <xs:enumeration value="AT"/>
+      <xs:enumeration value="AZ"/>
+      <xs:enumeration value="BS"/>
+      <xs:enumeration value="BH"/>
+      <xs:enumeration value="BD"/>
+      <xs:enumeration value="BB"/>
+      <xs:enumeration value="BE"/>
+      <xs:enumeration value="BZ"/>
+      <xs:enumeration value="BJ"/>
+      <xs:enumeration value="BM"/>
+      <xs:enumeration value="BT"/>
+      <xs:enumeration value="BY"/>
+      <xs:enumeration value="BO"/>
+      <xs:enumeration value="BQ"/>
+      <xs:enumeration value="BA"/>
+      <xs:enumeration value="BW"/>
+      <xs:enumeration value="BR"/>
+      <xs:enumeration value="BN"/>
+      <xs:enumeration value="IO"/>
+      <xs:enumeration value="VG"/>
+      <xs:enumeration value="BG"/>
+      <xs:enumeration value="BF"/>
+      <xs:enumeration value="BI"/>
+      <xs:enumeration value="CL"/>
+      <xs:enumeration value="CN"/>
+      <xs:enumeration value="HR"/>
+      <xs:enumeration value="CW"/>
+      <xs:enumeration value="CY"/>
+      <xs:enumeration value="TD"/>
+      <xs:enumeration value="ME"/>
+      <xs:enumeration value="CZ"/>
+      <xs:enumeration value="UM"/>
+      <xs:enumeration value="DK"/>
+      <xs:enumeration value="CD"/>
+      <xs:enumeration value="DM"/>
+      <xs:enumeration value="DO"/>
+      <xs:enumeration value="DJ"/>
+      <xs:enumeration value="EG"/>
+      <xs:enumeration value="EC"/>
+      <xs:enumeration value="ER"/>
+      <xs:enumeration value="EE"/>
+      <xs:enumeration value="SZ"/>
+      <xs:enumeration value="ET"/>
+      <xs:enumeration value="FK"/>
+      <xs:enumeration value="FJ"/>
+      <xs:enumeration value="PH"/>
+      <xs:enumeration value="FI"/>
+      <xs:enumeration value="FR"/>
+      <xs:enumeration value="TF"/>
+      <xs:enumeration value="GA"/>
+      <xs:enumeration value="GM"/>
+      <xs:enumeration value="GS"/>
+      <xs:enumeration value="GH"/>
+      <xs:enumeration value="GI"/>
+      <xs:enumeration value="GR"/>
+      <xs:enumeration value="GD"/>
+      <xs:enumeration value="GL"/>
+      <xs:enumeration value="GE"/>
+      <xs:enumeration value="GU"/>
+      <xs:enumeration value="GG"/>
+      <xs:enumeration value="GF"/>
+      <xs:enumeration value="GY"/>
+      <xs:enumeration value="GP"/>
+      <xs:enumeration value="GT"/>
+      <xs:enumeration value="GW"/>
+      <xs:enumeration value="GQ"/>
+      <xs:enumeration value="GN"/>
+      <xs:enumeration value="HT"/>
+      <xs:enumeration value="ES"/>
+      <xs:enumeration value="NL"/>
+      <xs:enumeration value="HN"/>
+      <xs:enumeration value="HK"/>
+      <xs:enumeration value="IN"/>
+      <xs:enumeration value="ID"/>
+      <xs:enumeration value="IQ"/>
+      <xs:enumeration value="IR"/>
+      <xs:enumeration value="IE"/>
+      <xs:enumeration value="IS"/>
+      <xs:enumeration value="IL"/>
+      <xs:enumeration value="JM"/>
+      <xs:enumeration value="JP"/>
+      <xs:enumeration value="YE"/>
+      <xs:enumeration value="JE"/>
+      <xs:enumeration value="JO"/>
+      <xs:enumeration value="KY"/>
+      <xs:enumeration value="KH"/>
+      <xs:enumeration value="CM"/>
+      <xs:enumeration value="CA"/>
+      <xs:enumeration value="QA"/>
+      <xs:enumeration value="KZ"/>
+      <xs:enumeration value="KE"/>
+      <xs:enumeration value="KG"/>
+      <xs:enumeration value="KI"/>
+      <xs:enumeration value="CO"/>
+      <xs:enumeration value="KM"/>
+      <xs:enumeration value="CG"/>
+      <xs:enumeration value="KR"/>
+      <xs:enumeration value="KP"/>
+      <xs:enumeration value="CR"/>
+      <xs:enumeration value="CU"/>
+      <xs:enumeration value="KW"/>
+      <xs:enumeration value="LA"/>
+      <xs:enumeration value="LS"/>
+      <xs:enumeration value="LB"/>
+      <xs:enumeration value="LR"/>
+      <xs:enumeration value="LY"/>
+      <xs:enumeration value="LI"/>
+      <xs:enumeration value="LT"/>
+      <xs:enumeration value="LU"/>
+      <xs:enumeration value="LV"/>
+      <xs:enumeration value="MK"/>
+      <xs:enumeration value="MG"/>
+      <xs:enumeration value="YT"/>
+      <xs:enumeration value="MO"/>
+      <xs:enumeration value="MW"/>
+      <xs:enumeration value="MV"/>
+      <xs:enumeration value="MY"/>
+      <xs:enumeration value="ML"/>
+      <xs:enumeration value="MT"/>
+      <xs:enumeration value="MP"/>
+      <xs:enumeration value="MA"/>
+      <xs:enumeration value="MQ"/>
+      <xs:enumeration value="MR"/>
+      <xs:enumeration value="MU"/>
+      <xs:enumeration value="MX"/>
+      <xs:enumeration value="FM"/>
+      <xs:enumeration value="MM"/>
+      <xs:enumeration value="MD"/>
+      <xs:enumeration value="MC"/>
+      <xs:enumeration value="MN"/>
+      <xs:enumeration value="MS"/>
+      <xs:enumeration value="MZ"/>
+      <xs:enumeration value="NA"/>
+      <xs:enumeration value="NR"/>
+      <xs:enumeration value="NP"/>
+      <xs:enumeration value="DE"/>
+      <xs:enumeration value="NE"/>
+      <xs:enumeration value="NG"/>
+      <xs:enumeration value="NI"/>
+      <xs:enumeration value="NU"/>
+      <xs:enumeration value="NF"/>
+      <xs:enumeration value="NO"/>
+      <xs:enumeration value="NC"/>
+      <xs:enumeration value="OM"/>
+      <xs:enumeration value="PK"/>
+      <xs:enumeration value="PW"/>
+      <xs:enumeration value="PS"/>
+      <xs:enumeration value="PA"/>
+      <xs:enumeration value="PG"/>
+      <xs:enumeration value="PY"/>
+      <xs:enumeration value="PE"/>
+      <xs:enumeration value="PN"/>
+      <xs:enumeration value="PF"/>
+      <xs:enumeration value="PL"/>
+      <xs:enumeration value="PR"/>
+      <xs:enumeration value="PT"/>
+      <xs:enumeration value="ZA"/>
+      <xs:enumeration value="CF"/>
+      <xs:enumeration value="CV"/>
+      <xs:enumeration value="RE"/>
+      <xs:enumeration value="RU"/>
+      <xs:enumeration value="RO"/>
+      <xs:enumeration value="RW"/>
+      <xs:enumeration value="EH"/>
+      <xs:enumeration value="KN"/>
+      <xs:enumeration value="LC"/>
+      <xs:enumeration value="VC"/>
+      <xs:enumeration value="BL"/>
+      <xs:enumeration value="MF"/>
+      <xs:enumeration value="PM"/>
+      <xs:enumeration value="SV"/>
+      <xs:enumeration value="AS"/>
+      <xs:enumeration value="WS"/>
+      <xs:enumeration value="SM"/>
+      <xs:enumeration value="SM"/>
+      <xs:enumeration value="SN"/>
+      <xs:enumeration value="RS"/>
+      <xs:enumeration value="SC"/>
+      <xs:enumeration value="SL"/>
+      <xs:enumeration value="SG"/>
+      <xs:enumeration value="SX"/>
+      <xs:enumeration value="SK"/>
+      <xs:enumeration value="SI"/>
+      <xs:enumeration value="SO"/>
+      <xs:enumeration value="LK"/>
+      <xs:enumeration value="US"/>
+      <xs:enumeration value="SD"/>
+      <xs:enumeration value="SS"/>
+      <xs:enumeration value="SR"/>
+      <xs:enumeration value="SJ"/>
+      <xs:enumeration value="SY"/>
+      <xs:enumeration value="CH"/>
+      <xs:enumeration value="SE"/>
+      <xs:enumeration value="TJ"/>
+      <xs:enumeration value="TH"/>
+      <xs:enumeration value="TW"/>
+      <xs:enumeration value="TZ"/>
+      <xs:enumeration value="TL"/>
+      <xs:enumeration value="TG"/>
+      <xs:enumeration value="TK"/>
+      <xs:enumeration value="TO"/>
+      <xs:enumeration value="TT"/>
+      <xs:enumeration value="TN"/>
+      <xs:enumeration value="TR"/>
+      <xs:enumeration value="TM"/>
+      <xs:enumeration value="TC"/>
+      <xs:enumeration value="TV"/>
+      <xs:enumeration value="UG"/>
+      <xs:enumeration value="UA"/>
+      <xs:enumeration value="UY"/>
+      <xs:enumeration value="UZ"/>
+      <xs:enumeration value="VU"/>
+      <xs:enumeration value="WF"/>
+      <xs:enumeration value="VA"/>
+      <xs:enumeration value="VE"/>
+      <xs:enumeration value="HU"/>
+      <xs:enumeration value="GB"/>
+      <xs:enumeration value="VN"/>
+      <xs:enumeration value="IT"/>
+      <xs:enumeration value="CI"/>
+      <xs:enumeration value="BV"/>
+      <xs:enumeration value="CX"/>
+      <xs:enumeration value="IM"/>
+      <xs:enumeration value="SH"/>
+      <xs:enumeration value="AX"/>
+      <xs:enumeration value="CK"/>
+      <xs:enumeration value="VI"/>
+      <xs:enumeration value="HM"/>
+      <xs:enumeration value="CC"/>
+      <xs:enumeration value="MH"/>
+      <xs:enumeration value="FO"/>
+      <xs:enumeration value="SB"/>
+      <xs:enumeration value="ST"/>
+      <xs:enumeration value="ZM"/>
+      <xs:enumeration value="ZW"/>
+      <xs:enumeration value="AE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KodPocztowyType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{2}-[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KodSDSType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([0-9]{4}_[0-9]{4}-[0-1][0-9]-[0-3][0-9](\s[0-2][0-9]:[0-5][0-9]:[0-5][0-9]_)([A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12})?)"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KodSwiftType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([a-zA-Z]{4})([a-zA-Z]{2})(([2-9a-zA-Z])([0-9a-np-zA-NP-Z]))((([0-9a-wy-zA-WY-Z])([0-9a-zA-Z]{2}))|([xX]{3})|)"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KodWalutyType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{3}"/>
+      <xs:enumeration value="AFN"/>
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="DZD"/>
+      <xs:enumeration value="EUR"/>
+      <xs:enumeration value="AOA"/>
+      <xs:enumeration value="XCD"/>
+      <xs:enumeration value="SAR"/>
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="ARS"/>
+      <xs:enumeration value="AMD"/>
+      <xs:enumeration value="AWG"/>
+      <xs:enumeration value="AUD"/>
+      <xs:enumeration value="AZN"/>
+      <xs:enumeration value="BSD"/>
+      <xs:enumeration value="BHD"/>
+      <xs:enumeration value="BDT"/>
+      <xs:enumeration value="BBD"/>
+      <xs:enumeration value="BZD"/>
+      <xs:enumeration value="XOF"/>
+      <xs:enumeration value="BMD"/>
+      <xs:enumeration value="BTN"/>
+      <xs:enumeration value="INR"/>
+      <xs:enumeration value="BYR"/>
+      <xs:enumeration value="BOB"/>
+      <xs:enumeration value="BOV"/>
+      <xs:enumeration value="BWP"/>
+      <xs:enumeration value="BAM"/>
+      <xs:enumeration value="BRL"/>
+      <xs:enumeration value="BND"/>
+      <xs:enumeration value="USD"/>
+      <xs:enumeration value="AFN"/>
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="DZD"/>
+      <xs:enumeration value="EUR"/>
+      <xs:enumeration value="AOA"/>
+      <xs:enumeration value="XCD"/>
+      <xs:enumeration value="SAR"/>
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="ARS"/>
+      <xs:enumeration value="AMD"/>
+      <xs:enumeration value="AWG"/>
+      <xs:enumeration value="AUD"/>
+      <xs:enumeration value="AZN"/>
+      <xs:enumeration value="BSD"/>
+      <xs:enumeration value="BHD"/>
+      <xs:enumeration value="BDT"/>
+      <xs:enumeration value="BBD"/>
+      <xs:enumeration value="BZD"/>
+      <xs:enumeration value="XOF"/>
+      <xs:enumeration value="BMD"/>
+      <xs:enumeration value="BTN"/>
+      <xs:enumeration value="INR"/>
+      <xs:enumeration value="BYR"/>
+      <xs:enumeration value="BOB"/>
+      <xs:enumeration value="BOV"/>
+      <xs:enumeration value="BWP"/>
+      <xs:enumeration value="BAM"/>
+      <xs:enumeration value="BRL"/>
+      <xs:enumeration value="BND"/>
+      <xs:enumeration value="USD"/>
+      <xs:enumeration value="BIF"/>
+      <xs:enumeration value="BGN"/>
+      <xs:enumeration value="MKD"/>
+      <xs:enumeration value="CLF"/>
+      <xs:enumeration value="CLP"/>
+      <xs:enumeration value="CNY"/>
+      <xs:enumeration value="HRK"/>
+      <xs:enumeration value="ANG"/>
+      <xs:enumeration value="XAF"/>
+      <xs:enumeration value="CZK"/>
+      <xs:enumeration value="DKK"/>
+      <xs:enumeration value="CDF"/>
+      <xs:enumeration value="DJF"/>
+      <xs:enumeration value="EGP"/>
+      <xs:enumeration value="ERN"/>
+      <xs:enumeration value="SZL"/>
+      <xs:enumeration value="ETB"/>
+      <xs:enumeration value="FKP"/>
+      <xs:enumeration value="FJD"/>
+      <xs:enumeration value="PHP"/>
+      <xs:enumeration value="GMD"/>
+      <xs:enumeration value="GEL"/>
+      <xs:enumeration value="GHS"/>
+      <xs:enumeration value="GIP"/>
+      <xs:enumeration value="GBP"/>
+      <xs:enumeration value="GYD"/>
+      <xs:enumeration value="GTQ"/>
+      <xs:enumeration value="GNF"/>
+      <xs:enumeration value="HTG"/>
+      <xs:enumeration value="HNL"/>
+      <xs:enumeration value="HKD"/>
+      <xs:enumeration value="IDR"/>
+      <xs:enumeration value="IQD"/>
+      <xs:enumeration value="IRR"/>
+      <xs:enumeration value="ISK"/>
+      <xs:enumeration value="ILS"/>
+      <xs:enumeration value="JMD"/>
+      <xs:enumeration value="JPY"/>
+      <xs:enumeration value="YER"/>
+      <xs:enumeration value="JOD"/>
+      <xs:enumeration value="KYD"/>
+      <xs:enumeration value="KHR"/>
+      <xs:enumeration value="CAD"/>
+      <xs:enumeration value="QAR"/>
+      <xs:enumeration value="KZT"/>
+      <xs:enumeration value="KES"/>
+      <xs:enumeration value="KGS"/>
+      <xs:enumeration value="COP"/>
+      <xs:enumeration value="COU"/>
+      <xs:enumeration value="KMF"/>
+      <xs:enumeration value="KPW"/>
+      <xs:enumeration value="KRW"/>
+      <xs:enumeration value="CRC"/>
+      <xs:enumeration value="XUA"/>
+      <xs:enumeration value="CUC"/>
+      <xs:enumeration value="CUP"/>
+      <xs:enumeration value="KWD"/>
+      <xs:enumeration value="LAK"/>
+      <xs:enumeration value="LSL"/>
+      <xs:enumeration value="ZAR"/>
+      <xs:enumeration value="LBP"/>
+      <xs:enumeration value="LRD"/>
+      <xs:enumeration value="LYD"/>
+      <xs:enumeration value="CHF"/>
+      <xs:enumeration value="MGA"/>
+      <xs:enumeration value="MOP"/>
+      <xs:enumeration value="MWK"/>
+      <xs:enumeration value="MVR"/>
+      <xs:enumeration value="MYR"/>
+      <xs:enumeration value="MAD"/>
+      <xs:enumeration value="MRU"/>
+      <xs:enumeration value="MUR"/>
+      <xs:enumeration value="MXN"/>
+      <xs:enumeration value="MXV"/>
+      <xs:enumeration value="XDR"/>
+      <xs:enumeration value="MMK"/>
+      <xs:enumeration value="MNT"/>
+      <xs:enumeration value="MZN"/>
+      <xs:enumeration value="MDL"/>
+      <xs:enumeration value="NAD"/>
+      <xs:enumeration value="NPR"/>
+      <xs:enumeration value="NGN"/>
+      <xs:enumeration value="NIO"/>
+      <xs:enumeration value="NZD"/>
+      <xs:enumeration value="NOK"/>
+      <xs:enumeration value="XPF"/>
+      <xs:enumeration value="OMR"/>
+      <xs:enumeration value="PKR"/>
+      <xs:enumeration value="PAB"/>
+      <xs:enumeration value="PGK"/>
+      <xs:enumeration value="PYG"/>
+      <xs:enumeration value="PEN"/>
+      <xs:enumeration value="PLN"/>
+      <xs:enumeration value="DOP"/>
+      <xs:enumeration value="RUB"/>
+      <xs:enumeration value="RON"/>
+      <xs:enumeration value="RWF"/>
+      <xs:enumeration value="SVC"/>
+      <xs:enumeration value="WST"/>
+      <xs:enumeration value="RSD"/>
+      <xs:enumeration value="SCR"/>
+      <xs:enumeration value="SLL"/>
+      <xs:enumeration value="SGD"/>
+      <xs:enumeration value="XSU"/>
+      <xs:enumeration value="SOS"/>
+      <xs:enumeration value="LKR"/>
+      <xs:enumeration value="USN"/>
+      <xs:enumeration value="SDG"/>
+      <xs:enumeration value="SSP"/>
+      <xs:enumeration value="SRD"/>
+      <xs:enumeration value="SYP"/>
+      <xs:enumeration value="CHE"/>
+      <xs:enumeration value="CHW"/>
+      <xs:enumeration value="SEK"/>
+      <xs:enumeration value="TJS"/>
+      <xs:enumeration value="THB"/>
+      <xs:enumeration value="TWD"/>
+      <xs:enumeration value="TZS"/>
+      <xs:enumeration value="TOP"/>
+      <xs:enumeration value="TTD"/>
+      <xs:enumeration value="TND"/>
+      <xs:enumeration value="TRY"/>
+      <xs:enumeration value="TMT"/>
+      <xs:enumeration value="UGX"/>
+      <xs:enumeration value="UAH"/>
+      <xs:enumeration value="UYU"/>
+      <xs:enumeration value="UYI"/>
+      <xs:enumeration value="UZS"/>
+      <xs:enumeration value="VUV"/>
+      <xs:enumeration value="VEF"/>
+      <xs:enumeration value="VND"/>
+      <xs:enumeration value="SHP"/>
+      <xs:enumeration value="SBD"/>
+      <xs:enumeration value="CVE"/>
+      <xs:enumeration value="STN"/>
+      <xs:enumeration value="HUF"/>
+      <xs:enumeration value="ZMW"/>
+      <xs:enumeration value="ZWL"/>
+      <xs:enumeration value="AED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KodUzytkownikaType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃó ÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽž ŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x201C; &amp;#x201D;&amp;#x2013;&amp;#x2014]{1,100} "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KwotaJednostkowaNettoLinia">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+,[0-9]{2,6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KwotaType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+,[0-9]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LiczbaPorzadkowaType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{1,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NIPPolskiType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NrSeryjnyType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Z]{1,20}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NrVINType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Z]{17}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumerRachunkuPlatnoscwPLNType">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="26"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NullType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OpisStatusuType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃó ÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽž ŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x201C; &amp;#x201D;&amp;#x2013;&amp;#x2014]{1,100} "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PoleOpisoweType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃó ÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽž ŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x201C; &amp;#x201D;&amp;#x2013;&amp;#x2014]{1,5000} "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PotwierdzenieOdbioruType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Tak"/>
+      <xs:enumeration value="Nie"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="REGONType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{14} "/>
+      <xs:pattern value="[0-9]{9}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RokProdukcjiType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="RRRR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StatusDokumentuType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃó ÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽž ŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x201C; &amp;#x201D;&amp;#x2013;&amp;#x2014]{1,100} "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TakNieType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Tak"/>
+      <xs:enumeration value="Nie"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="wersjaKomunikatuType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-zA-Z_/./-//]{1,40}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ZmiennaTekstowa100Type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃó ÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽž ŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x201C; &amp;#x201D;&amp;#x2013;&amp;#x2014]{1,100} "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ZmiennaTekstowa255Type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃó ÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽž ŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x201C; &amp;#x201D;&amp;#x2013;&amp;#x2014]{1,255} "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ZmiennaTekstowa512Type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃó ÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽž ŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &amp;#x0022;&amp;#x0026;&amp;#x0027;&amp;#x00A0;&amp;#x201C; &amp;#x201D;&amp;#x2013;&amp;#x2014]{1,512} "/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KursWalutowyDokumentuType">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumerRachunkuPlatnoscWWalucieObcejType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^([A-Z]{2}[ \-]?[0-9]{2})(\?\=(\?\:[ \-]?[A-Z0-9]){9,30}$)((\?\:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RabatLiniaType">
+    <xs:restriction base="xs:integer"></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StawkaPodatkuVATLiniaType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Stawka podstawowa (23%)"/>
+      <xs:enumeration value="Stawka obniżona (8%)"/>
+      <xs:enumeration value="Stawka obniżona (5%)"/>
+      <xs:enumeration value="Stawka obniżona (0%)"/>
+      <xs:enumeration value="Stawka zwolniona"/>
+      <xs:enumeration value="Bez VAT"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KlasyfikacjaPodatkowaType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="742 - Ciężarowe, o DMC > 3,5T"/>
+      <xs:enumeration value="746 - Ciągniki siodłowe"/>
+      <xs:enumeration value="744 - Autobusy, Autokary"/>
+      <xs:enumeration value="747 - Naczepy"/>
+      <xs:enumeration value="748 - Przyczepy"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NormaEUROType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Euro 1"/>
+      <xs:enumeration value="Euro 2"/>
+      <xs:enumeration value="Euro 3"/>
+      <xs:enumeration value="Euro 4"/>
+      <xs:enumeration value="Euro 5a"/>
+      <xs:enumeration value="Euro 5b"/>
+      <xs:enumeration value="Euro 6b"/>
+      <xs:enumeration value="Euro 6c"/>
+      <xs:enumeration value="Euro 6d"/>
+      <xs:enumeration value="Euro 7"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DMC">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1) samochody ciężarowe o dopuszczalnej masie całkowitej powyżej 3,5 tony i poniżej 12 ton"/>
+      <xs:enumeration value="2) samochody ciężarowe o dopuszczalnej masie całkowitej równej lub wyższej niż 12 ton"/>
+      <xs:enumeration value="3) ciągniki siodłowe i balastowe przystosowane do używania łącznie z naczepą lub przyczepą o dopuszczalnej masie całkowitej zespołu pojazdów od 3,5 tony i poniżej 12 ton"/>
+      <xs:enumeration value="4) ciągniki siodłowe i balastowe przystosowane do używania łącznie z naczepą lub przyczepą o dopuszczalnej masie całkowitej zespołu pojazdów równej lub wyższej niż 12 ton"/>
+      <xs:enumeration value="5) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą od 7 ton i poniżej 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego"/>
+      <xs:enumeration value="6) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą równą lub wyższą niż 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego"/>
+      <xs:enumeration value="7) autobusy"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DMCZespoluType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1) samochody ciężarowe o dopuszczalnej masie całkowitej powyżej 3,5 tony i poniżej 12 ton"/>
+      <xs:enumeration value="2) samochody ciężarowe o dopuszczalnej masie całkowitej równej lub wyższej niż 12 ton"/>
+      <xs:enumeration value="3) ciągniki siodłowe i balastowe przystosowane do używania łącznie z naczepą lub przyczepą o dopuszczalnej masie całkowitej zespołu pojazdów od 3,5 tony i poniżej 12 ton"/>
+      <xs:enumeration value="4) ciągniki siodłowe i balastowe przystosowane do używania łącznie z naczepą lub przyczepą o dopuszczalnej masie całkowitej zespołu pojazdów równej lub wyższej niż 12 ton"/>
+      <xs:enumeration value="5) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą od 7 ton i poniżej 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego"/>
+      <xs:enumeration value="6) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą równą lub wyższą niż 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego"/>
+      <xs:enumeration value="7) autobusy"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ZmiennaLiczbowaDodatniaType">
+    <xs:restriction base="xs:positiveInteger"></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ZawieszenieType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pneumatyczne/równoznaczne z pneumatycznym"/>
+      <xs:enumeration value="Inne"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ZmiennaLiczbowaType">
+    <xs:restriction base="xs:int"></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ZmiennaLiczbowaDecimalType">
+    <xs:restriction base="xs:decimal"></xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="StronicowanieRequestAttributeGroup">
+    <xs:attribute name="numerStrony" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="rozmiarStrony" type="xs:positiveInteger" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="StronicowanieResponseAttributeGroup">
+    <xs:attribute name="calkowityRozmiar" type="xs:int" use="required"/>
+  </xs:attributeGroup>
+  <xs:complexType name="SzczegolyDokumentuType">
+    <xs:sequence>
+      <xs:element name="idKomunikatu" type="tns:idKomunikatuType"/>
+      <xs:element name="kodSDS" type="tns:KodSDSType"/>
+      <xs:element name="typKomunikatu" type="tns:TypDokumentuType"/>
+      <xs:element name="kodUczestnika" type="tns:KodUczestnikaType"/>
+      <xs:element name="dataKomunikatu" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SzczegolyDealeraType">
+    <xs:complexContent>
+      <xs:extension base="tns:UczestnikType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="marki" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+

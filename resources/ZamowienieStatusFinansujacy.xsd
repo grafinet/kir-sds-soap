@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZamowienieStatusFinansujacy"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"
+           version="1.0">
+  <xs:import schemaLocation="BazoweTypy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"/>
+
+  <xs:element name="TrescPisma">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Naglowek" type="tns:NaglowekType" maxOccurs="1" minOccurs="1"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="OpisStatusu" type="tns:PoleOpisoweType"/>
+        <xs:element minOccurs="0" name="DataStatusu" type="tns:DataStatusDokumentuType"/>
+        <xs:element name="Stopka" type="tns:StopkaType" maxOccurs="1" minOccurs="1"/>
+        <xs:element name="StatusDokumentu">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="1"/>
+              <xs:enumeration value="2"/>
+              <xs:enumeration value="3"/>
+              <xs:enumeration value="4"/>
+              <xs:enumeration value="9"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Zawartosc" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Tresc"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
