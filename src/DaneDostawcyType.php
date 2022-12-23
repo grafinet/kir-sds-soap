@@ -60,7 +60,7 @@ class DaneDostawcyType {
     public $AdresDoKorespondencji;
 
     /**
-     * @var AdresEmailType $AdresEmailType
+     * @var string $AdresEmailType
      */
     public $AdresEmailType;
 

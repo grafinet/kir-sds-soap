@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap\api;
 class SzczegolyDokumentuType {
 
     /**
-     * @var idKomunikatuType $idKomunikatu
+     * @var string $idKomunikatu
      */
     public $idKomunikatu;
 

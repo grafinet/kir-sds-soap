@@ -30,7 +30,7 @@ class DaneOdbiorcyType {
     public $Adres;
 
     /**
-     * @var AdresEmailType $AdresEmail
+     * @var string $AdresEmail
      */
     public $AdresEmail;
 

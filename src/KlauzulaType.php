@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap\api;
 class KlauzulaType {
 
     /**
-     * @var LiczbaPorzadkowaType $ListaPorzadkowaKlauzuli
+     * @var string $ListaPorzadkowaKlauzuli
      */
     public $ListaPorzadkowaKlauzuli;
 

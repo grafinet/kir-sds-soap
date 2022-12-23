@@ -40,17 +40,17 @@ class DokumentType {
     public $dataKomunikatu;
 
     /**
-     * @var idKomunikatuType $idKomunikatu
+     * @var string $idKomunikatu
      */
     public $idKomunikatu;
 
     /**
-     * @var idKomunikatuType $idKomunikatuPowiazanego
+     * @var string $idKomunikatuPowiazanego
      */
     public $idKomunikatuPowiazanego;
 
     /**
-     * @var idKomunikatuType $idZamowieniaPowiazanego
+     * @var string $idZamowieniaPowiazanego
      */
     public $idZamowieniaPowiazanego;
 

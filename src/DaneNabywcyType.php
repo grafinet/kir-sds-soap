@@ -35,7 +35,7 @@ class DaneNabywcyType {
     public $AdresOddzialu;
 
     /**
-     * @var AdresEmailType $AdresEmail
+     * @var string $AdresEmail
      */
     public $AdresEmail;
 

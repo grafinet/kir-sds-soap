@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap\api;
 class LisaWyposazeniaLiniaType {
 
     /**
-     * @var LiczbaPorzadkowaType $ListaPorzadkowa
+     * @var string $ListaPorzadkowa
      */
     public $ListaPorzadkowa;
 

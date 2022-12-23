@@ -10,17 +10,17 @@ class ZalacznikType {
     public $Zalacznik;
 
     /**
-     * @var anonymous50 $ListaPorzadkowaZalacznikow
+     * @var string $ListaPorzadkowaZalacznikow
      */
     public $ListaPorzadkowaZalacznikow;
 
     /**
-     * @var anonymous51 $Nazwa
+     * @var string $Nazwa
      */
     public $Nazwa;
 
     /**
-     * @var anonymous52 $OpisDokumentu
+     * @var string $OpisDokumentu
      */
     public $OpisDokumentu;
 

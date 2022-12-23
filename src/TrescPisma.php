@@ -60,7 +60,7 @@ class TrescPisma {
     public $Zalaczniki;
 
     /**
-     * @var anonymous101 $Zawartosc
+     * @var string $Zawartosc
      */
     public $Zawartosc;
 

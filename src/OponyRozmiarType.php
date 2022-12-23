@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap\api;
 class OponyRozmiarType {
 
     /**
-     * @var LiczbaPorzadkowaType $LiczbaPorzadkowa
+     * @var string $LiczbaPorzadkowa
      */
     public $LiczbaPorzadkowa;
 

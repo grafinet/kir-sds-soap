@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap\api;
 class PrzedmiotUslugaZamowienieType {
 
     /**
-     * @var LiczbaPorzadkowaType $LiczbaPorzadkowaLinia
+     * @var string $LiczbaPorzadkowaLinia
      */
     public $LiczbaPorzadkowaLinia;
 
