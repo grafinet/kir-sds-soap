@@ -1,6 +1,6 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 class DokumentyPowiazane2Type {
 

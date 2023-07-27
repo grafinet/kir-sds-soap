@@ -1,6 +1,6 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 enum StawkaPodatkuVATLiniaType: string {
     case STAWKA_PODSTAWOWA_23 = 'Stawka podstawowa (23%)';

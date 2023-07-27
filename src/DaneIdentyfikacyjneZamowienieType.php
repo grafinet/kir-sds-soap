@@ -1,31 +1,33 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
+
+use DateTimeInterface;
 
 class DaneIdentyfikacyjneZamowienieType {
 
     /**
-     * @var string $NumerDokumentu
+     * @var string|ZmiennaTekstowa100Type $NumerDokumentu
      */
     public $NumerDokumentu;
 
     /**
-     * @var \DateTimeInterface $TerminPlatnosci
+     * @var DateTimeInterface $TerminPlatnosci
      */
     public $TerminPlatnosci;
 
     /**
-     * @var \DateTimeInterface $DataWykonaniaUslugi
+     * @var DateTimeInterface $DataWykonaniaUslugi
      */
     public $DataWykonaniaUslugi;
 
     /**
-     * @var \DateTimeInterface $DataWystawieniaFaktury
+     * @var DateTimeInterface $DataWystawieniaFaktury
      */
     public $DataWystawieniaFaktury;
 
     /**
-     * @var \DateTimeInterface $DataWaznosciDokumentu
+     * @var DateTimeInterface $DataWaznosciDokumentu
      */
     public $DataWaznosciDokumentu;
 
@@ -35,17 +37,17 @@ class DaneIdentyfikacyjneZamowienieType {
     public $WalutaDokumentu;
 
     /**
-     * @var string $KursWalutowyDokumentu
+     * @var string|float|KursWalutowyDokumentuType $KursWalutowyDokumentu
      */
     public $KursWalutowyDokumentu;
 
     /**
-     * @var \DateTimeInterface $KursDokumentuZDnia
+     * @var DateTimeInterface $KursDokumentuZDnia
      */
     public $KursDokumentuZDnia;
 
     /**
-     * @var string $RodzajKursuDokumentuWaluty
+     * @var string|ZmiennaTekstowa100Type $RodzajKursuDokumentuWaluty
      */
     public $RodzajKursuDokumentuWaluty;
 
@@ -55,17 +57,17 @@ class DaneIdentyfikacyjneZamowienieType {
     public $WalutaPlatnosci;
 
     /**
-     * @var string $KursWalutowyPlatnosci
+     * @var string|ZmiennaTekstowa255Type $KursWalutowyPlatnosci
      */
     public $KursWalutowyPlatnosci;
 
     /**
-     * @var \DateTimeInterface $KursPlatnosciZDnia
+     * @var DateTimeInterface $KursPlatnosciZDnia
      */
     public $KursPlatnosciZDnia;
 
     /**
-     * @var string $RodzajKursuPlatnosciWaluty
+     * @var string|ZmiennaTekstowa255Type $RodzajKursuPlatnosciWaluty
      */
     public $RodzajKursuPlatnosciWaluty;
 
@@ -75,17 +77,17 @@ class DaneIdentyfikacyjneZamowienieType {
     public $KodWalutyPodatkuVAT;
 
     /**
-     * @var \DateTimeInterface $DataPowstaniaZobowazaniaPodatkowego
+     * @var DateTimeInterface $DataPowstaniaZobowazaniaPodatkowego
      */
     public $DataPowstaniaZobowazaniaPodatkowego;
 
     /**
-     * @var \DateTimeInterface $DataPowstaniaOkresuFakturowania
+     * @var DateTimeInterface $DataPowstaniaOkresuFakturowania
      */
     public $DataPowstaniaOkresuFakturowania;
 
     /**
-     * @var \DateTimeInterface $DataKoncaOkresuFakturowania
+     * @var DateTimeInterface $DataKoncaOkresuFakturowania
      */
     public $DataKoncaOkresuFakturowania;
 
@@ -95,7 +97,7 @@ class DaneIdentyfikacyjneZamowienieType {
     public $KomentarzDoDokumentu;
 
     /**
-     * @var string $ReferencjaKupujacego
+     * @var string|ZmiennaTekstowa255Type $ReferencjaKupujacego
      */
     public $ReferencjaKupujacego;
 

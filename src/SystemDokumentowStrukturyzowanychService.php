@@ -1,13 +1,10 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 class SystemDokumentowStrukturyzowanychService extends \SoapClient
 {
 
-    /**
-     * @var array $classmap The defined classes
-     */
     public static $classmap = array(
         'NadawcaKomunikatuType' => NadawcaKomunikatuType::class,
         'UczestnikType' => UczestnikType::class,

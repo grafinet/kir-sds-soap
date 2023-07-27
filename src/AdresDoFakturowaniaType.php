@@ -1,8 +1,8 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
-class AdresDoFakturowaniaType {
+final class AdresDoFakturowaniaType {
 
     /**
      * @var AdresType $Adres

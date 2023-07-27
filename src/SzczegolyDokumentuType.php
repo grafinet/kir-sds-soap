@@ -1,6 +1,8 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
+
+use DateTimeInterface;
 
 class SzczegolyDokumentuType {
 
@@ -10,7 +12,7 @@ class SzczegolyDokumentuType {
     public $idKomunikatu;
 
     /**
-     * @var KodSDSType $kodSDS
+     * @var string|KodSDSType $kodSDS
      */
     public $kodSDS;
 
@@ -25,7 +27,7 @@ class SzczegolyDokumentuType {
     public $kodUczestnika;
 
     /**
-     * @var \DateTimeInterface $dataKomunikatu
+     * @var DateTimeInterface $dataKomunikatu
      */
     public $dataKomunikatu;
 

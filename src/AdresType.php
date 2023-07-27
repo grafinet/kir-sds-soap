@@ -1,8 +1,8 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
-class AdresType {
+final class AdresType {
 
     /**
      * @var string $Miejscowosc
@@ -30,7 +30,7 @@ class AdresType {
     public $KodPocztowy;
 
     /**
-     * @var KodKrajuType $KodKraju
+     * @var string|KodKrajuType $KodKraju
      */
     public $KodKraju;
 

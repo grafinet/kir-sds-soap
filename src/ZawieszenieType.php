@@ -1,8 +1,8 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 enum ZawieszenieType: string {
-    case PNEUMATYCZNE_ROWNOZNACZNE_Z_PNEUMATYCZNYM = 'Pneumatyczne/równoznaczne z pneumatycznym';
-    case INNE = 'Inne';
+    case TYPE_PNEUMATYCZNE_ROWNOZNACZNE_Z_PNEUMATYCZNYM = 'Pneumatyczne/równoznaczne z pneumatycznym';
+    case TYPE_INNE = 'Inne';
 }

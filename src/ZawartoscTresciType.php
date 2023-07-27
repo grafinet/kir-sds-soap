@@ -1,7 +1,7 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 enum ZawartoscTresciType: string {
-    case PODPIS = 'Podpis';
+    case TYPE_PODPIS = 'Podpis';
 }

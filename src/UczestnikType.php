@@ -1,11 +1,11 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 class UczestnikType {
 
     /**
-     * @var KodUczestnikaType $KodUczestnika
+     * @var string|KodUczestnikaType $KodUczestnika
      */
     public $KodUczestnika;
 

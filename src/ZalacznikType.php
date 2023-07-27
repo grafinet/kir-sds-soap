@@ -1,11 +1,11 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 class ZalacznikType {
 
     /**
-     * @var Zalacznik $Zalacznik
+     * @var string|Zalacznik $Zalacznik
      */
     public $Zalacznik;
 

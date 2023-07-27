@@ -1,6 +1,6 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 class WyslijDokumentResponse {
 
@@ -10,7 +10,7 @@ class WyslijDokumentResponse {
     public $idKomunikatu;
 
     /**
-     * @var KodSDSType $kodSDS
+     * @var string|KodSDSType $kodSDS
      */
     public $kodSDS;
 

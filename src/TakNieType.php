@@ -1,8 +1,8 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 enum TakNieType: string {
-    case TAK = 'Tak';
-    case NIE = 'Nie';
+    case TYPE_TAK = 'Tak';
+    case TYPE_NIE = 'Nie';
 }

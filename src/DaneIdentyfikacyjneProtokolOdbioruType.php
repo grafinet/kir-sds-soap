@@ -1,21 +1,23 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
-class DaneIdentyfikacyjneProtokolOdbioruType {
+use DateTimeInterface;
+
+final class DaneIdentyfikacyjneProtokolOdbioruType {
 
     /**
-     * @var string $NumerDokumentu
+     * @var string|ZmiennaTekstowa100Type $NumerDokumentu
      */
     public $NumerDokumentu;
 
     /**
-     * @var \DateTimeInterface $TerminPlatnosci
+     * @var DateTimeInterface $TerminPlatnosci
      */
     public $TerminPlatnosci;
 
     /**
-     * @var \DateTimeInterface $DataWykonaniaUslugi
+     * @var DateTimeInterface $DataWykonaniaUslugi
      */
     public $DataWykonaniaUslugi;
 
@@ -25,12 +27,12 @@ class DaneIdentyfikacyjneProtokolOdbioruType {
     public $CzyKlientOdebral;
 
     /**
-     * @var \DateTimeInterface $DataWystawieniaFaktury
+     * @var DateTimeInterface $DataWystawieniaFaktury
      */
     public $DataWystawieniaFaktury;
 
     /**
-     * @var \DateTimeInterface $DataWaznosciDokumentu
+     * @var DateTimeInterface $DataWaznosciDokumentu
      */
     public $DataWaznosciDokumentu;
 
@@ -40,17 +42,17 @@ class DaneIdentyfikacyjneProtokolOdbioruType {
     public $WalutaDokumentu;
 
     /**
-     * @var float $KursWalutowyDokumentu
+     * @var float|string|KursWalutowyDokumentuType $KursWalutowyDokumentu
      */
     public $KursWalutowyDokumentu;
 
     /**
-     * @var \DateTimeInterface $KursDokumentuZDnia
+     * @var DateTimeInterface $KursDokumentuZDnia
      */
     public $KursDokumentuZDnia;
 
     /**
-     * @var string $RodzajKursuDokumentuWaluty
+     * @var string|ZmiennaTekstowa255Type $RodzajKursuDokumentuWaluty
      */
     public $RodzajKursuDokumentuWaluty;
 
@@ -60,17 +62,17 @@ class DaneIdentyfikacyjneProtokolOdbioruType {
     public $WalutaPlatnosci;
 
     /**
-     * @var string $KursWalutowyPlatnosci
+     * @var string|ZmiennaTekstowa255Type $KursWalutowyPlatnosci
      */
     public $KursWalutowyPlatnosci;
 
     /**
-     * @var \DateTimeInterface $KursPlatnosciZDnia
+     * @var DateTimeInterface $KursPlatnosciZDnia
      */
     public $KursPlatnosciZDnia;
 
     /**
-     * @var string $RodzajKursuPlatnosciWaluty
+     * @var string|ZmiennaTekstowa255Type $RodzajKursuPlatnosciWaluty
      */
     public $RodzajKursuPlatnosciWaluty;
 
@@ -80,27 +82,27 @@ class DaneIdentyfikacyjneProtokolOdbioruType {
     public $DaneIdentKodWalutyPodatkuVAT;
 
     /**
-     * @var \DateTimeInterface $DataPowstaniaZobowazaniaPodatkowego
+     * @var DateTimeInterface $DataPowstaniaZobowazaniaPodatkowego
      */
     public $DataPowstaniaZobowazaniaPodatkowego;
 
     /**
-     * @var \DateTimeInterface $DataPowstaniaOkresuFakturowania
+     * @var DateTimeInterface $DataPowstaniaOkresuFakturowania
      */
     public $DataPowstaniaOkresuFakturowania;
 
     /**
-     * @var \DateTimeInterface $DataKoncaOkresuFakturowania
+     * @var DateTimeInterface $DataKoncaOkresuFakturowania
      */
     public $DataKoncaOkresuFakturowania;
 
     /**
-     * @var PoleOpisoweType $KomentarzDoDokumentu
+     * @var string|PoleOpisoweType $KomentarzDoDokumentu
      */
     public $KomentarzDoDokumentu;
 
     /**
-     * @var string $ReferencjaKupujacego
+     * @var string|ZmiennaTekstowa255Type $ReferencjaKupujacego
      */
     public $ReferencjaKupujacego;
 

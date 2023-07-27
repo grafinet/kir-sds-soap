@@ -1,8 +1,8 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
-class DaneDostawcyType {
+final class DaneDostawcyType {
 
     /**
      * @var TypDostawcy $TypDostawcy
@@ -40,12 +40,12 @@ class DaneDostawcyType {
     public $ImieINazwiskoWystawcyDokumentu;
 
     /**
-     * @var string $NumerRachunkuPlatnoscWWalucieObcej
+     * @var string|NumerRachunkuPlatnoscWWalucieObcejType $NumerRachunkuPlatnoscWWalucieObcej
      */
     public $NumerRachunkuPlatnoscWWalucieObcej;
 
     /**
-     * @var NumerRachunkuPlatnoscwPLNType $NumerRachunkuPlatnoscwPLN
+     * @var string|NumerRachunkuPlatnoscwPLNType $NumerRachunkuPlatnoscwPLN
      */
     public $NumerRachunkuPlatnoscwPLN;
 
@@ -60,7 +60,7 @@ class DaneDostawcyType {
     public $AdresDoKorespondencji;
 
     /**
-     * @var string $AdresEmailType
+     * @var string|AdresEmailType $AdresEmailType
      */
     public $AdresEmailType;
 

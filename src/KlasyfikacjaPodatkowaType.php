@@ -1,6 +1,6 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 enum KlasyfikacjaPodatkowaType: string {
     case TYPE_742__CIEZAROWE_O_DMC__35T = '742 - Ciężarowe, o DMC > 3,5T';

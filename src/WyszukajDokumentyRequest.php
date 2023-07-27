@@ -1,11 +1,13 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
+
+use DateTimeInterface;
 
 class WyszukajDokumentyRequest {
 
     /**
-     * @var KodSDSType $kodSDS
+     * @var string|KodSDSType $kodSDS
      */
     public $kodSDS;
 
@@ -15,17 +17,17 @@ class WyszukajDokumentyRequest {
     public $typKomunikatu;
 
     /**
-     * @var KodUczestnikaType $kodUczestnika
+     * @var string|KodUczestnikaType $kodUczestnika
      */
     public $kodUczestnika;
 
     /**
-     * @var \DateTimeInterface $dataKomunikatuPo
+     * @var DateTimeInterface $dataKomunikatuPo
      */
     public $dataKomunikatuPo;
 
     /**
-     * @var \DateTimeInterface $dataKomunikatuPrzed
+     * @var DateTimeInterface $dataKomunikatuPrzed
      */
     public $dataKomunikatuPrzed;
 

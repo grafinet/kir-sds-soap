@@ -1,6 +1,6 @@
 <?php
 
-namespace pl\kir\sds\soap\api;
+namespace pl\kir\sds\soap;
 
 enum NormaEUROType: string {
     case EURO_1 = 'Euro 1';
