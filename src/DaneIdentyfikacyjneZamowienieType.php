@@ -4,7 +4,7 @@ namespace pl\kir\sds\soap;
 
 use DateTimeInterface;
 
-class DaneIdentyfikacyjneZamowienieType {
+final class DaneIdentyfikacyjneZamowienieType {
 
     /**
      * @var string|ZmiennaTekstowa100Type $NumerDokumentu

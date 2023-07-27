@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class ZalacznikiType {
+final class ZalacznikiType {
 
     /**
      * @var ZalacznikType[] $Zalacznik

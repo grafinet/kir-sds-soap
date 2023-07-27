@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class SzczegolyDealeraType extends UczestnikType {
+final class SzczegolyDealeraType extends UczestnikType {
 
     /**
      * @var string[] $marki

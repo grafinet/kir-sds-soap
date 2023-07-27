@@ -10,7 +10,7 @@ class UczestnikType {
     public $KodUczestnika;
 
     /**
-     * @var string $NazwaUczestnika
+     * @var string|ZmiennaTekstowa255Type $NazwaUczestnika
      */
     public $NazwaUczestnika;
 

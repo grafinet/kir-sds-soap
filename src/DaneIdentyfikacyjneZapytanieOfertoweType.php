@@ -2,35 +2,37 @@
 
 namespace pl\kir\sds\soap;
 
-class DaneIdentyfikacyjneZapytanieOfertoweType {
+use DateTimeInterface;
+
+final class DaneIdentyfikacyjneZapytanieOfertoweType {
 
     /**
-     * @var string $NumerDokumentu
+     * @var string|ZmiennaTekstowa100Type $NumerDokumentu
      */
     public $NumerDokumentu;
 
     /**
-     * @var \DateTimeInterface $DataPlatnosci
+     * @var DateTimeInterface $DataPlatnosci
      */
     public $DataPlatnosci;
 
     /**
-     * @var \DateTimeInterface $TerminPlatnosci
+     * @var DateTimeInterface $TerminPlatnosci
      */
     public $TerminPlatnosci;
 
     /**
-     * @var \DateTimeInterface $DataWykonaniaUslugi
+     * @var DateTimeInterface $DataWykonaniaUslugi
      */
     public $DataWykonaniaUslugi;
 
     /**
-     * @var \DateTimeInterface $DataWystawieniaFaktury
+     * @var DateTimeInterface $DataWystawieniaFaktury
      */
     public $DataWystawieniaFaktury;
 
     /**
-     * @var \DateTimeInterface $DataWaznosciDokumentu
+     * @var DateTimeInterface $DataWaznosciDokumentu
      */
     public $DataWaznosciDokumentu;
 
@@ -40,12 +42,12 @@ class DaneIdentyfikacyjneZapytanieOfertoweType {
     public $WalutaDokumentu;
 
     /**
-     * @var float $KursWalutowyDokumentu
+     * @var float|string|KursWalutowyDokumentuType $KursWalutowyDokumentu
      */
     public $KursWalutowyDokumentu;
 
     /**
-     * @var \DateTimeInterface $KursDokumentuZDnia
+     * @var DateTimeInterface $KursDokumentuZDnia
      */
     public $KursDokumentuZDnia;
 
@@ -55,7 +57,7 @@ class DaneIdentyfikacyjneZapytanieOfertoweType {
     public $KomentarzDoDokumentu;
 
     /**
-     * @var string $ReferencjaKupujacego
+     * @var string|ZmiennaTekstowa255Type $ReferencjaKupujacego
      */
     public $ReferencjaKupujacego;
 

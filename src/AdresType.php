@@ -5,27 +5,27 @@ namespace pl\kir\sds\soap;
 final class AdresType {
 
     /**
-     * @var string $Miejscowosc
+     * @var string|ZmiennaTekstowa100Type $Miejscowosc
      */
     public $Miejscowosc;
 
     /**
-     * @var string $Ulica
+     * @var string|ZmiennaTekstowa100Type $Ulica
      */
     public $Ulica;
 
     /**
-     * @var string $NrDomu
+     * @var string|ZmiennaTekstowa100Type $NrDomu
      */
     public $NrDomu;
 
     /**
-     * @var string $NrLokalu
+     * @var string|ZmiennaTekstowa100Type $NrLokalu
      */
     public $NrLokalu;
 
     /**
-     * @var string $KodPocztowy
+     * @var string|ZmiennaTekstowa100Type $KodPocztowy
      */
     public $KodPocztowy;
 

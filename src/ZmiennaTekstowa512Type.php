@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class ZmiennaTekstowa512Type extends StringType
+final class ZmiennaTekstowa512Type extends StringType
 {
     protected $pattern = self::TEKST_512;
 }

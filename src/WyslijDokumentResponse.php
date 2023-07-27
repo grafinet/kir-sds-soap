@@ -2,10 +2,10 @@
 
 namespace pl\kir\sds\soap;
 
-class WyslijDokumentResponse {
+final class WyslijDokumentResponse {
 
     /**
-     * @var string $idKomunikatu
+     * @var string|idKomunikatuType $idKomunikatu
      */
     public $idKomunikatu;
 

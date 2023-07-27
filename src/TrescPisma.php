@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class TrescPisma {
+final class TrescPisma {
 
     /**
      * @var NaglowekType $Naglowek

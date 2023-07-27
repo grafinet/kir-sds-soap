@@ -476,7 +476,7 @@
       <xs:element minOccurs="0" name="KodProducenta" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element minOccurs="0" name="EuroKod" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element minOccurs="0" name="NumerSilnika" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element name="KartaPojazdu  " type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="KartaPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
       <xs:element minOccurs="0" name="Homologacja" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element minOccurs="0" name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType"/>
       <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>

@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class ZalacznikType {
+final class ZalacznikType {
 
     /**
      * @var string|Zalacznik $Zalacznik
@@ -15,12 +15,12 @@ class ZalacznikType {
     public $ListaPorzadkowaZalacznikow;
 
     /**
-     * @var string $Nazwa
+     * @var string|ZmiennaTekstowa100Type $Nazwa
      */
     public $Nazwa;
 
     /**
-     * @var string $OpisDokumentu
+     * @var string|PoleOpisoweType $OpisDokumentu
      */
     public $OpisDokumentu;
 

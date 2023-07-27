@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class NadawcaKomunikatuType {
+final class NadawcaKomunikatuType {
 
     /**
      * @var UczestnikType $Uczestnik

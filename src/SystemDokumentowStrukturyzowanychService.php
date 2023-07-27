@@ -77,6 +77,12 @@ class SystemDokumentowStrukturyzowanychService extends \SoapClient
         parent::__construct($wsdl, $options);
     }
 
+//    public function __doRequest($request, $location, $action, $version, $oneWay = 0): ?string
+//    {
+//        var_dump($request);
+//        return '';
+//    }
+
     /**
      * @param WyslijDokumentRequest $request
      * @return WyslijDokumentResponse

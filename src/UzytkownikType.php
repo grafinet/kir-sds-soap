@@ -2,10 +2,10 @@
 
 namespace pl\kir\sds\soap;
 
-class UzytkownikType {
+final class UzytkownikType {
 
     /**
-     * @var string $KodUzytkownika
+     * @var string|ZmiennaTekstowa100Type $KodUzytkownika
      */
     public $KodUzytkownika;
 

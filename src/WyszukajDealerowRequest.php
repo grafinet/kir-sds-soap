@@ -2,10 +2,10 @@
 
 namespace pl\kir\sds\soap;
 
-class WyszukajDealerowRequest {
+final class WyszukajDealerowRequest {
 
     /**
-     * @var string $marka
+     * @var string|ZmiennaTekstowa100Type $marka
      */
     public $marka;
 

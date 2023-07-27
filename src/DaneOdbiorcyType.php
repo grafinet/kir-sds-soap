@@ -2,15 +2,15 @@
 
 namespace pl\kir\sds\soap;
 
-class DaneOdbiorcyType {
+final class DaneOdbiorcyType {
 
     /**
-     * @var TypOdbiorcy $TypOdbiorcy
+     * @var string|TypOdbiorcy $TypOdbiorcy
      */
     public $TypOdbiorcy;
 
     /**
-     * @var string $NazwaFirmy
+     * @var string|ZmiennaTekstowa100Type $NazwaFirmy
      */
     public $NazwaFirmy;
 
@@ -20,7 +20,7 @@ class DaneOdbiorcyType {
     public $NIP;
 
     /**
-     * @var string $REGON
+     * @var string|REGONType $REGON
      */
     public $REGON;
 
@@ -30,7 +30,7 @@ class DaneOdbiorcyType {
     public $Adres;
 
     /**
-     * @var string $AdresEmail
+     * @var string|AdresEmailType $AdresEmail
      */
     public $AdresEmail;
 

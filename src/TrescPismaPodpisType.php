@@ -2,7 +2,12 @@
 
 namespace pl\kir\sds\soap;
 
-class TrescPismaPodpisType {
+final class TrescPismaPodpisType {
+
+    public function __construct(string $nodeValue)
+    {
+        $this->_ = $nodeValue;
+    }
 
     /**
      * @var string $_
@@ -20,7 +25,7 @@ class TrescPismaPodpisType {
     public $Typ;
 
     /**
-     * @var KodowanieTresciType $Kodowanie
+     * @var string|KodowanieTresciType $Kodowanie
      */
     public $Kodowanie;
 

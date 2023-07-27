@@ -4,7 +4,7 @@ namespace pl\kir\sds\soap;
 
 use DateTimeInterface;
 
-class SzczegolyDokumentuType {
+final class SzczegolyDokumentuType {
 
     /**
      * @var string $idKomunikatu

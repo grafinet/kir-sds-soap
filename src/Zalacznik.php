@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class Zalacznik extends StringType
+final class Zalacznik extends StringType
 {
     protected $pattern = '/^.{1}$/';
 }

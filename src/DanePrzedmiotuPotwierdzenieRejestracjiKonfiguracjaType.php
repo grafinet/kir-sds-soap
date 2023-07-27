@@ -2,40 +2,42 @@
 
 namespace pl\kir\sds\soap;
 
+use DateTimeInterface;
+
 class DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType {
 
     /**
-     * @var string $IloscKluczykowPilotowKart
+     * @var string|ZmiennaTekstowa100Type $IloscKluczykowPilotowKart
      */
     public $IloscKluczykowPilotowKart;
 
     /**
-     * @var string $KodKluczykow
+     * @var string|ZmiennaTekstowa100Type $KodKluczykow
      */
     public $KodKluczykow;
 
     /**
-     * @var string $IloscZabezpieczen
+     * @var string|ZmiennaTekstowa100Type $IloscZabezpieczen
      */
     public $IloscZabezpieczen;
 
     /**
-     * @var \DateTimeInterface $DataPierwszejRejestracjiWKraju
+     * @var DateTimeInterface $DataPierwszejRejestracjiWKraju
      */
     public $DataPierwszejRejestracjiWKraju;
 
     /**
-     * @var string $MiejsceRejestracjiPojazdu
+     * @var string|ZmiennaTekstowa100Type $MiejsceRejestracjiPojazdu
      */
     public $MiejsceRejestracjiPojazdu;
 
     /**
-     * @var string $DataWaznosciOC
+     * @var string|ZmiennaTekstowa100Type $DataWaznosciOC
      */
     public $DataWaznosciOC;
 
     /**
-     * @var string $MiejsceOdbioruPojazdu
+     * @var string|ZmiennaTekstowa255Type $MiejsceOdbioruPojazdu
      */
     public $MiejsceOdbioruPojazdu;
 
@@ -60,12 +62,12 @@ class DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType {
     public $DMCZespolu;
 
     /**
-     * @var int $LiczbaOsi
+     * @var int|string|ZmiennaLiczbowaDodatniaType $LiczbaOsi
      */
     public $LiczbaOsi;
 
     /**
-     * @var int $LiczbaMiejsc
+     * @var int|string|ZmiennaLiczbowaDodatniaType $LiczbaMiejsc
      */
     public $LiczbaMiejsc;
 
@@ -75,57 +77,57 @@ class DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType {
     public $Zawieszenie;
 
     /**
-     * @var string $RodzajNadwozia
+     * @var string|ZmiennaTekstowa100Type $RodzajNadwozia
      */
     public $RodzajNadwozia;
 
     /**
-     * @var string $NumerEwidencyjny
+     * @var string|ZmiennaTekstowa100Type $NumerEwidencyjny
      */
     public $NumerEwidencyjny;
 
     /**
-     * @var string $NumerRejestracyjny
+     * @var string|ZmiennaTekstowa100Type $NumerRejestracyjny
      */
     public $NumerRejestracyjny;
 
     /**
-     * @var string $KodProducenta
+     * @var string|ZmiennaTekstowa100Type $KodProducenta
      */
     public $KodProducenta;
 
     /**
-     * @var string $EuroKod
+     * @var string|ZmiennaTekstowa100Type $EuroKod
      */
     public $EuroKod;
 
     /**
-     * @var string $NumerSilnika
+     * @var string|ZmiennaTekstowa100Type $NumerSilnika
      */
     public $NumerSilnika;
 
     /**
-     * @var string $KartaPojazdu
+     * @var string|ZmiennaTekstowa100Type $KartaPojazdu
      */
     public $KartaPojazdu;
 
     /**
-     * @var string $Homologacja
+     * @var string|ZmiennaTekstowa100Type $Homologacja
      */
     public $Homologacja;
 
     /**
-     * @var int $PojemnoscSilnika
+     * @var string|int|ZmiennaLiczbowaType $PojemnoscSilnika
      */
     public $PojemnoscSilnika;
 
     /**
-     * @var int $MocSilnika
+     * @var string|int|ZmiennaLiczbowaType $MocSilnika
      */
     public $MocSilnika;
 
     /**
-     * @var int $MaksymalnaPredkosc
+     * @var string|int|ZmiennaLiczbowaType $MaksymalnaPredkosc
      */
     public $MaksymalnaPredkosc;
 

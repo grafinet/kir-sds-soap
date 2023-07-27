@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class WyslijDokumentRequest {
+final class WyslijDokumentRequest {
 
     /**
      * @var DokumentType $dokument

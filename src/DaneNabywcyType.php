@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class DaneNabywcyType {
+final class DaneNabywcyType {
 
     /**
      * @var TypNabywcy $TypNabywcy
@@ -10,7 +10,7 @@ class DaneNabywcyType {
     public $TypNabywcy;
 
     /**
-     * @var string $NazwaFirmy
+     * @var string|ZmiennaTekstowa100Type $NazwaFirmy
      */
     public $NazwaFirmy;
 
@@ -35,7 +35,7 @@ class DaneNabywcyType {
     public $AdresOddzialu;
 
     /**
-     * @var string $AdresEmail
+     * @var string|AdresEmailType $AdresEmail
      */
     public $AdresEmail;
 
