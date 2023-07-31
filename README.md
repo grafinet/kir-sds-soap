@@ -66,8 +66,14 @@ $req->dokument->AdresatKomunikatu->AdresUczestnika->NrDomu = '3';
 $req->dokument->AdresatKomunikatu->AdresUczestnika->NrLokalu = '4';
 $req->dokument->AdresatKomunikatu->AdresUczestnika->KodPocztowy = new ZmiennaTekstowa100Type('01-235');
 
-$xades = base64_encode(file_get_contents('item-order.xml.XAdES'));
-$req->dokument->TrescPisma = new TrescPismaPodpisType($xades);
+$zamowienie = new TrescPisma\Zamowienie();
+$zamowienie->DaneDostawcy = new DaneDostawcyType();
+/* ... more properties */
+
+$signature = new \XadesTools\Signature(\XadesTools\Settings('cert.p12', 'cert-pass'));
+$xades = $signature->signXml((string)$zamowienie);
+
+$req->dokument->TrescPisma = new TrescPismaPodpisType(base64_encode($xades));
 $req->dokument->TrescPisma->Zawartosc = ZawartoscTresciType::TYPE_PODPIS->value;
 $req->dokument->TrescPisma->Typ = TypTresciType::TYPE_XADESBES->value;
 $req->dokument->TrescPisma->Kodowanie = KodowanieTresciType::BASE64->value;
