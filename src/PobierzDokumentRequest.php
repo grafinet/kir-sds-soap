@@ -2,15 +2,15 @@
 
 namespace pl\kir\sds\soap;
 
-class PobierzDokumentRequest {
+final class PobierzDokumentRequest {
 
     /**
-     * @var string $idKomunikatu
+     * @var string|idKomunikatuType $idKomunikatu
      */
     public $idKomunikatu;
 
     /**
-     * @var KodSDSType $kodSDS
+     * @var string|KodSDSType $kodSDS
      */
     public $kodSDS;
 

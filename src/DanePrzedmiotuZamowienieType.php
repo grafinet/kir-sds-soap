@@ -2,60 +2,60 @@
 
 namespace pl\kir\sds\soap;
 
-class DanePrzedmiotuZamowienieType {
+final class DanePrzedmiotuZamowienieType {
 
     /**
-     * @var string $LiczbaPorzadkowaPrzedmiotu
+     * @var string|LiczbaPorzadkowaType $LiczbaPorzadkowaPrzedmiotu
      */
     public $LiczbaPorzadkowaPrzedmiotu;
 
     /**
-     * @var TakNieType $CzyPojazd
+     * @var string|TakNieType $CzyPojazd
      */
     public $CzyPojazd;
 
     /**
-     * @var TakNieType $CzyZdefiniowanyWKryteriachPodatkowych
+     * @var string|TakNieType $CzyZdefiniowanyWKryteriachPodatkowych
      */
     public $CzyZdefiniowanyWKryteriachPodatkowych;
 
     /**
-     * @var TakNieType $CzyPrzedmiotRejestrowalny
+     * @var string|TakNieType $CzyPrzedmiotRejestrowalny
      */
     public $CzyPrzedmiotRejestrowalny;
 
     /**
-     * @var TakNieType $CzyPrzedmiotUprzednioZarejestrowany
+     * @var string|TakNieType $CzyPrzedmiotUprzednioZarejestrowany
      */
     public $CzyPrzedmiotUprzednioZarejestrowany;
 
     /**
-     * @var string $Marka
+     * @var string|ZmiennaTekstowa100Type $Marka
      */
     public $Marka;
 
     /**
-     * @var string $Model
+     * @var string|ZmiennaTekstowa100Type $Model
      */
     public $Model;
 
     /**
-     * @var string $Typ
+     * @var string|ZmiennaTekstowa100Type $Typ
      */
     public $Typ;
 
     /**
-     * @var string $NumerSeryjny
+     * @var string|ZmiennaTekstowa100Type $NumerSeryjny
      */
     public $NumerSeryjny;
 
     /**
-     * @var NrVINType $VIN
+     * @var string|NrVINType $VIN
      */
     public $VIN;
 
     /**
-     * @var string $RokProdukcji
+     * @var string|RokProdukcjiType $RokProdukcji
      */
     public $RokProdukcji;
 
@@ -70,7 +70,7 @@ class DanePrzedmiotuZamowienieType {
     public $ListaWyposazenia;
 
     /**
-     * @var KlasyfikacjaPodatkowaType $KlasyfikacjaPodatkowa
+     * @var string|KlasyfikacjaPodatkowaType $KlasyfikacjaPodatkowa
      */
     public $KlasyfikacjaPodatkowa;
 

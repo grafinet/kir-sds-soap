@@ -10,7 +10,7 @@ final class AdresDoFakturowaniaType {
     public $Adres;
 
     /**
-     * @var TakNieType $AdresUwzgledniajacyFakturowanie
+     * @var string|TakNieType $AdresUwzgledniajacyFakturowanie
      */
     public $AdresUwzgledniajacyFakturowanie;
 

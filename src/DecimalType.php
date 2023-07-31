@@ -2,12 +2,15 @@
 
 namespace pl\kir\sds\soap;
 
-class DecimalType
+use Stringable;
+
+class DecimalType implements Stringable
 {
     protected $decimals = 4;
+
     public function __construct(private readonly string|float $value)
     {
-        
+
     }
 
     public function __toString(): string

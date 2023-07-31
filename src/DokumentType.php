@@ -2,7 +2,9 @@
 
 namespace pl\kir\sds\soap;
 
-class DokumentType {
+use DateTimeInterface;
+
+final class DokumentType {
 
     /**
      * @var NadawcaKomunikatuType $NadawcaKomunikatu
@@ -25,7 +27,7 @@ class DokumentType {
     public $Zalaczniki;
 
     /**
-     * @var TypDokumentuType $typKomunikatu
+     * @var int|TypDokumentuType $typKomunikatu
      */
     public $typKomunikatu;
 
@@ -35,42 +37,42 @@ class DokumentType {
     public $nazwaKomunikatu;
 
     /**
-     * @var \DateTimeInterface $dataKomunikatu
+     * @var DateTimeInterface $dataKomunikatu
      */
     public $dataKomunikatu;
 
     /**
-     * @var string $idKomunikatu
+     * @var string|idKomunikatuType $idKomunikatu
      */
     public $idKomunikatu;
 
     /**
-     * @var string $idKomunikatuPowiazanego
+     * @var string|idKomunikatuType $idKomunikatuPowiazanego
      */
     public $idKomunikatuPowiazanego;
 
     /**
-     * @var string $idZamowieniaPowiazanego
+     * @var string|idKomunikatuType $idZamowieniaPowiazanego
      */
     public $idZamowieniaPowiazanego;
 
     /**
-     * @var KodSDSType $kodSDS
+     * @var string|KodSDSType $kodSDS
      */
     public $kodSDS;
 
     /**
-     * @var PotwierdzenieOdbioruType $potwierdzenieOdbioru
+     * @var string|PotwierdzenieOdbioruType $potwierdzenieOdbioru
      */
     public $potwierdzenieOdbioru;
 
     /**
-     * @var string $wersjaKomunikatu
+     * @var string|wersjaKomunikatuType $wersjaKomunikatu
      */
     public $wersjaKomunikatu;
 
     /**
-     * @var string $idProfilu
+     * @var string|wersjaKomunikatuType $idProfilu
      */
     public $idProfilu;
 

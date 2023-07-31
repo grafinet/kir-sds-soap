@@ -5,17 +5,17 @@ namespace pl\kir\sds\soap;
 class KlauzulaType {
 
     /**
-     * @var string $ListaPorzadkowaKlauzuli
+     * @var string|LiczbaPorzadkowaType $ListaPorzadkowaKlauzuli
      */
     public $ListaPorzadkowaKlauzuli;
 
     /**
-     * @var PoleOpisoweType $TrescKlauzuli
+     * @var string|PoleOpisoweType $TrescKlauzuli
      */
     public $TrescKlauzuli;
 
     /**
-     * @var DataKlauzuliType $DataKlauzuli
+     * @var string|DataKlauzuliType $DataKlauzuli
      */
     public $DataKlauzuli;
 

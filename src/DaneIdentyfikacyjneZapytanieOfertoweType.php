@@ -37,7 +37,7 @@ final class DaneIdentyfikacyjneZapytanieOfertoweType {
     public $DataWaznosciDokumentu;
 
     /**
-     * @var KodWalutyType $WalutaDokumentu
+     * @var string|KodWalutyType $WalutaDokumentu
      */
     public $WalutaDokumentu;
 
@@ -52,7 +52,7 @@ final class DaneIdentyfikacyjneZapytanieOfertoweType {
     public $KursDokumentuZDnia;
 
     /**
-     * @var PoleOpisoweType $KomentarzDoDokumentu
+     * @var string|PoleOpisoweType $KomentarzDoDokumentu
      */
     public $KomentarzDoDokumentu;
 

@@ -2,10 +2,10 @@
 
 namespace pl\kir\sds\soap;
 
-class NIPType {
+final class NIPType {
 
     /**
-     * @var NIPPolskiType $NIPPolski
+     * @var string|NIPPolskiType $NIPPolski
      */
     public $NIPPolski;
 

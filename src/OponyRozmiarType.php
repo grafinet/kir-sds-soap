@@ -2,45 +2,45 @@
 
 namespace pl\kir\sds\soap;
 
-class OponyRozmiarType {
+final class OponyRozmiarType {
 
     /**
-     * @var string $LiczbaPorzadkowa
+     * @var string|LiczbaPorzadkowaType $LiczbaPorzadkowa
      */
     public $LiczbaPorzadkowa;
 
     /**
-     * @var string $Os
+     * @var string|ZmiennaTekstowa100Type $Os
      */
     public $Os;
 
     /**
-     * @var int $OponySzerokosc
+     * @var int|string|ZmiennaLiczbowaType $OponySzerokosc
      */
     public $OponySzerokosc;
 
     /**
-     * @var int $OponyProfil
+     * @var int|string|ZmiennaLiczbowaType $OponyProfil
      */
     public $OponyProfil;
 
     /**
-     * @var int $OponySrednica
+     * @var int|string|ZmiennaLiczbowaType $OponySrednica
      */
     public $OponySrednica;
 
     /**
-     * @var string $IndeksPredkosci
+     * @var string|ZmiennaTekstowa100Type $IndeksPredkosci
      */
     public $IndeksPredkosci;
 
     /**
-     * @var string $IndeksNosnosci
+     * @var string|ZmiennaTekstowa100Type $IndeksNosnosci
      */
     public $IndeksNosnosci;
 
     /**
-     * @var string $OponyRodzaj
+     * @var string|ZmiennaTekstowa100Type $OponyRodzaj
      */
     public $OponyRodzaj;
 

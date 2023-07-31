@@ -2,30 +2,30 @@
 
 namespace pl\kir\sds\soap;
 
-class ListaWyposazeniaPodsumowanieType {
+final class ListaWyposazeniaPodsumowanieType {
 
     /**
-     * @var KwotaType $CenaPodstawowaSamochodu
+     * @var string|KwotaType $CenaPodstawowaSamochodu
      */
     public $CenaPodstawowaSamochodu;
 
     /**
-     * @var KwotaType $CenaOpcjiDodatkowych
+     * @var string|KwotaType $CenaOpcjiDodatkowych
      */
     public $CenaOpcjiDodatkowych;
 
     /**
-     * @var KwotaType $CenaSuma
+     * @var string|KwotaType $CenaSuma
      */
     public $CenaSuma;
 
     /**
-     * @var KodWalutyType $WalutaCenyWyposazenia
+     * @var string|KodWalutyType $WalutaCenyWyposazenia
      */
     public $WalutaCenyWyposazenia;
 
     /**
-     * @var string $TypCenyWyposazenia
+     * @var string|ZmiennaTekstowa100Type $TypCenyWyposazenia
      */
     public $TypCenyWyposazenia;
 

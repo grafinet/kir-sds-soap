@@ -4,7 +4,7 @@ namespace pl\kir\sds\soap;
 
 use DateTimeInterface;
 
-class DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType {
+final class DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType {
 
     /**
      * @var string|ZmiennaTekstowa100Type $IloscKluczykowPilotowKart
@@ -132,37 +132,37 @@ class DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType {
     public $MaksymalnaPredkosc;
 
     /**
-     * @var int $Ladownosc
+     * @var string|int|ZmiennaLiczbowaType $Ladownosc
      */
     public $Ladownosc;
 
     /**
-     * @var int $Przebieg
+     * @var string|int|ZmiennaLiczbowaType $Przebieg
      */
     public $Przebieg;
 
     /**
-     * @var string $KodKoloru
+     * @var string|ZmiennaTekstowa100Type $KodKoloru
      */
     public $KodKoloru;
 
     /**
-     * @var string $NazwaKoloru
+     * @var string|ZmiennaTekstowa100Type $NazwaKoloru
      */
     public $NazwaKoloru;
 
     /**
-     * @var PodstawowyRodzajPaliwa $PodstawowyRodzajPaliwa
+     * @var string|RodzajPaliwaType $PodstawowyRodzajPaliwa
      */
     public $PodstawowyRodzajPaliwa;
 
     /**
-     * @var AlternatywnyRodzajPaliwa[] $AlternatywnyRodzajPaliwa
+     * @var RodzajPaliwaType[] $AlternatywnyRodzajPaliwa
      */
     public $AlternatywnyRodzajPaliwa;
 
     /**
-     * @var string $PozostaleDaneRejestracyjne
+     * @var string|ZmiennaTekstowa255Type $PozostaleDaneRejestracyjne
      */
     public $PozostaleDaneRejestracyjne;
 

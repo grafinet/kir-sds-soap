@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class StopkaType {
+final class StopkaType {
 
     /**
      * @var UzytkownikType $Uzytkownik

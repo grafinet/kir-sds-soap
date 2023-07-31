@@ -2,160 +2,162 @@
 
 namespace pl\kir\sds\soap;
 
-class DanePrzedmiotuZapytanieKonfiguracjaType {
+use DateTimeInterface;
+
+final class DanePrzedmiotuZapytanieKonfiguracjaType {
 
     /**
-     * @var string $IloscKluczykowPilotowKart
+     * @var string|ZmiennaTekstowa100Type $IloscKluczykowPilotowKart
      */
     public $IloscKluczykowPilotowKart;
 
     /**
-     * @var string $KodKluczykow
+     * @var string|ZmiennaTekstowa100Type $KodKluczykow
      */
     public $KodKluczykow;
 
     /**
-     * @var string $IloscZabezpieczen
+     * @var string|ZmiennaTekstowa100Type $IloscZabezpieczen
      */
     public $IloscZabezpieczen;
 
     /**
-     * @var \DateTimeInterface $DataPierwszejRejestracjiWKraju
+     * @var DateTimeInterface $DataPierwszejRejestracjiWKraju
      */
     public $DataPierwszejRejestracjiWKraju;
 
     /**
-     * @var string $MiejsceRejestracjiPojazdu
+     * @var string|ZmiennaTekstowa100Type $MiejsceRejestracjiPojazdu
      */
     public $MiejsceRejestracjiPojazdu;
 
     /**
-     * @var string $DataWaznosciOC
+     * @var string|ZmiennaTekstowa100Type $DataWaznosciOC
      */
     public $DataWaznosciOC;
 
     /**
-     * @var string $MiejsceOdbioruPojazdu
+     * @var string|ZmiennaTekstowa100Type $MiejsceOdbioruPojazdu
      */
     public $MiejsceOdbioruPojazdu;
 
     /**
-     * @var TakNieType $Rekojmia
+     * @var string|TakNieType $Rekojmia
      */
     public $Rekojmia;
 
     /**
-     * @var NormaEUROType $NormaEURO
+     * @var string|NormaEUROType $NormaEURO
      */
     public $NormaEURO;
 
     /**
-     * @var DMC $DMC
+     * @var string|DMC $DMC
      */
     public $DMC;
 
     /**
-     * @var DMCZespoluType $DMCZespolu
+     * @var string|DMCZespoluType $DMCZespolu
      */
     public $DMCZespolu;
 
     /**
-     * @var int $LiczbaOsi
+     * @var int|string|ZmiennaLiczbowaDodatniaType $LiczbaOsi
      */
     public $LiczbaOsi;
 
     /**
-     * @var int $LiczbaMiejsc
+     * @var int|string|ZmiennaLiczbowaDodatniaType $LiczbaMiejsc
      */
     public $LiczbaMiejsc;
 
     /**
-     * @var ZawieszenieType $Zawieszenie
+     * @var string|ZawieszenieType $Zawieszenie
      */
     public $Zawieszenie;
 
     /**
-     * @var string $RodzajNadwozia
+     * @var string|ZmiennaTekstowa100Type $RodzajNadwozia
      */
     public $RodzajNadwozia;
 
     /**
-     * @var string $NumerEwidencyjny
+     * @var string|ZmiennaTekstowa100Type $NumerEwidencyjny
      */
     public $NumerEwidencyjny;
 
     /**
-     * @var string $NumerRejestracyjny
+     * @var string|ZmiennaTekstowa100Type $NumerRejestracyjny
      */
     public $NumerRejestracyjny;
 
     /**
-     * @var string $KodProducenta
+     * @var string|ZmiennaTekstowa100Type $KodProducenta
      */
     public $KodProducenta;
 
     /**
-     * @var string $NumerSilnika
+     * @var string|ZmiennaTekstowa100Type $NumerSilnika
      */
     public $NumerSilnika;
 
     /**
-     * @var string $KartaPojazdu
+     * @var string|ZmiennaTekstowa100Type $KartaPojazdu
      */
     public $KartaPojazdu;
 
     /**
-     * @var string $Homologacja
+     * @var string|ZmiennaTekstowa100Type $Homologacja
      */
     public $Homologacja;
 
     /**
-     * @var int $PojemnoscSilnika
+     * @var int|string|ZmiennaLiczbowaType $PojemnoscSilnika
      */
     public $PojemnoscSilnika;
 
     /**
-     * @var int $MocSilnika
+     * @var int|string|ZmiennaLiczbowaType $MocSilnika
      */
     public $MocSilnika;
 
     /**
-     * @var int $MaksymalnaPredkosc
+     * @var int|string|ZmiennaLiczbowaType $MaksymalnaPredkosc
      */
     public $MaksymalnaPredkosc;
 
     /**
-     * @var int $Ladownosc
+     * @var int|string|ZmiennaLiczbowaType $Ladownosc
      */
     public $Ladownosc;
 
     /**
-     * @var int $Przebieg
+     * @var int|string|ZmiennaLiczbowaType $Przebieg
      */
     public $Przebieg;
 
     /**
-     * @var string $KodKoloru
+     * @var string|ZmiennaTekstowa100Type $KodKoloru
      */
     public $KodKoloru;
 
     /**
-     * @var string $NazwaKoloru
+     * @var string|ZmiennaTekstowa100Type $NazwaKoloru
      */
     public $NazwaKoloru;
 
     /**
-     * @var PodstawowyRodzajPaliwa $PodstawowyRodzajPaliwa
+     * @var string|RodzajPaliwaType $PodstawowyRodzajPaliwa
      */
     public $PodstawowyRodzajPaliwa;
 
     /**
-     * @var AlternatywnyRodzajPaliwa[] $AlternatywnyRodzajPaliwa
+     * @var string[]|RodzajPaliwaType[] $AlternatywnyRodzajPaliwa
      */
     public $AlternatywnyRodzajPaliwa;
 
     /**
-     * @var string $PozostaleDaneRejestracyjne
+     * @var string|ZmiennaTekstowa255Type $PozostaleDaneRejestracyjne
      */
     public $PozostaleDaneRejestracyjne;
 

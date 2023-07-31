@@ -2,55 +2,55 @@
 
 namespace pl\kir\sds\soap;
 
-class DanePrzedmiotuPotwierdzenieRejestracjiType {
+final class DanePrzedmiotuPotwierdzenieRejestracjiType {
 
     /**
-     * @var string $LiczbaPorzadkowaPrzedmiotu
+     * @var string|LiczbaPorzadkowaType $LiczbaPorzadkowaPrzedmiotu
      */
     public $LiczbaPorzadkowaPrzedmiotu;
 
     /**
-     * @var TakNieType $CzyPojazd
+     * @var string|TakNieType $CzyPojazd
      */
     public $CzyPojazd;
 
     /**
-     * @var TakNieType $ZdefiniowanyWKryteriachPodatkowych
+     * @var string|TakNieType $ZdefiniowanyWKryteriachPodatkowych
      */
     public $ZdefiniowanyWKryteriachPodatkowych;
 
     /**
-     * @var TakNieType $CzyPrzedmiotZarejestrowany
+     * @var string|TakNieType $CzyPrzedmiotZarejestrowany
      */
     public $CzyPrzedmiotZarejestrowany;
 
     /**
-     * @var string $Marka
+     * @var string|ZmiennaTekstowa100Type $Marka
      */
     public $Marka;
 
     /**
-     * @var string $Model
+     * @var string|ZmiennaTekstowa100Type $Model
      */
     public $Model;
 
     /**
-     * @var string $Typ
+     * @var string|ZmiennaTekstowa100Type $Typ
      */
     public $Typ;
 
     /**
-     * @var string $NumerSeryjny
+     * @var string|ZmiennaTekstowa100Type $NumerSeryjny
      */
     public $NumerSeryjny;
 
     /**
-     * @var NrVINType $VIN
+     * @var string|NrVINType $VIN
      */
     public $VIN;
 
     /**
-     * @var string $RokProdukcji
+     * @var string|RokProdukcjiType $RokProdukcji
      */
     public $RokProdukcji;
 
@@ -65,7 +65,7 @@ class DanePrzedmiotuPotwierdzenieRejestracjiType {
     public $ListaWyposazenia;
 
     /**
-     * @var KlasyfikacjaPodatkowaType $KlasyfikacjaPodatkowa
+     * @var string|KlasyfikacjaPodatkowaType $KlasyfikacjaPodatkowa
      */
     public $KlasyfikacjaPodatkowa;
 

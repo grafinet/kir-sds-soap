@@ -32,7 +32,7 @@ final class DaneIdentyfikacyjneZamowienieType {
     public $DataWaznosciDokumentu;
 
     /**
-     * @var KodWalutyType $WalutaDokumentu
+     * @var string|KodWalutyType $WalutaDokumentu
      */
     public $WalutaDokumentu;
 
@@ -52,7 +52,7 @@ final class DaneIdentyfikacyjneZamowienieType {
     public $RodzajKursuDokumentuWaluty;
 
     /**
-     * @var KodWalutyType $WalutaPlatnosci
+     * @var string|KodWalutyType $WalutaPlatnosci
      */
     public $WalutaPlatnosci;
 
@@ -72,7 +72,7 @@ final class DaneIdentyfikacyjneZamowienieType {
     public $RodzajKursuPlatnosciWaluty;
 
     /**
-     * @var KodWalutyType $KodWalutyPodatkuVAT
+     * @var string|KodWalutyType $KodWalutyPodatkuVAT
      */
     public $KodWalutyPodatkuVAT;
 
@@ -92,7 +92,7 @@ final class DaneIdentyfikacyjneZamowienieType {
     public $DataKoncaOkresuFakturowania;
 
     /**
-     * @var PoleOpisoweType $KomentarzDoDokumentu
+     * @var string|PoleOpisoweType $KomentarzDoDokumentu
      */
     public $KomentarzDoDokumentu;
 

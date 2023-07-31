@@ -2,10 +2,11 @@
 
 namespace pl\kir\sds\soap;
 
-class PrzedmiotUslugaPotwierdznieRejestracjiType {
+final class PrzedmiotUslugaPotwierdznieRejestracjiType
+{
 
     /**
-     * @var string $LiczbaPorzadkowaLinia
+     * @var string|LiczbaPorzadkowaType $LiczbaPorzadkowaLinia
      */
     public $LiczbaPorzadkowaLinia;
 
@@ -20,37 +21,37 @@ class PrzedmiotUslugaPotwierdznieRejestracjiType {
     public $DaneUslugiLinia;
 
     /**
-     * @var string $SymbolPKWiULinia
+     * @var string|ZmiennaTekstowa100Type $SymbolPKWiULinia
      */
     public $SymbolPKWiULinia;
 
     /**
-     * @var string $RodzajStatusPojazduLinia
+     * @var string|ZmiennaTekstowa100Type $RodzajStatusPojazduLinia
      */
     public $RodzajStatusPojazduLinia;
 
     /**
-     * @var string $OpisPrzedmiotuLinia
+     * @var string|ZmiennaTekstowa255Type $OpisPrzedmiotuLinia
      */
     public $OpisPrzedmiotuLinia;
 
     /**
-     * @var string $JednostkaNaLinii
+     * @var string|ZmiennaTekstowa100Type $JednostkaNaLinii
      */
     public $JednostkaNaLinii;
 
     /**
-     * @var IloscNaLiniiType $IloscNaLinii
+     * @var int|string|IloscNaLiniiType $IloscNaLinii
      */
     public $IloscNaLinii;
 
     /**
-     * @var KwotaJednostkowaNettoLinia $KwotaJednostkowaNettoLinia
+     * @var string|KwotaJednostkowaNettoLiniaType $KwotaJednostkowaNettoLinia
      */
     public $KwotaJednostkowaNettoLinia;
 
     /**
-     * @var KwotaType $KwotaNettoLinia
+     * @var string|KwotaType $KwotaNettoLinia
      */
     public $KwotaNettoLinia;
 
@@ -60,17 +61,17 @@ class PrzedmiotUslugaPotwierdznieRejestracjiType {
     public $RabatLinia;
 
     /**
-     * @var StawkaPodatkuVATLiniaType $StawkaPodatkuVATLinia
+     * @var string|StawkaPodatkuVATLiniaType $StawkaPodatkuVATLinia
      */
     public $StawkaPodatkuVATLinia;
 
     /**
-     * @var KwotaType $PodatekVATLinia
+     * @var string|KwotaType $PodatekVATLinia
      */
     public $PodatekVATLinia;
 
     /**
-     * @var KwotaType $KwotaBruttoLinia
+     * @var string|KwotaType $KwotaBruttoLinia
      */
     public $KwotaBruttoLinia;
 

@@ -12,7 +12,7 @@ final class NaglowekType {
     public $Miejscowosc;
 
     /**
-     * @var DateTimeInterface $DataWystawieniaDokumentuKomunikatu
+     * @var string|DateTimeInterface $DataWystawieniaDokumentuKomunikatu
      */
     public $DataWystawieniaDokumentuKomunikatu;
 

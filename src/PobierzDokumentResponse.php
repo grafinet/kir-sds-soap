@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class PobierzDokumentResponse {
+final class PobierzDokumentResponse {
 
     /**
      * @var DokumentType $dokument

@@ -3,10 +3,11 @@
 namespace pl\kir\sds\soap;
 
 use pl\kir\sds\soap\Exception\RestrictionException;
+use Stringable;
 use function number_format;
 use function sprintf;
 
-abstract class IntegerType
+abstract class IntegerType implements Stringable
 {
     public function __construct(private readonly string|int|float $value)
     {

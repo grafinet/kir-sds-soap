@@ -2,15 +2,15 @@
 
 namespace pl\kir\sds\soap;
 
-class DaneUslugiType {
+final class DaneUslugiType {
 
     /**
-     * @var string $NazwaUslugi
+     * @var string|ZmiennaTekstowa100Type $NazwaUslugi
      */
     public $NazwaUslugi;
 
     /**
-     * @var string $OkresPrzyporzadkowanydoUslugi
+     * @var string|ZmiennaTekstowa100Type $OkresPrzyporzadkowanydoUslugi
      */
     public $OkresPrzyporzadkowanydoUslugi;
 

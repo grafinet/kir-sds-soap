@@ -2,15 +2,15 @@
 
 namespace pl\kir\sds\soap;
 
-class ListaWyposazeniaType {
+final class ListaWyposazeniaType {
 
     /**
-     * @var string $KodKonfiguracji
+     * @var string|ZmiennaTekstowa100Type $KodKonfiguracji
      */
     public $KodKonfiguracji;
 
     /**
-     * @var string $LinkDoKonfiguracji
+     * @var string|ZmiennaTekstowa255Type $LinkDoKonfiguracji
      */
     public $LinkDoKonfiguracji;
 

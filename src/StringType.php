@@ -3,10 +3,11 @@
 namespace pl\kir\sds\soap;
 
 use pl\kir\sds\soap\Exception\RestrictionException;
+use Stringable;
 use function preg_match;
 use function sprintf;
 
-abstract class StringType
+abstract class StringType implements Stringable
 {
     public const TEKST_REGEXP = '[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\\.,\\(\\)\\[\\]\\\\_=\'\\+:\\?!%\\*;{}~-¬`˘°@#-̲–Ő\\|&#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014 ]';
     public const TEKST_100  = '/^' . self::TEKST_REGEXP . '{1,100}$/';

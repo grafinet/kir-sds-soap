@@ -2,65 +2,67 @@
 
 namespace pl\kir\sds\soap;
 
-class PodsumowaniePrzedmiotuUslugaType {
+use DateTimeInterface;
+
+final class PodsumowaniePrzedmiotuUslugaType {
 
     /**
-     * @var KwotaType $KwotaNettoPodsumowanie
+     * @var string|KwotaType $KwotaNettoPodsumowanie
      */
     public $KwotaNettoPodsumowanie;
 
     /**
-     * @var KwotaType $PodatekVATPodsumowanie
+     * @var string|KwotaType $PodatekVATPodsumowanie
      */
     public $PodatekVATPodsumowanie;
 
     /**
-     * @var KwotaType $KwotaBruttoPodsumowanie
+     * @var string|KwotaType $KwotaBruttoPodsumowanie
      */
     public $KwotaBruttoPodsumowanie;
 
     /**
-     * @var string $SlownieWartoscFakturydoZaplaty
+     * @var string|ZmiennaTekstowa255Type $SlownieWartoscFakturydoZaplaty
      */
     public $SlownieWartoscFakturydoZaplaty;
 
     /**
-     * @var \DateTimeInterface $TerminPlatnosci
+     * @var DateTimeInterface $TerminPlatnosci
      */
     public $TerminPlatnosci;
 
     /**
-     * @var string $SposobRodzajPlatnosci
+     * @var string|ZmiennaTekstowa255Type $SposobRodzajPlatnosci
      */
     public $SposobRodzajPlatnosci;
 
     /**
-     * @var KwotaType $KwotaZaliczki
+     * @var string|KwotaType $KwotaZaliczki
      */
     public $KwotaZaliczki;
 
     /**
-     * @var KodWalutyType $WalutaZaliczki
+     * @var string|KodWalutyType $WalutaZaliczki
      */
     public $WalutaZaliczki;
 
     /**
-     * @var string $WplacajacyZaliczke
+     * @var string|ZmiennaTekstowa255Type $WplacajacyZaliczke
      */
     public $WplacajacyZaliczke;
 
     /**
-     * @var \DateTimeInterface $DataZaliczki
+     * @var DateTimeInterface $DataZaliczki
      */
     public $DataZaliczki;
 
     /**
-     * @var KwotaType $PozostalaKwotaDoZaplaty
+     * @var string|KwotaType $PozostalaKwotaDoZaplaty
      */
     public $PozostalaKwotaDoZaplaty;
 
     /**
-     * @var KwotaType $OgolnyRabatNaDokumencie
+     * @var string|KwotaType $OgolnyRabatNaDokumencie
      */
     public $OgolnyRabatNaDokumencie;
 

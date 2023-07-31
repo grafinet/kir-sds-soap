@@ -2,35 +2,35 @@
 
 namespace pl\kir\sds\soap;
 
-class LisaWyposazeniaLiniaType {
+final class LisaWyposazeniaLiniaType {
 
     /**
-     * @var string $ListaPorzadkowa
+     * @var string|LiczbaPorzadkowaType $ListaPorzadkowa
      */
     public $ListaPorzadkowa;
 
     /**
-     * @var string $KodWyposazenia
+     * @var string|ZmiennaTekstowa100Type $KodWyposazenia
      */
     public $KodWyposazenia;
 
     /**
-     * @var string $OpisWyposazenia
+     * @var string|ZmiennaTekstowa255Type $OpisWyposazenia
      */
     public $OpisWyposazenia;
 
     /**
-     * @var float $CenaWyposazenia
+     * @var float|string|ZmiennaLiczbowaDecimalType $CenaWyposazenia
      */
     public $CenaWyposazenia;
 
     /**
-     * @var KodWalutyType $WalutaCenyWyposazenia
+     * @var string|KodWalutyType $WalutaCenyWyposazenia
      */
     public $WalutaCenyWyposazenia;
 
     /**
-     * @var string $TypWyposazenia
+     * @var string|ZmiennaTekstowa100Type $TypWyposazenia
      */
     public $TypWyposazenia;
 

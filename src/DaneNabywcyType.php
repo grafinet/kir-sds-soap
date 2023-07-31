@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap;
 final class DaneNabywcyType {
 
     /**
-     * @var TypNabywcy $TypNabywcy
+     * @var string|TypNabywcy $TypNabywcy
      */
     public $TypNabywcy;
 

@@ -15,12 +15,12 @@ final class TrescPismaPodpisType {
     public $_;
 
     /**
-     * @var ZawartoscTresciType $Zawartosc
+     * @var string|ZawartoscTresciType $Zawartosc
      */
     public $Zawartosc;
 
     /**
-     * @var TypTresciType $Typ
+     * @var string|TypTresciType $Typ
      */
     public $Typ;
 

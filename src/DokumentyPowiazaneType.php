@@ -2,7 +2,7 @@
 
 namespace pl\kir\sds\soap;
 
-class DokumentyPowiazaneType {
+final class DokumentyPowiazaneType {
 
     /**
      * @var IdentyfikatorPowiazaniaType $NumerUmowy

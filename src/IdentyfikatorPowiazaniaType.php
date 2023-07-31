@@ -2,15 +2,15 @@
 
 namespace pl\kir\sds\soap;
 
-class IdentyfikatorPowiazaniaType {
+final class IdentyfikatorPowiazaniaType {
 
     /**
-     * @var string $IdentyfikatorDokumentu
+     * @var string|ZmiennaTekstowa100Type $IdentyfikatorDokumentu
      */
     public $IdentyfikatorDokumentu;
 
     /**
-     * @var string $KodTypuDokumentu
+     * @var string|ZmiennaTekstowa100Type $KodTypuDokumentu
      */
     public $KodTypuDokumentu;
 
