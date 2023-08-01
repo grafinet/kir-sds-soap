@@ -4,6 +4,7 @@ namespace pl\kir\sds\soap;
 
 use pl\kir\sds\soap\Exception\RestrictionException;
 use Stringable;
+use function is_numeric;
 use function number_format;
 use function sprintf;
 
@@ -15,7 +16,7 @@ abstract class IntegerType implements Stringable
     }
     
     protected function validate($value) {
-        if (!\is_numeric($value)) {
+        if (!is_numeric($value)) {
             throw new RestrictionException(sprintf("Value for '%s' should be an integer", static::class));
         }
     }

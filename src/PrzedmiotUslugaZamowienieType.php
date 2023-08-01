@@ -46,7 +46,7 @@ final class PrzedmiotUslugaZamowienieType
     public $IloscNaLinii;
 
     /**
-     * @var string|KwotaJednostkowaNettoLiniaType $KwotaJednostkowaNettoLinia
+     * @var string|KwotaJednostkowaNettoLinia $KwotaJednostkowaNettoLinia
      */
     public $KwotaJednostkowaNettoLinia;
 

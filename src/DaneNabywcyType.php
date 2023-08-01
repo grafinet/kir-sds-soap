@@ -40,9 +40,9 @@ final class DaneNabywcyType {
     public $AdresEmail;
 
     /**
-     * @var AdresType $AdresDostawyDokumenowDoRejestracji
+     * @var AdresType $AdresDostawyDokumentowDoRejestracji
      */
-    public $AdresDostawyDokumenowDoRejestracji;
+    public $AdresDostawyDokumentowDoRejestracji;
 
     /**
      * @var AdresType $AdresDostawyDokumentowPoRejestracji

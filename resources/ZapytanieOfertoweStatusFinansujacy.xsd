@@ -16,8 +16,7 @@
         <xs:element name="StatusDokumentu">
           <xs:simpleType>
             <xs:restriction base="xs:string">
-              <xs:enumeration value="1"/>
-              <xs:enumeration value="2"/>
+              <xs:enumeration value="8"/>
               <xs:enumeration value="9"/>
             </xs:restriction>
           </xs:simpleType>

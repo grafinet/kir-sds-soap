@@ -17,7 +17,7 @@ final class DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType {
     public $KodKluczykow;
 
     /**
-     * @var string|ZmiennaTekstowa100Type $IloscZabezpieczen
+     * @var string|ZmiennaLiczbowaNieujemnaType $IloscZabezpieczen
      */
     public $IloscZabezpieczen;
 

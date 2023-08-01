@@ -9,6 +9,7 @@
   <xs:element name="TrescPisma">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type"/>
         <xs:element name="Naglowek" type="tns:NaglowekType" maxOccurs="1" minOccurs="1"/>
         <xs:element maxOccurs="1" minOccurs="0" name="OpisStatusu" type="tns:PoleOpisoweType"/>
         <xs:element minOccurs="0" name="DataStatusu" type="tns:DataStatusDokumentuType"/>
@@ -17,11 +18,12 @@
           <xs:simpleType>
             <xs:restriction base="xs:string">
               <xs:enumeration value="1"/>
-              <xs:enumeration value="2"/>
               <xs:enumeration value="9"/>
+              <xs:enumeration value="28"/>
             </xs:restriction>
           </xs:simpleType>
         </xs:element>
+        <xs:element name="Zalaczniki" type="tns:ZalacznikiMetadataType" maxOccurs="1" minOccurs="0"/>
       </xs:sequence>
       <xs:attribute name="Zawartosc" use="required">
         <xs:simpleType>

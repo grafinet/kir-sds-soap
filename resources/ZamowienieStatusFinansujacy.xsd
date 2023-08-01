@@ -16,11 +16,10 @@
         <xs:element name="StatusDokumentu">
           <xs:simpleType>
             <xs:restriction base="xs:string">
-              <xs:enumeration value="1"/>
-              <xs:enumeration value="2"/>
-              <xs:enumeration value="3"/>
-              <xs:enumeration value="4"/>
               <xs:enumeration value="9"/>
+              <xs:enumeration value="14"/>
+              <xs:enumeration value="15"/>
+              <xs:enumeration value="16"/>
             </xs:restriction>
           </xs:simpleType>
         </xs:element>

@@ -12,7 +12,7 @@ use pl\kir\sds\soap\PrzedmiotUslugaZamowienieType;
 use pl\kir\sds\soap\PodsumowaniePrzedmiotuUslugaType;
 use pl\kir\sds\soap\KlauzulaType;
 use pl\kir\sds\soap\StopkaType;
-use pl\kir\sds\soap\ZalacznikiType;
+use pl\kir\sds\soap\ZalacznikiMetadataType;
 
 class PotwierdzenieZamowienia extends TrescPisma
 {
@@ -32,7 +32,7 @@ class PotwierdzenieZamowienia extends TrescPisma
     /**
      * @var DokumentyPowiazane2Type
      */
-    public $DokumntyPowiazane;
+    public $DokumentyPowiazane;
 
     /**
      * @var DaneDostawcyType[]
@@ -70,7 +70,7 @@ class PotwierdzenieZamowienia extends TrescPisma
     public $Stopka;
 
     /**
-     * @var ZalacznikiType
+     * @var ZalacznikiMetadataType
      */
     public $Zalaczniki;
 

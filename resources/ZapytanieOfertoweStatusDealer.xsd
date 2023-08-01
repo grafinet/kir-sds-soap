@@ -17,8 +17,9 @@
           <xs:simpleType>
             <xs:restriction base="xs:string">
               <xs:enumeration value="1"/>
-              <xs:enumeration value="2"/>
+              <xs:enumeration value="3"/>
               <xs:enumeration value="9"/>
+              <xs:enumeration value="20"/>
             </xs:restriction>
           </xs:simpleType>
         </xs:element>

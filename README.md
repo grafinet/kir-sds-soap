@@ -43,7 +43,7 @@ $req->dokument->idProfilu = new wersjaKomunikatuType('ZPL demo 0.0.1');
 $req->dokument->NadawcaKomunikatu = new NadawcaKomunikatuType();
 
 $req->dokument->NadawcaKomunikatu->Uczestnik = new UczestnikType();
-$req->dokument->NadawcaKomunikatu->Uczestnik->KodUczestnika = new KodUczestnikaType('1');
+$req->dokument->NadawcaKomunikatu->Uczestnik->KodUczestnika = '1';
 $req->dokument->NadawcaKomunikatu->Uczestnik->NazwaUczestnika = 'testowy';
 $req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika = new AdresType();
 $req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika->KodKraju = KodKrajuType::TYPE_PL->value;
@@ -57,7 +57,7 @@ $req->dokument->NadawcaKomunikatu->Uzytkownik = new UzytkownikType();
 $req->dokument->NadawcaKomunikatu->Uzytkownik->KodUzytkownika = new ZmiennaTekstowa100Type('TESTOWY-1');
 
 $req->dokument->AdresatKomunikatu = new UczestnikType();
-$req->dokument->AdresatKomunikatu->KodUczestnika = new KodUczestnikaType('2');
+$req->dokument->AdresatKomunikatu->KodUczestnika = '2';
 $req->dokument->AdresatKomunikatu->AdresUczestnika = new AdresType();
 $req->dokument->AdresatKomunikatu->AdresUczestnika->KodKraju = KodKrajuType::TYPE_PL->value;
 $req->dokument->AdresatKomunikatu->AdresUczestnika->Miejscowosc = 'Warszawa';
@@ -70,7 +70,7 @@ $zamowienie = new TrescPisma\Zamowienie();
 $zamowienie->DaneDostawcy = new DaneDostawcyType();
 /* ... more properties */
 
-$signature = new \XadesTools\Signature(\XadesTools\Settings('cert.p12', 'cert-pass'));
+$signature = new \XadesTools\Signature(\XadesTools\Settings('cert.p12', 'p4$$w0rD'));
 $xades = $signature->signXml((string)$zamowienie);
 
 $req->dokument->TrescPisma = new TrescPismaPodpisType(base64_encode($xades));

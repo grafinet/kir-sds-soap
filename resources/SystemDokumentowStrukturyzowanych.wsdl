@@ -10,7 +10,7 @@
   <wsdl:types>
     <xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych"
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-               version="1.0">
+               version="1.7.13">
       <xs:import schemaLocation="BazoweTypy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"/>
       <xs:import schemaLocation="Dokument.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Dokument"/>
       <xs:import schemaLocation="ZapytanieOfertowe.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZapytanieOfertowe"/>
@@ -69,7 +69,7 @@
           <xs:sequence>
             <xs:element name="kodSDS" minOccurs="0" type="base:KodSDSType"/>
             <xs:element name="typKomunikatu" minOccurs="0" type="base:TypDokumentuType"/>
-            <xs:element name="kodUczestnika" minOccurs="0" type="base:KodUczestnikaType"/>
+            <xs:element name="kodUczestnika" minOccurs="0" type="base:ZmiennaTekstowa512Type"/>
             <xs:element name="dataKomunikatuPo" minOccurs="0" type="xs:date"/>
             <xs:element name="dataKomunikatuPrzed" minOccurs="0" type="xs:date"/>
           </xs:sequence>
@@ -87,7 +87,7 @@
       <xs:element name="WyszukajDealerowRequest">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="marka" minOccurs="0" type="xs:string"/>
+            <xs:element name="nazwa" minOccurs="0" type="xs:string"/>
           </xs:sequence>
           <xs:attributeGroup ref="base:StronicowanieRequestAttributeGroup"/>
         </xs:complexType>
@@ -100,6 +100,7 @@
           <xs:attributeGroup ref="base:StronicowanieResponseAttributeGroup"/>
         </xs:complexType>
       </xs:element>
+      <xs:element name="SzczegolyBleduFault" type="base:SzczegolyBleduType"/>
     </xs:schema>
   </wsdl:types>
   <wsdl:message name="WyslijDokumentRequest">
@@ -126,22 +127,29 @@
   <wsdl:message name="WyszukajDealerowResponse">
     <wsdl:part name="response" element="tns:WyszukajDealerowResponse"/>
   </wsdl:message>
+  <wsdl:message name="SzczegolyBleduFault">
+    <wsdl:part name="fault" element="tns:SzczegolyBleduFault"/>
+  </wsdl:message>
   <wsdl:portType name="SystemDokumentowStrukturyzowanychPortType">
     <wsdl:operation name="wyslijDokument">
       <wsdl:input message="tns:WyslijDokumentRequest"/>
       <wsdl:output message="tns:WyslijDokumentResponse"/>
+      <wsdl:fault name="szczegolyBledu" message="tns:SzczegolyBleduFault"/>
     </wsdl:operation>
     <wsdl:operation name="pobierzDokument">
       <wsdl:input message="tns:PobierzDokumentRequest"/>
       <wsdl:output message="tns:PobierzDokumentResponse"/>
+      <wsdl:fault name="szczegolyBledu" message="tns:SzczegolyBleduFault"/>
     </wsdl:operation>
     <wsdl:operation name="wyszukajDokumenty">
       <wsdl:input message="tns:WyszukajDokumentyRequest"/>
       <wsdl:output message="tns:WyszukajDokumentyResponse"/>
+      <wsdl:fault name="szczegolyBledu" message="tns:SzczegolyBleduFault"/>
     </wsdl:operation>
     <wsdl:operation name="wyszukajDealerow">
       <wsdl:input message="tns:WyszukajDealerowRequest"/>
       <wsdl:output message="tns:WyszukajDealerowResponse"/>
+      <wsdl:fault name="szczegolyBledu" message="tns:SzczegolyBleduFault"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SystemDokumentowStrukturyzowanychBinding" type="tns:SystemDokumentowStrukturyzowanychPortType">
@@ -154,6 +162,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="szczegolyBledu">
+        <soap:fault name="szczegolyBledu" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="pobierzDokument">
       <soap:operation style="document"/>
@@ -163,6 +174,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="szczegolyBledu">
+        <soap:fault name="szczegolyBledu" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="wyszukajDokumenty">
       <soap:operation style="document"/>
@@ -172,6 +186,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="szczegolyBledu">
+        <soap:fault name="szczegolyBledu" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="wyszukajDealerow">
       <soap:operation style="document"/>
@@ -181,6 +198,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="szczegolyBledu">
+        <soap:fault name="szczegolyBledu" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="SystemDokumentowStrukturyzowanychService">

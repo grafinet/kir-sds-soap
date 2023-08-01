@@ -22,7 +22,7 @@ final class SzczegolyDokumentuType {
     public $typKomunikatu;
 
     /**
-     * @var KodUczestnikaType $kodUczestnika
+     * @var string|ZmiennaTekstowa512Type $kodUczestnika
      */
     public $kodUczestnika;
 
@@ -30,5 +30,10 @@ final class SzczegolyDokumentuType {
      * @var DateTimeInterface $dataKomunikatu
      */
     public $dataKomunikatu;
+
+    /**
+     * @var string|TakNieType
+     */
+    public $pobrany;
 
 }

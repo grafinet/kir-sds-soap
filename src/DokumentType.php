@@ -4,7 +4,8 @@ namespace pl\kir\sds\soap;
 
 use DateTimeInterface;
 
-final class DokumentType {
+final class DokumentType
+{
 
     /**
      * @var NadawcaKomunikatuType $NadawcaKomunikatu
@@ -22,7 +23,7 @@ final class DokumentType {
     public $TrescPisma;
 
     /**
-     * @var Zalaczniki $Zalaczniki
+     * @var ZalacznikiType $Zalaczniki
      */
     public $Zalaczniki;
 

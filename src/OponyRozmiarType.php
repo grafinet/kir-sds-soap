@@ -25,7 +25,7 @@ final class OponyRozmiarType {
     public $OponyProfil;
 
     /**
-     * @var int|string|ZmiennaLiczbowaType $OponySrednica
+     * @var int|string|ZmiennaTekstowa100Type $OponySrednica
      */
     public $OponySrednica;
 

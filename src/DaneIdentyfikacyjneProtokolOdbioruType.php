@@ -77,9 +77,9 @@ final class DaneIdentyfikacyjneProtokolOdbioruType {
     public $RodzajKursuPlatnosciWaluty;
 
     /**
-     * @var KodWalutyType $DaneIdentKodWalutyPodatkuVAT
+     * @var string|KodWalutyType $KodWalutyPodatkuVAT
      */
-    public $DaneIdentKodWalutyPodatkuVAT;
+    public $KodWalutyPodatkuVAT;
 
     /**
      * @var DateTimeInterface $DataPowstaniaZobowazaniaPodatkowego

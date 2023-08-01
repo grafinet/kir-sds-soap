@@ -20,7 +20,7 @@ final class LisaWyposazeniaLiniaType {
     public $OpisWyposazenia;
 
     /**
-     * @var float|string|ZmiennaLiczbowaDecimalType $CenaWyposazenia
+     * @var string|KwotaType $CenaWyposazenia
      */
     public $CenaWyposazenia;
 

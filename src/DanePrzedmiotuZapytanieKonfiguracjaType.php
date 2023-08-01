@@ -17,7 +17,7 @@ final class DanePrzedmiotuZapytanieKonfiguracjaType {
     public $KodKluczykow;
 
     /**
-     * @var string|ZmiennaTekstowa100Type $IloscZabezpieczen
+     * @var int|ZmiennaLiczbowaNieujemnaType $IloscZabezpieczen
      */
     public $IloscZabezpieczen;
 

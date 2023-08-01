@@ -4,7 +4,8 @@ namespace pl\kir\sds\soap;
 
 use DateTimeInterface;
 
-final class WyszukajDokumentyRequest {
+final class WyszukajDokumentyRequest
+{
 
     /**
      * @var string|KodSDSType $kodSDS
@@ -17,7 +18,7 @@ final class WyszukajDokumentyRequest {
     public $typKomunikatu;
 
     /**
-     * @var string|KodUczestnikaType $kodUczestnika
+     * @var string|ZmiennaTekstowa512Type $kodUczestnika
      */
     public $kodUczestnika;
 

@@ -17,10 +17,10 @@
           <xs:simpleType>
             <xs:restriction base="xs:string">
               <xs:enumeration value="1"/>
-              <xs:enumeration value="2"/>
-              <xs:enumeration value="3"/>
-              <xs:enumeration value="4"/>
               <xs:enumeration value="9"/>
+              <xs:enumeration value="16"/>
+              <xs:enumeration value="26"/>
+              <xs:enumeration value="27"/>
             </xs:restriction>
           </xs:simpleType>
         </xs:element>

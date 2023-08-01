@@ -10,4 +10,5 @@ enum DMCZespoluType: string {
     case TYPE_5 = '5) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą od 7 ton i poniżej 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego';
     case TYPE_6 = '6) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą równą lub wyższą niż 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego';
     case TYPE_7 = '7) autobusy';
+    case TYPE_8 = '8) samochody osobowe, pojazdy do 3,5 tony';
 }

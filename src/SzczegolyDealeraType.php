@@ -2,11 +2,40 @@
 
 namespace pl\kir\sds\soap;
 
-final class SzczegolyDealeraType extends UczestnikType {
+final class SzczegolyDealeraType extends UczestnikType
+{
+    /**
+     * @var string|ZmiennaTekstowa100Type
+     */
+    public $ImieUczestnika;
 
     /**
-     * @var string[] $marki
+     * @var string|ZmiennaTekstowa100Type
      */
-    public $marki;
+    public $NazwiskoUczestnika;
 
+    /**
+     * @var NIPPolskiType
+     */
+    public $NipUczestnika;
+
+    /**
+     * @var REGONType
+     */
+    public $RegonUczestnika;
+
+    /**
+     * @var ZmiennaLiczbowaType
+     */
+    public $NumerTelefonuUczestnika;
+
+    /**
+     * @var AdresEmailType
+     */
+    public $AdresEmailUczestnika;
+
+    /**
+     * @var string
+     */
+    public $NumerKontaBankowegoUczestnika;
 }

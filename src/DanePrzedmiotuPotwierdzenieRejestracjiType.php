@@ -15,14 +15,14 @@ final class DanePrzedmiotuPotwierdzenieRejestracjiType {
     public $CzyPojazd;
 
     /**
-     * @var string|TakNieType $ZdefiniowanyWKryteriachPodatkowych
+     * @var string|TakNieType $CzyZdefiniowanyWKryteriachPodatkowych
      */
-    public $ZdefiniowanyWKryteriachPodatkowych;
+    public $CzyZdefiniowanyWKryteriachPodatkowych;
 
     /**
-     * @var string|TakNieType $CzyPrzedmiotZarejestrowany
+     * @var string|TakNieType $CzyPrzedmiotRejestrowalny
      */
-    public $CzyPrzedmiotZarejestrowany;
+    public $CzyPrzedmiotRejestrowalny;
 
     /**
      * @var string|ZmiennaTekstowa100Type $Marka

@@ -12,7 +12,7 @@ use pl\kir\sds\soap\PrzedmiotUslugaZapytanieType;
 use pl\kir\sds\soap\PodsumowaniePrzedmiotuUslugaType;
 use pl\kir\sds\soap\KlauzulaType;
 use pl\kir\sds\soap\StopkaType;
-use pl\kir\sds\soap\ZalacznikiType;
+use pl\kir\sds\soap\ZalacznikiMetadataType;
 
 class ZapytanieOfertowe extends TrescPisma
 {
@@ -70,7 +70,7 @@ class ZapytanieOfertowe extends TrescPisma
     public $Stopka;
 
     /**
-     * @var ZalacznikiType
+     * @var ZalacznikiMetadataType
      */
     public $Zalaczniki;
 

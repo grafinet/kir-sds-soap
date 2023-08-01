@@ -3,6 +3,7 @@
 <xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Dokument"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:tns="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"
+           xmlns:dok="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Dokument"
            version="1.0">
   <xs:import schemaLocation="BazoweTypy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"/>
 
@@ -11,13 +12,7 @@
       <xs:element name="NadawcaKomunikatu" maxOccurs="1" minOccurs="1" type="tns:NadawcaKomunikatuType"/>
       <xs:element name="AdresatKomunikatu" maxOccurs="1" minOccurs="1" type="tns:UczestnikType"/>
       <xs:element name="TrescPisma" maxOccurs="1" minOccurs="1" type="tns:TrescPismaPodpisType"/>
-      <xs:element name="Zalaczniki" maxOccurs="1" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Zalacznik" maxOccurs="1" minOccurs="0" type="tns:ZalacznikType"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element name="Zalaczniki" maxOccurs="1" minOccurs="0" type="tns:ZalacznikiType"/>
     </xs:sequence>
     <xs:attribute name="typKomunikatu" type="tns:TypDokumentuType" use="required"/>
     <xs:attribute name="nazwaKomunikatu" type="xs:string" use="required"/>
@@ -30,6 +25,8 @@
     <xs:attribute name="wersjaKomunikatu" type="tns:wersjaKomunikatuType" use="required"/>
     <xs:attribute name="idProfilu" type="tns:wersjaKomunikatuType" use="required"/>
   </xs:complexType>
+
+  <xs:element name="dokument" type="dok:DokumentType"/>
 
 </xs:schema>
 

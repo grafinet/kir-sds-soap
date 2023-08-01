@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap;
 class UczestnikType {
 
     /**
-     * @var string|KodUczestnikaType $KodUczestnika
+     * @var string|ZmiennaTekstowa512Type $KodUczestnika
      */
     public $KodUczestnika;
 

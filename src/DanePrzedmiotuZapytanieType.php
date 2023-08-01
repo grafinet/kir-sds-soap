@@ -15,9 +15,9 @@ final class DanePrzedmiotuZapytanieType {
     public $CzyPojazd;
 
     /**
-     * @var string|TakNieType $ZdefiniowanyWKryteriachPodatkowych
+     * @var string|TakNieType $CzyZdefiniowanyWKryteriachPodatkowych
      */
-    public $ZdefiniowanyWKryteriachPodatkowych;
+    public $CzyZdefiniowanyWKryteriachPodatkowych;
 
     /**
      * @var string|TakNieType $CzyPrzedmiotRejestrowalny

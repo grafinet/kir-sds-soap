@@ -2,26 +2,15 @@
 
 namespace pl\kir\sds\soap;
 
-final class ZalacznikType {
+final class ZalacznikType
+{
+    public function __construct(public string $_)
+    {
+    }
 
     /**
-     * @var string|Zalacznik $Zalacznik
+     * @var string $id
      */
-    public $Zalacznik;
-
-    /**
-     * @var string $ListaPorzadkowaZalacznikow
-     */
-    public $ListaPorzadkowaZalacznikow;
-
-    /**
-     * @var string|ZmiennaTekstowa100Type $Nazwa
-     */
-    public $Nazwa;
-
-    /**
-     * @var string|PoleOpisoweType $OpisDokumentu
-     */
-    public $OpisDokumentu;
+    public $id;
 
 }
