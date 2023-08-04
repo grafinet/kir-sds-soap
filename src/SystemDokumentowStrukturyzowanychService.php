@@ -2,8 +2,11 @@
 
 namespace pl\kir\sds\soap;
 
-class SystemDokumentowStrukturyzowanychService extends \SoapClient
+use SoapClient;
+
+class SystemDokumentowStrukturyzowanychService extends SoapClient
 {
+    public const WSDL = __DIR__ . '/../resources/SystemDokumentowStrukturyzowanych.wsdl';
 
     public static $classmap = array(
         'NadawcaKomunikatuType' => NadawcaKomunikatuType::class,
@@ -60,6 +63,7 @@ class SystemDokumentowStrukturyzowanychService extends \SoapClient
     /**
      * @param string $wsdl The wsdl file to use
      * @param array $options An array of config values
+     * @throws \SoapFault
      */
     public function __construct($wsdl = null, array $options = [])
     {
@@ -72,20 +76,15 @@ class SystemDokumentowStrukturyzowanychService extends \SoapClient
             'features' => 1,
         ), $options);
         if (!$wsdl) {
-            $wsdl = __DIR__ . '/../resources/SystemDokumentowStrukturyzowanych.wsdl';
+            $wsdl = self::WSDL;
         }
         parent::__construct($wsdl, $options);
     }
 
-//    public function __doRequest($request, $location, $action, $version, $oneWay = 0): ?string
-//    {
-//        var_dump($request);
-//        return '';
-//    }
-
     /**
      * @param WyslijDokumentRequest $request
      * @return WyslijDokumentResponse
+     * @throws \SoapFault
      */
     public function wyslijDokument(WyslijDokumentRequest $request)
     {
@@ -95,6 +94,7 @@ class SystemDokumentowStrukturyzowanychService extends \SoapClient
     /**
      * @param PobierzDokumentRequest $request
      * @return PobierzDokumentResponse
+     * @throws \SoapFault
      */
     public function pobierzDokument(PobierzDokumentRequest $request)
     {
@@ -104,6 +104,7 @@ class SystemDokumentowStrukturyzowanychService extends \SoapClient
     /**
      * @param WyszukajDokumentyRequest $request
      * @return WyszukajDokumentyResponse
+     * @throws \SoapFault
      */
     public function wyszukajDokumenty(WyszukajDokumentyRequest $request)
     {
@@ -113,6 +114,7 @@ class SystemDokumentowStrukturyzowanychService extends \SoapClient
     /**
      * @param WyszukajDealerowRequest $request
      * @return WyszukajDealerowResponse
+     * @throws \SoapFault
      */
     public function wyszukajDealerow(WyszukajDealerowRequest $request)
     {
