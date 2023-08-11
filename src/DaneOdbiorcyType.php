@@ -2,6 +2,10 @@
 
 namespace pl\kir\sds\soap;
 
+/**
+ * Sekcja opisana w rozdziale 7.19 Specyfikacji technicznej
+ * Sekcja wymagana tylko w skróconym procesie
+ */
 final class DaneOdbiorcyType {
 
     /**

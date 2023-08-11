@@ -12,6 +12,7 @@ use pl\kir\sds\soap\PrzedmiotUslugaZamowienieType;
 use pl\kir\sds\soap\PodsumowaniePrzedmiotuUslugaType;
 use pl\kir\sds\soap\KlauzulaType;
 use pl\kir\sds\soap\StopkaType;
+use pl\kir\sds\soap\TakNieType;
 use pl\kir\sds\soap\ZalacznikiMetadataType;
 
 class PotwierdzenieDanychPrzedmiotu extends TrescPisma
@@ -33,6 +34,11 @@ class PotwierdzenieDanychPrzedmiotu extends TrescPisma
      * @var DokumentyPowiazane2Type
      */
     public $DokumentyPowiazane;
+
+    /**
+     * @var string|TakNieType
+     */
+    public $CzySkroconyProces;
 
     /**
      * @var DaneDostawcyType[]

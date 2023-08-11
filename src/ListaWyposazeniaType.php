@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Sekcja opisana w rozdziale 7.32 Specyfikacji technicznej
+ */
 namespace pl\kir\sds\soap;
 
 final class ListaWyposazeniaType {
@@ -15,7 +18,7 @@ final class ListaWyposazeniaType {
     public $LinkDoKonfiguracji;
 
     /**
-     * @var LisaWyposazeniaLiniaType[] $ListaWyposazeniaLinia
+     * @var ListaWyposazeniaLiniaType[] $ListaWyposazeniaLinia
      */
     public $ListaWyposazeniaLinia;
 

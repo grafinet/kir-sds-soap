@@ -72,7 +72,7 @@ final class DaneIdentyfikacyjneProtokolOdbioruType {
     public $KursPlatnosciZDnia;
 
     /**
-     * @var string|ZmiennaTekstowa255Type $RodzajKursuPlatnosciWaluty
+     * @var string|ZmiennaTekstowa100Type $RodzajKursuPlatnosciWaluty
      */
     public $RodzajKursuPlatnosciWaluty;
 

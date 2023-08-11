@@ -52,12 +52,12 @@ final class DanePrzedmiotuZapytanieKonfiguracjaType {
     public $NormaEURO;
 
     /**
-     * @var string|DMC $DMC
+     * @var string|ZmiennaTekstowa255Type $DMC
      */
     public $DMC;
 
     /**
-     * @var string|DMCZespoluType $DMCZespolu
+     * @var string|ZmiennaTekstowa255Type $DMCZespolu
      */
     public $DMCZespolu;
 

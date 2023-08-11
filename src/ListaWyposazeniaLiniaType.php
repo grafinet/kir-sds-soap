@@ -2,7 +2,10 @@
 
 namespace pl\kir\sds\soap;
 
-final class LisaWyposazeniaLiniaType {
+/**
+ * Sekcja opisana w rozdziale 7.33 Specyfikacji technicznej
+ */
+final class ListaWyposazeniaLiniaType {
 
     /**
      * @var string|LiczbaPorzadkowaType $ListaPorzadkowa

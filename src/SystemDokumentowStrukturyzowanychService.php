@@ -40,7 +40,7 @@ class SystemDokumentowStrukturyzowanychService extends SoapClient
         'DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType' => DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType::class,
         'OponyRozmiarType' => OponyRozmiarType::class,
         'ListaWyposazeniaType' => ListaWyposazeniaType::class,
-        'LisaWyposazeniaLiniaType' => LisaWyposazeniaLiniaType::class,
+        'ListaWyposazeniaLiniaType' => ListaWyposazeniaLiniaType::class,
         'ListaWyposazeniaPodsumowanieType' => ListaWyposazeniaPodsumowanieType::class,
         'KlauzulaType' => KlauzulaType::class,
         'ZalacznikiType' => ZalacznikiType::class,

@@ -63,12 +63,12 @@
   </xs:complexType>
   <xs:complexType name="AdresType">
     <xs:sequence>
-      <xs:element name="Miejscowosc" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="1"/>
-      <xs:element name="Ulica" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="1"/>
-      <xs:element name="NrDomu" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="1"/>
-      <xs:element name="NrLokalu" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="0"/>
-      <xs:element name="KodPocztowy" type="tns:ZmiennaTekstowa100Type" maxOccurs="1" minOccurs="1" />
-      <xs:element name="KodKraju" type="tns:KodKrajuType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Miejscowosc" type="tns:ZmiennaTekstowa100Type" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Ulica" type="tns:ZmiennaTekstowa100Type" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="NrDomu" type="tns:ZmiennaTekstowa100Type" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="NrLokalu" type="tns:ZmiennaTekstowa100Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="KodPocztowy" type="tns:ZmiennaTekstowa100Type" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="KodKraju" type="tns:KodKrajuType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="StopkaType">
@@ -80,9 +80,9 @@
   <xs:complexType name="TrescPismaPodpisType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="Zawartosc" use="required" type="tns:ZawartoscTresciType"/>
-        <xs:attribute name="Typ" use="required" type="tns:TypTresciType"/>
-        <xs:attribute name="Kodowanie" use="required" type="tns:KodowanieTresciType"/>
+        <xs:attribute name="Zawartosc" type="tns:ZawartoscTresciType" use="required"/>
+        <xs:attribute name="Typ" type="tns:TypTresciType" use="required"/>
+        <xs:attribute name="Kodowanie" type="tns:KodowanieTresciType" use="required"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -101,98 +101,146 @@
       <xs:enumeration value="Base64"/>
     </xs:restriction>
   </xs:simpleType>
-
   <xs:complexType name="DaneIdentyfikacyjneZapytanieOfertoweType">
     <xs:sequence>
-      <xs:element minOccurs="1" name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="DataPlatnosci" type="xs:date"/>
-      <xs:element minOccurs="0" name="TerminPlatnosci" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataWykonaniaUslugi" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataWystawieniaFaktury" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataWaznosciDokumentu" type="xs:date"/>
-      <xs:element minOccurs="1" name="WalutaDokumentu" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="KursWalutowyDokumentu" type="tns:KursWalutowyDokumentuType"/>
-      <xs:element minOccurs="0" name="KursDokumentuZDnia" type="xs:date"/>
-      <xs:element minOccurs="0" name="KomentarzDoDokumentu" type="tns:PoleOpisoweType"/>
-      <xs:element minOccurs="0" name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
+      <xs:element name="DataPlatnosci" type="xs:date" minOccurs="0"/>
+      <xs:element name="TerminPlatnosci" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataWykonaniaUslugi" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataWystawieniaFaktury" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataWaznosciDokumentu" type="xs:date" minOccurs="0"/>
+      <xs:element name="WalutaDokumentu" type="tns:KodWalutyType" minOccurs="1"/>
+      <xs:element name="KursWalutowyDokumentu" type="tns:KursWalutowyDokumentuType" minOccurs="0"/>
+      <xs:element name="KursDokumentuZDnia" type="xs:date" minOccurs="0"/>
+      <xs:element name="KomentarzDoDokumentu" type="tns:PoleOpisoweType" minOccurs="0"/>
+      <xs:element name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="DaneIdentyfikacyjneZamowienieType">
     <xs:sequence>
-      <xs:element minOccurs="1" name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="TerminPlatnosci" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataWykonaniaUslugi" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataWystawieniaFaktury" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataWaznosciDokumentu" type="xs:date"/>
-      <xs:element minOccurs="1" name="WalutaDokumentu" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="KursWalutowyDokumentu" type="tns:KursWalutowyDokumentuType"/>
-      <xs:element maxOccurs="1" name="KursDokumentuZDnia" type="xs:date" minOccurs="0"/>
-      <xs:element minOccurs="0" name="RodzajKursuDokumentuWaluty" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
+      <xs:element name="TerminPlatnosci" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataWykonaniaUslugi" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataWystawieniaFaktury" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataWaznosciDokumentu" type="xs:date" minOccurs="0"/>
+      <xs:element name="WalutaDokumentu" type="tns:KodWalutyType" minOccurs="1"/>
+      <xs:element name="KursWalutowyDokumentu" type="tns:KursWalutowyDokumentuType" minOccurs="0"/>
+      <xs:element name="KursDokumentuZDnia" type="xs:date" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RodzajKursuDokumentuWaluty" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
       <xs:element name="WalutaPlatnosci" type="tns:KodWalutyType" minOccurs="0"/>
-      <xs:element minOccurs="0" name="KursWalutowyPlatnosci" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="KursPlatnosciZDnia" type="xs:date"/>
-      <xs:element minOccurs="0" name="RodzajKursuPlatnosciWaluty" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="KursWalutowyPlatnosci" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="KursPlatnosciZDnia" type="xs:date" minOccurs="0"/>
+      <xs:element name="RodzajKursuPlatnosciWaluty" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
       <xs:element name="KodWalutyPodatkuVAT" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="DataPowstaniaZobowazaniaPodatkowego" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataPowstaniaOkresuFakturowania" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataKoncaOkresuFakturowania" type="xs:date"/>
-      <xs:element minOccurs="0" name="KomentarzDoDokumentu" type="tns:PoleOpisoweType"/>
-      <xs:element minOccurs="0" name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="DataPowstaniaZobowazaniaPodatkowego" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataPowstaniaOkresuFakturowania" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataKoncaOkresuFakturowania" type="xs:date" minOccurs="0"/>
+      <xs:element name="KomentarzDoDokumentu" type="tns:PoleOpisoweType" minOccurs="0"/>
+      <xs:element name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="DaneIdentyfikacyjneProtokolOdbioruType">
     <xs:sequence>
-      <xs:element minOccurs="1" name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="TerminPlatnosci" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataWykonaniaUslugi" type="xs:date"/>
+      <xs:element name="NumerDokumentu" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
+      <xs:element name="TerminPlatnosci" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataWykonaniaUslugi" type="xs:date" minOccurs="0"/>
       <xs:element name="CzyKlientOdebral" type="tns:TakNieType"/>
-      <xs:element minOccurs="1" name="DataWystawieniaFaktury" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataWaznosciDokumentu" type="xs:date"/>
-      <xs:element minOccurs="1" name="WalutaDokumentu" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="KursWalutowyDokumentu" type="tns:KursWalutowyDokumentuType"/>
-      <xs:element maxOccurs="1" name="KursDokumentuZDnia" type="xs:date" minOccurs="0"/>
-      <xs:element minOccurs="0" name="RodzajKursuDokumentuWaluty" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element name="WalutaPlatnosci" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="KursWalutowyPlatnosci" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="KursPlatnosciZDnia" type="xs:date"/>
-      <xs:element minOccurs="0" name="RodzajKursuPlatnosciWaluty" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DataWystawieniaFaktury" type="xs:date" minOccurs="1"/>
+      <xs:element name="DataWaznosciDokumentu" type="xs:date" minOccurs="0"/>
+      <xs:element name="WalutaDokumentu" type="tns:KodWalutyType" minOccurs="1"/>
+      <xs:element name="KursWalutowyDokumentu" type="tns:KursWalutowyDokumentuType" minOccurs="0"/>
+      <xs:element name="KursDokumentuZDnia" type="xs:date" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RodzajKursuDokumentuWaluty" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="WalutaPlatnosci" type="tns:KodWalutyType" minOccurs="0"/>
+      <xs:element name="KursWalutowyPlatnosci" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="KursPlatnosciZDnia" type="xs:date" minOccurs="0"/>
+      <xs:element name="RodzajKursuPlatnosciWaluty" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
       <xs:element name="KodWalutyPodatkuVAT" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="DataPowstaniaZobowazaniaPodatkowego" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataPowstaniaOkresuFakturowania" type="xs:date"/>
-      <xs:element minOccurs="0" name="DataKoncaOkresuFakturowania" type="xs:date"/>
-      <xs:element minOccurs="0" name="KomentarzDoDokumentu" type="tns:PoleOpisoweType"/>
-      <xs:element minOccurs="0" name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="DataPowstaniaZobowazaniaPodatkowego" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataPowstaniaOkresuFakturowania" type="xs:date" minOccurs="0"/>
+      <xs:element name="DataKoncaOkresuFakturowania" type="xs:date" minOccurs="0"/>
+      <xs:element name="KomentarzDoDokumentu" type="tns:PoleOpisoweType" minOccurs="0"/>
+      <xs:element name="ReferencjaKupujacego" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="DokumentyPowiazaneType">
+    <xs:annotation>
+      <xs:documentation>Sekcja opisana w rozdziale 7.13 Specyfikacji technicznej</xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="NumerUmowy" type="tns:IdentyfikatorPowiazaniaType"/>
-      <xs:element minOccurs="0" name="NumerOferty" type="tns:IdentyfikatorPowiazaniaType"/>
-      <xs:element minOccurs="0" name="NumerPotwierdzenia" type="tns:IdentyfikatorPowiazaniaType"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="InnyDokument" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element name="NumerOferty" type="tns:IdentyfikatorPowiazaniaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NumerOferty opcjonalne dla komunikatów 1101, 2201, 1301, dla procesów 'pojazd-standardowy' oraz 'nie-pojazd-standardowy'
+            Pole NumerOferty obowiązkowe dla komunikatu 1301, dla procesów 'pojazd-skrócony' oraz 'nie-pojazd-skrócony'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumerPotwierdzenia" type="tns:IdentyfikatorPowiazaniaType" minOccurs="0"/>
+      <xs:element name="InnyDokument" type="tns:IdentyfikatorPowiazaniaType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="DokumentyPowiazane2Type">
+    <xs:annotation>
+      <xs:documentation>
+        Sekcja opisana w rozdziale 7.14 Specyfikacji technicznej
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="NumerUmowy" type="tns:IdentyfikatorPowiazaniaType"/>
       <xs:element name="NumerZamowienia" type="tns:IdentyfikatorPowiazaniaType"/>
-      <xs:element minOccurs="0" name="NumerOferty" type="tns:IdentyfikatorPowiazaniaType"/>
-      <xs:element minOccurs="0" name="NumerPotwierdzenia" type="tns:IdentyfikatorPowiazaniaType"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="InnyDokument" type="tns:IdentyfikatorPowiazaniaType"/>
+      <xs:element name="NumerOferty" type="tns:IdentyfikatorPowiazaniaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NumerOferty opcjonalne dla komunikatów 2401, 2501, 2502, 2601  dla procesów 'pojazd-standardowy' oraz 'nie-pojazd-standardowy'
+            Pole NumerOferty obowiązkowe dla komunikatów 2401, 2501, 2502, 2601  dla procesów 'pojazd-skrócony' oraz 'nie-pojazd-skrócony'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumerPotwierdzenia" type="tns:IdentyfikatorPowiazaniaType" minOccurs="0"/>
+      <xs:element name="InnyDokument" type="tns:IdentyfikatorPowiazaniaType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="IdentyfikatorPowiazaniaType">
     <xs:sequence>
-      <xs:element minOccurs="1" name="IdentyfikatorDokumentu" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="KodTypuDokumentu" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="IdentyfikatorDokumentu" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
+      <xs:element name="KodTypuDokumentu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="NIPType">
+    <xs:annotation>
+      <xs:documentation>
+        Sekcja opisana w rozdziale 7.16 Specyfikacji technicznej
+      </xs:documentation>
+    </xs:annotation>
     <xs:choice>
-      <xs:element name="NIPPolski" type="tns:NIPPolskiType"/>
-      <xs:element name="NIPZagraniczny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:annotation>
+        <xs:documentation>
+          Obowiązkowe Pole NIPPolski ALBO NIPZagraniczny
+        </xs:documentation>
+      </xs:annotation>
+      <xs:element name="NIPPolski" type="tns:NIPPolskiType">
+        <xs:annotation>
+          <xs:documentation>
+            Obowiązkowe Pole NIPPolski ALBO NIPZagraniczny
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NIPZagraniczny" type="tns:ZmiennaTekstowa100Type">
+        <xs:annotation>
+          <xs:documentation>
+            Obowiązkowe Pole NIPPolski ALBO NIPZagraniczny
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:choice>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.17 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DaneDostawcyType">
     <xs:sequence>
       <xs:element name="TypDostawcy">
@@ -206,17 +254,22 @@
       </xs:element>
       <xs:element name="NazwaFirmy" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element name="NIP" type="tns:NIPType"/>
-      <xs:element minOccurs="0" name="REGON" type="tns:REGONType"/>
+      <xs:element name="REGON" type="tns:REGONType" minOccurs="0"/>
       <xs:element name="Adres" type="tns:AdresType"/>
-      <xs:element minOccurs="0" name="NrTelefonu" type="tns:ZmiennaLiczbowaType"/>
-      <xs:element minOccurs="0" name="ImieINazwiskoWystawcyDokumentu" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerRachunkuPlatnoscWWalucieObcej" type="tns:NumerRachunkuPlatnoscWWalucieObcejType"/>
-      <xs:element minOccurs="0" name="NumerRachunkuPlatnoscwPLN" type="tns:NumerRachunkuPlatnoscwPLNType"/>
-      <xs:element minOccurs="0" name="Swift" type="tns:KodSwiftType"/>
-      <xs:element minOccurs="0" name="AdresDoKorespondencji" type="tns:AdresType"/>
+      <xs:element name="NrTelefonu" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="ImieINazwiskoWystawcyDokumentu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerRachunkuPlatnoscWWalucieObcej" type="tns:NumerRachunkuPlatnoscWWalucieObcejType" minOccurs="0"/>
+      <xs:element name="NumerRachunkuPlatnoscwPLN" type="tns:NumerRachunkuPlatnoscwPLNType" minOccurs="0"/>
+      <xs:element name="Swift" type="tns:KodSwiftType" minOccurs="0"/>
+      <xs:element name="AdresDoKorespondencji" type="tns:AdresType" minOccurs="0"/>
       <xs:element name="AdresEmailType" type="tns:AdresEmailType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.18 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DaneNabywcyType">
     <xs:sequence>
       <xs:element name="TypNabywcy">
@@ -231,14 +284,20 @@
       <xs:element name="NazwaFirmy" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element name="NIP" type="tns:NIPType"/>
       <xs:element name="Adres" type="tns:AdresDoFakturowaniaType"/>
-      <xs:element minOccurs="0" name="AdresKorespondencyjny" type="tns:AdresType"/>
-      <xs:element minOccurs="0" name="AdresOddzialu" type="tns:AdresDoFakturowaniaType"/>
+      <xs:element name="AdresKorespondencyjny" type="tns:AdresType" minOccurs="0"/>
+      <xs:element name="AdresOddzialu" type="tns:AdresDoFakturowaniaType" minOccurs="0"/>
       <xs:element name="AdresEmail" type="tns:AdresEmailType"/>
       <xs:element name="AdresDostawyDokumentowDoRejestracji" type="tns:AdresType" minOccurs="0"/>
       <xs:element name="AdresDostawyDokumentowPoRejestracji" type="tns:AdresType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="DaneOdbiorcyType">
+    <xs:annotation>
+      <xs:documentation>
+        Sekcja opisana w rozdziale 7.19 Specyfikacji technicznej
+        Sekcja wymagana tylko w skróconym procesie
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="TypOdbiorcy">
         <xs:simpleType>
@@ -249,173 +308,512 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element minOccurs="0" name="NazwaFirmy" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NIP" type="tns:NIPType"/>
-      <xs:element minOccurs="0" name="REGON" type="tns:REGONType"/>
-      <xs:element minOccurs="0" name="Adres" type="tns:AdresType"/>
-      <xs:element minOccurs="0" name="AdresEmail" type="tns:AdresEmailType"/>
+      <xs:element name="NazwaFirmy" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NIP" type="tns:NIPType" minOccurs="0"/>
+      <xs:element name="REGON" type="tns:REGONType" minOccurs="0"/>
+      <xs:element name="Adres" type="tns:AdresType" minOccurs="0"/>
+      <xs:element name="AdresEmail" type="tns:AdresEmailType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="PrzedmiotUslugaZapytanieType">
+    <xs:annotation>
+      <xs:documentation>
+        Sekcja opisana w rozdziale 7.20 Specyfikacji technicznej
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="LiczbaPorzadkowaLinia" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuZapytanieType"/>
-      <xs:element maxOccurs="1" name="DaneUslugiLinia" type="tns:DaneUslugiType"/>
-      <xs:element minOccurs="0" name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="1" name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuZapytanieType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="DaneUslugiLinia" type="tns:DaneUslugiType" maxOccurs="1"/>
+      <xs:element name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
       <xs:element name="OpisPrzedmiotuLinia" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element minOccurs="0" name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="IloscNaLinii" type="tns:IloscNaLiniiType"/>
-      <xs:element minOccurs="0" name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia"/>
-      <xs:element minOccurs="0" name="KwotaNettoLinia" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="RabatLinia" type="tns:RabatLiniaType"/>
-      <xs:element minOccurs="0" name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType"/>
-      <xs:element minOccurs="0" name="PodatekVATLinia" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="KwotaBruttoLinia" type="tns:KwotaType"/>
+      <xs:element name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="IloscNaLinii" type="tns:IloscNaLiniiType" minOccurs="0"/>
+      <xs:element name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia" minOccurs="0"/>
+      <xs:element name="KwotaNettoLinia" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="RabatLinia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType" minOccurs="0"/>
+      <xs:element name="PodatekVATLinia" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="KwotaBruttoLinia" type="tns:KwotaType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="PrzedmiotUslugaZamowienieType">
+    <xs:annotation>
+      <xs:documentation>
+        Sekcja opisana w rozdziale 7.21 Specyfikacji technicznej
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="LiczbaPorzadkowaLinia" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuZamowienieType"/>
-      <xs:element maxOccurs="1" name="DaneUslugiLinia" type="tns:DaneUslugiType"/>
-      <xs:element minOccurs="0" name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="1" name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuZamowienieType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="DaneUslugiLinia" type="tns:DaneUslugiType" maxOccurs="1"/>
+      <xs:element name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
       <xs:element name="OpisPrzedmiotuLinia" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element minOccurs="0" name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="IloscNaLinii" type="tns:IloscNaLiniiType"/>
-      <xs:element minOccurs="0" name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia"/>
-      <xs:element minOccurs="0" name="KwotaNettoLinia" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="RabatLinia" type="tns:RabatLiniaType"/>
-      <xs:element minOccurs="0" name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType"/>
-      <xs:element minOccurs="0" name="PodatekVATLinia" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="KwotaBruttoLinia" type="tns:KwotaType"/>
+      <xs:element name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="IloscNaLinii" type="tns:IloscNaLiniiType" minOccurs="0"/>
+      <xs:element name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia" minOccurs="0"/>
+      <xs:element name="KwotaNettoLinia" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="RabatLinia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType" minOccurs="0"/>
+      <xs:element name="PodatekVATLinia" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="KwotaBruttoLinia" type="tns:KwotaType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="PrzedmiotUslugaPotwierdznieRejestracjiType">
+    <xs:annotation>
+      <xs:documentation>
+        Sekcja opisana w rozdziale 7.22 Specyfikacji technicznej
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="LiczbaPorzadkowaLinia" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuPotwierdzenieRejestracjiType"/>
-      <xs:element maxOccurs="1" name="DaneUslugiLinia" type="tns:DaneUslugiType"/>
-      <xs:element minOccurs="0" name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="1" name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="DanePrzedmiotuLinia" type="tns:DanePrzedmiotuPotwierdzenieRejestracjiType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="DaneUslugiLinia" type="tns:DaneUslugiType" maxOccurs="1"/>
+      <xs:element name="SymbolPKWiULinia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="RodzajStatusPojazduLinia" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
       <xs:element name="OpisPrzedmiotuLinia" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element minOccurs="0" name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="IloscNaLinii" type="tns:IloscNaLiniiType"/>
-      <xs:element minOccurs="0" name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia"/>
-      <xs:element minOccurs="0" name="KwotaNettoLinia" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="RabatLinia" type="tns:RabatLiniaType"/>
-      <xs:element minOccurs="0" name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType"/>
-      <xs:element minOccurs="0" name="PodatekVATLinia" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="KwotaBruttoLinia" type="tns:KwotaType"/>
+      <xs:element name="JednostkaNaLinii" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="IloscNaLinii" type="tns:IloscNaLiniiType" minOccurs="0"/>
+      <xs:element name="KwotaJednostkowaNettoLinia" type="tns:KwotaJednostkowaNettoLinia" minOccurs="0"/>
+      <xs:element name="KwotaNettoLinia" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="RabatLinia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="StawkaPodatkuVATLinia" type="tns:StawkaPodatkuVATLiniaType" minOccurs="0"/>
+      <xs:element name="PodatekVATLinia" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="KwotaBruttoLinia" type="tns:KwotaType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="DanePrzedmiotuZapytanieType">
+    <xs:annotation>
+      <xs:documentation>
+        Sekcja opisana w rozdziale 7.23 Specyfikacji technicznej
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="LiczbaPorzadkowaPrzedmiotu" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element name="CzyPojazd" type="tns:TakNieType"/>
-      <xs:element name="CzyZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType"/>
-      <xs:element name="CzyPrzedmiotRejestrowalny" type="tns:TakNieType"/>
-      <xs:element name="CzyPrzedmiotUprzednioZarejestrowany" type="tns:TakNieType"/>
+      <xs:element name="CzyPojazd" type="tns:TakNieType">
+      </xs:element>
+      <xs:element name="CzyZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyZdefiniowanyWKryteriachPodatkowych opcjonalne dla komunikatów 1101, 2201 dla procesu 'nie-pojazd-standardowy'
+            Pole CzyZdefiniowanyWKryteriachPodatkowych obowiązkowe dla komunikatów 1101, 2201 dla procesu 'nie-pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CzyPrzedmiotRejestrowalny" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyPrzedmiotRejestrowalny opcjonalne dla komunikatów 1101, 2201 dla procesu 'nie-pojazd-standardowy'
+            Pole CzyPrzedmiotRejestrowalny obowiązkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CzyPrzedmiotUprzednioZarejestrowany" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyPrzedmiotUprzednioZarejestrowany opcjonalne dla komunikatów 1101, 2201 dla procesu 'nie-pojazd-standardowy'
+            Pole CzyPrzedmiotUprzednioZarejestrowany obowiązkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="Marka" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element name="Model" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element name="Typ" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="VIN" type="tns:NrVINType"/>
-      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType"/>
-      <xs:element minOccurs="0" name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuZapytanieKonfiguracjaType"/>
-      <xs:element minOccurs="0" name="ListaWyposazenia" type="tns:ListaWyposazeniaType"/>
-      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType"/>
+      <xs:element name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="VIN" type="tns:NrVINType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole VIN opcjonalne  dla komunikatów 1101, 2201 dla procesu 'nie-pojazd-standardowy'
+            Pole VIN warunkowe  dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole RokProdukcji opcjonalne dla komunikatów 1101, 2201 dla procesu 'nie-pojazd-standardowy'
+            Pole RokProdukcji obowiązkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuZapytanieKonfiguracjaType" minOccurs="0"/>
+      <xs:element name="ListaWyposazenia" type="tns:ListaWyposazeniaType" minOccurs="0"/>
+      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole KlasyfikacjaPodatkowa opcjonalne dla komunikatów 1101, 2201 dla procesu 'nie-pojazd-standardowy'
+            Pole KlasyfikacjaPodatkowa obowiązkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaOsiNapedowych" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerPolisyZbywcy" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="EmisjaCO2" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="MocPrzedmiotu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.24 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DanePrzedmiotuZamowienieType">
     <xs:sequence>
       <xs:element name="LiczbaPorzadkowaPrzedmiotu" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element name="CzyPojazd" type="tns:TakNieType"/>
-      <xs:element name="CzyZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType"/>
-      <xs:element name="CzyPrzedmiotRejestrowalny" type="tns:TakNieType"/>
-      <xs:element name="CzyPrzedmiotUprzednioZarejestrowany" type="tns:TakNieType"/>
+      <xs:element name="CzyPojazd" type="tns:TakNieType">
+      </xs:element>
+      <xs:element name="CzyZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyZdefiniowanyWKryteriachPodatkowych opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole CzyZdefiniowanyWKryteriachPodatkowych opcjonalne dla komunikatów 1301, 2401  oraz obowiązkowe dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Pole CzyZdefiniowanyWKryteriachPodatkowych obowiązkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CzyPrzedmiotRejestrowalny" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyPrzedmiotRejestrowalny opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole CzyPrzedmiotRejestrowalny opcjonalne dla komunikatów 1301, 2401  oraz obowiązkowe dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Pole CzyPrzedmiotRejestrowalny obowiązkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CzyPrzedmiotUprzednioZarejestrowany" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyPrzedmiotUprzednioZarejestrowany opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole CzyPrzedmiotUprzednioZarejestrowany opcjonalne dla komunikatów 1301, 2401  oraz obowiązkowe dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Pole CzyPrzedmiotUprzednioZarejestrowany obowiązkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="Marka" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element name="Model" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element name="Typ" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="VIN" type="tns:NrVINType"/>
-      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType"/>
-      <xs:element minOccurs="0" name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuZamowienieKonfiguracjaType"/>
-      <xs:element minOccurs="0" name="ListaWyposazenia" type="tns:ListaWyposazeniaType"/>
-      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType"/>
+      <xs:element name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NumerSeryjny opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'pojazd-skrócony' oraz 'pojazd-standardowy'
+            Pole NumerSeryjny opcjonalne dla komunikatów 1301, 2401 oraz obowiązkowe dla komunikatu 2501  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VIN" type="tns:NrVINType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole VIN opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole VIN opcjonalne dla komunikatów 1301, 2401 oraz obowiązkowe dla komunikatu 2501  dla procesu 'pojazd-skrócony'
+            Pole VIN obowiązkowe dla komunikatu 2501  dla procesu 'pojazd-standardowy' oraz warunkowe dla komunikatów 1301, 2401 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole RokProdukcji opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole RokProdukcji opcjonalne dla komunikatów 1301, 2401  oraz obowiązkowe dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Pole RokProdukcji obowiązkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuZamowienieKonfiguracjaType" minOccurs="0"/>
+      <xs:element name="ListaWyposazenia" type="tns:ListaWyposazeniaType" minOccurs="0"/>
+      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole KlasyfikacjaPodatkowa opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole KlasyfikacjaPodatkowa opcjonalne dla komunikatów 1301, 2401  oraz obowiązkowe dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Pole KlasyfikacjaPodatkowa obowiązkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaOsiNapedowych" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerPolisyZbywcy" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="EmisjaCO2" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="MocPrzedmiotu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.25 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DanePrzedmiotuPotwierdzenieRejestracjiType">
     <xs:sequence>
       <xs:element name="LiczbaPorzadkowaPrzedmiotu" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element name="CzyPojazd" type="tns:TakNieType"/>
-      <xs:element name="CzyZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType"/>
-      <xs:element name="CzyPrzedmiotRejestrowalny" type="tns:TakNieType"/>
+      <xs:element name="CzyPojazd" type="tns:TakNieType">
+      </xs:element>
+      <xs:element name="CzyZdefiniowanyWKryteriachPodatkowych" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyZdefiniowanyWKryteriachPodatkowych opcjonalne dla komunikatów 2502, 2601  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole CzyZdefiniowanyWKryteriachPodatkowych obowiązkowe dla komunikatów 2502, 2601  dla procesów 'pojazd-skrócony' oraz 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CzyPrzedmiotRejestrowalny" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyPrzedmiotRejestrowalny opcjonalne dla komunikatów 2502, 2601  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole CzyPrzedmiotRejestrowalny obowiązkowe dla komunikatów 2502, 2601  dla procesów 'pojazd-skrócony' oraz 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CzyPrzedmiotUprzednioZarejestrowany" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole CzyPrzedmiotUprzednioZarejestrowany opcjonalne dla komunikatów 2502, 2601  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole CzyPrzedmiotUprzednioZarejestrowany obowiązkowe dla komunikatów 2502, 2601  dla procesów 'pojazd-skrócony' oraz 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="Marka" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element name="Model" type="tns:ZmiennaTekstowa100Type"/>
       <xs:element name="Typ" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="VIN" type="tns:NrVINType"/>
-      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType"/>
-      <xs:element minOccurs="0" name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType"/>
-      <xs:element minOccurs="0" name="ListaWyposazenia" type="tns:ListaWyposazeniaType"/>
-      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType"/>
+      <xs:element name="NumerSeryjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NumerSeryjny opcjonalne dla komunikatów 2502, 2601  dla procesów 'pojazd-skrócony' oraz 'pojazd-standardowy'
+            Pole NumerSeryjny obowiązkowe dla komunikatów 2502, 2601  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VIN" type="tns:NrVINType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole VIN opcjonalne dla komunikatów 2502, 2601  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole VIN obowiązkowe dla komunikatów 2502, 2601  dla procesów 'pojazd-skrócony' oraz 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RokProdukcji" type="tns:RokProdukcjiType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole RokProdukcji opcjonalne dla komunikatów 2502, 2601  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole RokProdukcji obowiązkowe dla komunikatów 2502, 2601  dla procesów 'pojazd-skrócony' oraz 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DanePrzedmiotuKonfiguracja" type="tns:DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType"/>
+      <xs:element name="ListaWyposazenia" type="tns:ListaWyposazeniaType" minOccurs="0"/>
+      <xs:element name="KlasyfikacjaPodatkowa" type="tns:KlasyfikacjaPodatkowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole KlasyfikacjaPodatkowa opcjonalne dla komunikatów 2502, 2601  dla procesów 'nie-pojazd-skrócony' oraz 'nie-pojazd-standardowy'
+            Pole KlasyfikacjaPodatkowa obowiązkowe dla komunikatów 2502, 2601  dla procesów 'pojazd-skrócony' oraz 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaOsiNapedowych" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerPolisyZbywcy" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="EmisjaCO2" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="MocPrzedmiotu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.26 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DaneUslugiType">
     <xs:sequence>
-      <xs:element minOccurs="1" name="NazwaUslugi" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element minOccurs="0" name="OkresPrzyporzadkowanydoUslugi" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="NazwaUslugi" type="tns:ZmiennaTekstowa255Type" minOccurs="1"/>
+      <xs:element name="OkresPrzyporzadkowanydoUslugi" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.27 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="PodsumowaniePrzedmiotuUslugaType">
     <xs:sequence>
       <xs:element name="KwotaNettoPodsumowanie" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="PodatekVATPodsumowanie" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="KwotaBruttoPodsumowanie" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="SlownieWartoscFakturydoZaplaty" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element minOccurs="0" name="TerminPlatnosci" type="xs:date"/>
-      <xs:element minOccurs="0" name="SposobRodzajPlatnosci" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="KwotaZaliczki" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="WalutaZaliczki" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="WplacajacyZaliczke" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element minOccurs="0" name="DataZaliczki" type="xs:date"/>
-      <xs:element minOccurs="0" name="PozostalaKwotaDoZaplaty" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="OgolnyRabatNaDokumencie" type="tns:KwotaType"/>
+      <xs:element name="PodatekVATPodsumowanie" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="KwotaBruttoPodsumowanie" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="SlownieWartoscFakturydoZaplaty" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="TerminPlatnosci" type="xs:date" minOccurs="0"/>
+      <xs:element name="SposobRodzajPlatnosci" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="KwotaZaliczki" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="WalutaZaliczki" type="tns:KodWalutyType" minOccurs="0"/>
+      <xs:element name="WplacajacyZaliczke" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="DataZaliczki" type="xs:date" minOccurs="0"/>
+      <xs:element name="PozostalaKwotaDoZaplaty" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="OgolnyRabatNaDokumencie" type="tns:KwotaType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.28 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DanePrzedmiotuZapytanieKonfiguracjaType">
     <xs:sequence>
       <xs:element name="IloscKluczykowPilotowKart" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="KodKluczykow" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="KodKluczykow" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
       <xs:element name="IloscZabezpieczen" type="xs:nonNegativeInteger" minOccurs="0"/>
-      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="0"/>
-      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="MiejsceOdbioruPojazdu" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element name="Rekojmia" type="tns:TakNieType" minOccurs="0"/>
-      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0"/>
-      <xs:element name="DMC" type="tns:DMC"/>
-      <xs:element minOccurs="0" name="DMCZespolu" type="tns:DMCZespoluType"/>
-      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
-      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
-      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0"/>
+      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DataPierwszejRejestracjiWKraju opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole DataPierwszejRejestracjiWKraju warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole MiejsceRejestracjiPojazdu opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole MiejsceRejestracjiPojazdu warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DataWaznosciOC opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole DataWaznosciOC warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MiejsceOdbioruPojazdu" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="Rekojmia" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole Rekojmia opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole Rekojmia warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NormaEURO opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole NormaEURO warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744 lub 746
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DMC" type="tns:ZmiennaTekstowa255Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DMC opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole DMC obowiązkowe dla komunikatów 1101, 2201  dla procesu 'pojazd-standardowy'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DMCZespolu" type="tns:ZmiennaTekstowa255Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DMCZespolu opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole DMCZespolu warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole LiczbaOsi opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole LiczbaOsi warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek:  Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744, 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole LiczbaMiejsc opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole LiczbaMiejsc warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek:	Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 744
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole Zawieszenie opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole Zawieszenie warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744, 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="RodzajNadwozia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="KodProducenta" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerSilnika" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element name="KartaPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="Homologacja" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType"/>
-      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NumerRejestracyjny opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole NumerRejestracyjny warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="KodProducenta" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerSilnika" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="Homologacja" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole Homologacja opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole Homologacja warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/ CzyPrzedmiotUprzednioZarejestrowany jest równa „Nie”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole PojemnoscSilnika opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole PojemnoscSilnika warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole MocSilnika opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole MocSilnika warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="MaksymalnaPredkosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
-      <xs:element minOccurs="0" name="Ladownosc" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="Ladownosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
       <xs:element name="Przebieg" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="KodKoloru" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="PodstawowyRodzajPaliwa">
+      <xs:element name="KodKoloru" type="tns:ZmiennaTekstowa100Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="PodstawowyRodzajPaliwa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole PodstawowyRodzajPaliwa opcjonalne dla komunikatów 1101, 2201  dla procesu 'nie-pojazd-standardowy'
+            Pole PodstawowyRodzajPaliwa warunkowe dla komunikatów 1101, 2201 dla procesu 'pojazd-standardowy'
+            Warunek: Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744, lub 746
+          </xs:documentation>
+        </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="P"/>
@@ -432,7 +830,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element name="AlternatywnyRodzajPaliwa" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="AlternatywnyRodzajPaliwa" minOccurs="0" maxOccurs="unbounded">
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="P"/>
@@ -449,43 +847,193 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element minOccurs="0" name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="Opony" type="tns:OponyRozmiarType"/>
+      <xs:element name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="Opony" type="tns:OponyRozmiarType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.29 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DanePrzedmiotuZamowienieKonfiguracjaType">
     <xs:sequence>
       <xs:element name="IloscKluczykowPilotowKart" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="KodKluczykow" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="KodKluczykow" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
       <xs:element name="IloscZabezpieczen" type="xs:nonNegativeInteger" minOccurs="0"/>
-      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="0"/>
-      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element name="Rekojmia" type="tns:TakNieType" minOccurs="0"/>
-      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0"/>
-      <xs:element name="DMC" type="tns:DMC"/>
-      <xs:element minOccurs="0" name="DMCZespolu" type="tns:DMCZespoluType"/>
-      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
-      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
-      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0"/>
+      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DataPierwszejRejestracjiWKraju opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole DataPierwszejRejestracjiWKraju opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole DataPierwszejRejestracjiWKraju warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole MiejsceRejestracjiPojazdu opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole MiejsceRejestracjiPojazdu opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole MiejsceRejestracjiPojazdu warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DataWaznosciOC opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole DataWaznosciOC opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole DataWaznosciOC warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Rekojmia" type="tns:TakNieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole Rekojmia opcjonalne dla komunikatów 1301, 2401 i obowiązkowe dla komunikatu 2501 dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony' i 'pojazd-skrócony'
+            Pole Rekojmia obowiązkowe dla komunikatu 2501 i warunkowe dla komunikatów 1301, 2401 dla procesu 'pojazd-standardowy'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NormaEURO opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole NormaEURO opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole NormaEURO warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek: element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744 lub 746
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DMC" type="tns:ZmiennaTekstowa255Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DMC opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole DMC obowiązkowe dla komunikatów 1301, 2401, 2501  dla procesu 'pojazd-standardowy'
+            Pole DMC opcjonalne dla komunikatów 1301, 2401  oraz warunkowe dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744, 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DMCZespolu" type="tns:ZmiennaTekstowa255Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DMCZespolu opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole DMCZespolu opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole DMCZespolu warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole LiczbaOsi opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole LiczbaOsi opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole LiczbaOsi warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744, 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole LiczbaMiejsc opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole LiczbaMiejsc opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole LiczbaMiejsc warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 744
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole Zawieszenie opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole Zawieszenie opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole Zawieszenie warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744, 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="RodzajNadwozia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NumerRejestracyjny opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole NumerRejestracyjny opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole NumerRejestracyjny warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="DedykowanyNumerRejestracyjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="KsztaltTablicRejestracyjnych" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="KodProducenta" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="EuroKod" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerSilnika" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element name="KartaPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="Homologacja" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType"/>
-      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="KsztaltTablicRejestracyjnych" type="tns:ZmiennaTekstowa100Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="KodProducenta" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="EuroKod" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerSilnika" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="Homologacja" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole Homologacja opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole Homologacja opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole Homologacja warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/CzyPrzedmiotUprzednioZarejestrowany jest równa „Tak”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole PojemnoscSilnika opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole PojemnoscSilnika opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole PojemnoscSilnika warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek: element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole MocSilnika opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole MocSilnika opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole MocSilnika warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek: element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="MaksymalnaPredkosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
-      <xs:element minOccurs="0" name="Ladownosc" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="Ladownosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
       <xs:element name="Przebieg" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="KodKoloru" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="PodstawowyRodzajPaliwa">
+      <xs:element name="KodKoloru" type="tns:ZmiennaTekstowa100Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="PodstawowyRodzajPaliwa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole PodstawowyRodzajPaliwa opcjonalne dla komunikatów 1301, 2401, 2501  dla procesów 'nie-pojazd-standardowy', 'nie-pojazd-skrócony'
+            Pole PodstawowyRodzajPaliwa opcjonalne dla komunikatów 1301, 2401  dla procesu 'pojazd-skrócony'
+            Pole PodstawowyRodzajPaliwa warunkowe dla komunikatów 1301, 2401, 2501 dla procesu 'pojazd-standardowy' oraz dla komunikatu 2501 dla procesu 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744 lub 746
+          </xs:documentation>
+        </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="P"/>
@@ -502,7 +1050,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element name="AlternatywnyRodzajPaliwa" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="AlternatywnyRodzajPaliwa" minOccurs="0" maxOccurs="unbounded">
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="P"/>
@@ -519,42 +1067,165 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element minOccurs="0" name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="Opony" type="tns:OponyRozmiarType"/>
+      <xs:element name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="Opony" type="tns:OponyRozmiarType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.30 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DanePrzedmiotuPotwierdzenieRejestracjiKonfiguracjaType">
     <xs:sequence>
       <xs:element name="IloscKluczykowPilotowKart" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="KodKluczykow" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="KodKluczykow" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
       <xs:element name="IloscZabezpieczen" type="xs:nonNegativeInteger" minOccurs="0"/>
-      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="1"/>
-      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
-      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
-      <xs:element minOccurs="0" name="MiejsceOdbioruPojazdu" type="tns:ZmiennaTekstowa255Type"/>
+      <xs:element name="DataPierwszejRejestracjiWKraju" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DataPierwszejRejestracjiWKraju opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole DataPierwszejRejestracjiWKraju obowiązkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MiejsceRejestracjiPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole MiejsceRejestracjiPojazdu opcjonalne dla komunikatów 2502, 2601 dla procesów  'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole MiejsceRejestracjiPojazdu obowiązkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DataWaznosciOC" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DataWaznosciOC opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole DataWaznosciOC obowiązkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MiejsceOdbioruPojazdu" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
       <xs:element name="Rekojmia" type="tns:TakNieType" minOccurs="1"/>
-      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0"/>
-      <xs:element name="DMC" type="tns:DMC"/>
-      <xs:element minOccurs="0" name="DMCZespolu" type="tns:DMCZespoluType"/>
-      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
-      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0"/>
-      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0"/>
+      <xs:element name="NormaEURO" type="tns:NormaEUROType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NormaEURO opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole NormaEURO warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek: element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744 lub 746
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DMC" type="tns:ZmiennaTekstowa255Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DMC opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole DMC obowiązkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DMCZespolu" type="tns:ZmiennaTekstowa255Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole DMCZespołu opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole DMCZespołu warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaOsi" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole LiczbaOsi opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole LiczbaOsi warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744, 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiczbaMiejsc" type="tns:ZmiennaLiczbowaDodatniaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole LiczbaMiejsc opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole LiczbaMiejsc warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 744
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Zawieszenie" type="tns:ZawieszenieType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole Zawieszenie opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole Zawieszenie warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744, 746, 747 lub 748
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="RodzajNadwozia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
-      <xs:element minOccurs="0" name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="1" name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="KodProducenta" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="EuroKod" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NumerSilnika" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element name="KartaPojazdu" type="tns:ZmiennaTekstowa100Type" minOccurs="1"/>
-      <xs:element minOccurs="0" name="Homologacja" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType"/>
-      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="NumerEwidencyjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerRejestracyjny" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole NumerRejestracyjny opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole NumerRejestracyjny obowiązkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="KodProducenta" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="EuroKod" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="NumerSilnika" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="Homologacja" type="tns:ZmiennaTekstowa100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole Homologacja opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole Homologacja warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek: wartość elementu /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/ CzyPrzedmiotUprzednioZarejestrowany jest równa „Nie”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PojemnoscSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole PojemnoscSilnika opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole PojemnoscSilnika warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek:  element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MocSilnika" type="tns:ZmiennaLiczbowaType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole MocSilnika opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole MocSilnika warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek:  element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/PodstawowyRodzajPaliwa
+            lub element
+            /eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/DanePrzedmiotuKonfiguracja/AlternatywnyRodzajPaliwa
+            przyjęły jedną z wartości: „P”, „D”, „M”, „LPG”, „CNG”, „LNG”, „BD”, „E85”
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="MaksymalnaPredkosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
-      <xs:element minOccurs="0" name="Ladownosc" type="tns:ZmiennaLiczbowaType"/>
+      <xs:element name="Ladownosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
       <xs:element name="Przebieg" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
-      <xs:element maxOccurs="1" minOccurs="0" name="KodKoloru" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="PodstawowyRodzajPaliwa">
+      <xs:element name="KodKoloru" type="tns:ZmiennaTekstowa100Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NazwaKoloru" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="PodstawowyRodzajPaliwa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pole PodstawowyRodzajPaliwa opcjonalne dla komunikatów 2502, 2601 dla procesów 'nie-pojazd-standardowy' i 'nie-pojazd-skrócony'
+            Pole PodstawowyRodzajPaliwa warunkowe dla komunikatów 2502, 2601 dla procesów 'pojazd-standardowy' i 'pojazd-skrócony'
+            Warunek:		Element		/eKomunikat/TrescKomunikatu/PrzedmiotUsługa/DanePrzedmiotuLinia/KlasyfikacjaPodatkowa ma wartość 740, 741, 742, 744 lub 746
+          </xs:documentation>
+        </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="P"/>
@@ -571,7 +1242,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element name="AlternatywnyRodzajPaliwa" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="AlternatywnyRodzajPaliwa" minOccurs="0" maxOccurs="unbounded">
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="P"/>
@@ -588,64 +1259,89 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element minOccurs="0" name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="Opony" type="tns:OponyRozmiarType"/>
+      <xs:element name="PozostaleDaneRejestracyjne" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="Opony" type="tns:OponyRozmiarType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.31 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="OponyRozmiarType">
     <xs:sequence>
-      <xs:element minOccurs="0" name="LiczbaPorzadkowa" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element minOccurs="0" name="Os" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="OponySzerokosc" type="tns:ZmiennaLiczbowaType"/>
-      <xs:element minOccurs="0" name="OponyProfil" type="tns:ZmiennaLiczbowaType"/>
-      <xs:element minOccurs="0" name="OponySrednica" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="IndeksPredkosci" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="IndeksNosnosci" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="OponyRodzaj" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="LiczbaPorzadkowa" type="tns:LiczbaPorzadkowaType" minOccurs="0"/>
+      <xs:element name="Os" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="OponySzerokosc" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="OponyProfil" type="tns:ZmiennaLiczbowaType" minOccurs="0"/>
+      <xs:element name="OponySrednica" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="IndeksPredkosci" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="IndeksNosnosci" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="OponyRodzaj" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.32 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="ListaWyposazeniaType">
     <xs:sequence>
-      <xs:element minOccurs="0" name="KodKonfiguracji" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="LinkDoKonfiguracji" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element name="ListaWyposazeniaLinia" type="tns:LisaWyposazeniaLiniaType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="KodKonfiguracji" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="LinkDoKonfiguracji" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="ListaWyposazeniaLinia" type="tns:ListaWyposazeniaLiniaType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="ListaWyposazeniaPodsumowanie" type="tns:ListaWyposazeniaPodsumowanieType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="LisaWyposazeniaLiniaType">
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.33 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="ListaWyposazeniaLiniaType">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ListaPorzadkowa" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element minOccurs="0" name="KodWyposazenia" type="tns:ZmiennaTekstowa100Type"/>
-      <xs:element minOccurs="0" name="OpisWyposazenia" type="tns:ZmiennaTekstowa255Type"/>
-      <xs:element minOccurs="0" name="CenaWyposazenia" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="WalutaCenyWyposazenia" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="TypWyposazenia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="LiczbaPorzadkowa" type="tns:LiczbaPorzadkowaType" minOccurs="0"/>
+      <xs:element name="KodWyposazenia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
+      <xs:element name="OpisWyposazenia" type="tns:ZmiennaTekstowa255Type" minOccurs="0"/>
+      <xs:element name="CenaWyposazenia" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="WalutaCenyWyposazenia" type="tns:KodWalutyType" minOccurs="0"/>
+      <xs:element name="TypWyposazenia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.34 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="ListaWyposazeniaPodsumowanieType">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CenaPodstawowaSamochodu" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="CenaOpcjiDodatkowych" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="CenaSuma" type="tns:KwotaType"/>
-      <xs:element minOccurs="0" name="WalutaCenyWyposazenia" type="tns:KodWalutyType"/>
-      <xs:element minOccurs="0" name="TypCenyWyposazenia" type="tns:ZmiennaTekstowa100Type"/>
+      <xs:element name="CenaPodstawowaSamochodu" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="CenaOpcjiDodatkowych" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="CenaSuma" type="tns:KwotaType" minOccurs="0"/>
+      <xs:element name="WalutaCenyWyposazenia" type="tns:KodWalutyType" minOccurs="0"/>
+      <xs:element name="TypCenyWyposazenia" type="tns:ZmiennaTekstowa100Type" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Sekcja opisana w rozdziale 7.35 Specyfikacji technicznej
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="KlauzulaType">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ListaPorzadkowaKlauzuli" type="tns:LiczbaPorzadkowaType"/>
-      <xs:element minOccurs="0" name="TrescKlauzuli" type="tns:PoleOpisoweType"/>
-      <xs:element minOccurs="0" name="DataKlauzuli" type="tns:DataKlauzuliType"/>
+      <xs:element name="LiczbaPorzadkowaKlauzuli" type="tns:LiczbaPorzadkowaType" minOccurs="0"/>
+      <xs:element name="TrescKlauzuli" type="tns:PoleOpisoweType" minOccurs="0"/>
+      <xs:element name="DataKlauzuli" type="tns:DataKlauzuliType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ZalacznikiMetadataType">
     <xs:sequence>
-      <xs:element name="Zalacznik" type="tns:ZalacznikMetadataType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="Zalacznik" type="tns:ZalacznikMetadataType" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ZalacznikiType">
     <xs:sequence>
-      <xs:element name="Zalacznik" type="tns:ZalacznikType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="Zalacznik" type="tns:ZalacznikType" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ZalacznikType">
@@ -653,8 +1349,7 @@
       <xs:extension base="xs:string">
         <xs:attribute name="id">
           <xs:simpleType>
-            <xs:restriction base="xs:string">
-            </xs:restriction>
+            <xs:restriction base="xs:string"/>
           </xs:simpleType>
         </xs:attribute>
       </xs:extension>
@@ -672,7 +1367,7 @@
       <xs:element name="nazwaPliku">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:pattern value="((.)+\.jpg)|((.)+\.pdf)|((.)+\.tif)|((.)+\.tiff)|((.)+\.doc)|((.)+\.docx)|((.)+\.csv)|((.)+\.JPG)|((.)+\.PDF)|((.)+\.TIF)|((.)+\.TIFF)|((.)+\.DOC)|((.)+\.DOCX)|((.)+\.CSV)"></xs:pattern>
+            <xs:pattern value="((.)+\.jpg)|((.)+\.pdf)|((.)+\.tif)|((.)+\.tiff)|((.)+\.doc)|((.)+\.docx)|((.)+\.csv)|((.)+\.JPG)|((.)+\.PDF)|((.)+\.TIF)|((.)+\.TIFF)|((.)+\.DOC)|((.)+\.DOCX)|((.)+\.CSV)"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -685,15 +1380,13 @@
         </xs:simpleType>
       </xs:element>
     </xs:sequence>
-
     <xs:attribute name="id" use="required">
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:pattern value="[1-9][0-9]?"></xs:pattern>
+          <xs:pattern value="[1-9][0-9]?"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-
   </xs:complexType>
   <xs:simpleType name="AdresEmailType">
     <xs:restriction base="xs:string">
@@ -1236,8 +1929,7 @@
   </xs:simpleType>
   <xs:simpleType name="PoleOpisoweType">
     <xs:restriction base="xs:string">
-      <xs:pattern
-          value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,5000}"/>
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,5000}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="PotwierdzenieOdbioruType">
@@ -1270,26 +1962,22 @@
   </xs:simpleType>
   <xs:simpleType name="ZmiennaTekstowa100Type">
     <xs:restriction base="xs:string">
-      <xs:pattern
-          value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,100}"/>
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,100}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ZmiennaTekstowa201Type">
     <xs:restriction base="xs:string">
-      <xs:pattern
-          value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,201}"/>
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,201}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ZmiennaTekstowa255Type">
     <xs:restriction base="xs:string">
-      <xs:pattern
-          value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,255}"/>
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,255}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ZmiennaTekstowa512Type">
     <xs:restriction base="xs:string">
-      <xs:pattern
-          value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,512}"/>
+      <xs:pattern value="[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹÄÖÜäöüÁÉÍÓÖŐÚÜŰáéíóöőúüűßŽžŠÉÁ0-9\.,\(\)\[\]\\_='\+:\?!%\*;{}~-¬`˘°@#-̲–Ő\| &#x0022;&#x0026;&#x0027;&#x00A0;&#x201C;&#x201D;&#x2013;&#x2014;]{1,512}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="KursWalutowyDokumentuType">
@@ -1303,7 +1991,7 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="RabatLiniaType">
-    <xs:restriction base="xs:integer"></xs:restriction>
+    <xs:restriction base="xs:integer"/>
   </xs:simpleType>
   <xs:simpleType name="StawkaPodatkuVATLiniaType">
     <xs:restriction base="xs:string">
@@ -1340,32 +2028,8 @@
       <xs:enumeration value="Euro 7"/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="DMC">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="1) samochody ciężarowe o dopuszczalnej masie całkowitej powyżej 3,5 tony i poniżej 12 ton"/>
-      <xs:enumeration value="2) samochody ciężarowe o dopuszczalnej masie całkowitej równej lub wyższej niż 12 ton"/>
-      <xs:enumeration value="3) ciągniki siodłowe i balastowe przystosowane do używania łącznie z naczepą lub przyczepą o dopuszczalnej masie całkowitej zespołu pojazdów od 3,5 tony i poniżej 12 ton"/>
-      <xs:enumeration value="4) ciągniki siodłowe i balastowe przystosowane do używania łącznie z naczepą lub przyczepą o dopuszczalnej masie całkowitej zespołu pojazdów równej lub wyższej niż 12 ton"/>
-      <xs:enumeration value="5) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą od 7 ton i poniżej 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego"/>
-      <xs:enumeration value="6) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą równą lub wyższą niż 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego"/>
-      <xs:enumeration value="7) autobusy"/>
-      <xs:enumeration value="8) samochody osobowe, pojazdy do 3,5 tony"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="DMCZespoluType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="1) samochody ciężarowe o dopuszczalnej masie całkowitej powyżej 3,5 tony i poniżej 12 ton"/>
-      <xs:enumeration value="2) samochody ciężarowe o dopuszczalnej masie całkowitej równej lub wyższej niż 12 ton"/>
-      <xs:enumeration value="3) ciągniki siodłowe i balastowe przystosowane do używania łącznie z naczepą lub przyczepą o dopuszczalnej masie całkowitej zespołu pojazdów od 3,5 tony i poniżej 12 ton"/>
-      <xs:enumeration value="4) ciągniki siodłowe i balastowe przystosowane do używania łącznie z naczepą lub przyczepą o dopuszczalnej masie całkowitej zespołu pojazdów równej lub wyższej niż 12 ton"/>
-      <xs:enumeration value="5) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą od 7 ton i poniżej 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego"/>
-      <xs:enumeration value="6) przyczepy i naczepy, które łącznie z pojazdem silnikowym posiadają dopuszczalną masę całkowitą równą lub wyższą niż 12 ton, z wyjątkiem związanych wyłącznie z działalnością rolniczą prowadzoną przez podatnika podatku rolnego"/>
-      <xs:enumeration value="7) autobusy"/>
-      <xs:enumeration value="8) samochody osobowe, pojazdy do 3,5 tony"/>
-    </xs:restriction>
-  </xs:simpleType>
   <xs:simpleType name="ZmiennaLiczbowaDodatniaType">
-    <xs:restriction base="xs:positiveInteger"></xs:restriction>
+    <xs:restriction base="xs:positiveInteger"/>
   </xs:simpleType>
   <xs:simpleType name="ZawieszenieType">
     <xs:restriction base="xs:string">
@@ -1374,10 +2038,10 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ZmiennaLiczbowaType">
-    <xs:restriction base="xs:int"></xs:restriction>
+    <xs:restriction base="xs:int"/>
   </xs:simpleType>
   <xs:simpleType name="ZmiennaLiczbowaDecimalType">
-    <xs:restriction base="xs:decimal"></xs:restriction>
+    <xs:restriction base="xs:decimal"/>
   </xs:simpleType>
   <xs:attributeGroup name="StronicowanieRequestAttributeGroup">
     <xs:attribute name="numerStrony" type="xs:nonNegativeInteger" use="required"/>
@@ -1406,7 +2070,7 @@
           <xs:element name="RegonUczestnika" type="tns:REGONType"/>
           <xs:element name="NumerTelefonuUczestnika" type="tns:ZmiennaLiczbowaType"/>
           <xs:element name="AdresEmailUczestnika" type="tns:AdresEmailType"/>
-          <xs:element name="NumerKontaBankowegoUczestnika" minOccurs="0" type="xs:string"/>
+          <xs:element name="NumerKontaBankowegoUczestnika" type="xs:string" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1418,4 +2082,3 @@
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
-

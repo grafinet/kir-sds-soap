@@ -2,6 +2,9 @@
 
 namespace pl\kir\sds\soap;
 
+/**
+ * Sekcja opisana w rozdziale 7.22 Specyfikacji technicznej
+ */
 final class PrzedmiotUslugaPotwierdznieRejestracjiType
 {
 
@@ -56,7 +59,7 @@ final class PrzedmiotUslugaPotwierdznieRejestracjiType
     public $KwotaNettoLinia;
 
     /**
-     * @var int $RabatLinia
+     * @var ZmiennaTekstowa100Type $RabatLinia
      */
     public $RabatLinia;
 

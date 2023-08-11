@@ -2,6 +2,9 @@
 
 namespace pl\kir\sds\soap;
 
+/**
+ * Sekcja opisana w rozdziale 7.17 Specyfikacji technicznej
+ */
 final class DaneDostawcyType {
 
     /**
@@ -10,7 +13,7 @@ final class DaneDostawcyType {
     public $TypDostawcy;
 
     /**
-     * @var string $NazwaFirmy
+     * @var ZmiennaTekstowa100Type|string $NazwaFirmy
      */
     public $NazwaFirmy;
 
@@ -20,7 +23,7 @@ final class DaneDostawcyType {
     public $NIP;
 
     /**
-     * @var string $REGON
+     * @var REGONType|string $REGON
      */
     public $REGON;
 
@@ -30,12 +33,12 @@ final class DaneDostawcyType {
     public $Adres;
 
     /**
-     * @var int $NrTelefonu
+     * @var ZmiennaLiczbowaType|int $NrTelefonu
      */
     public $NrTelefonu;
 
     /**
-     * @var string $ImieINazwiskoWystawcyDokumentu
+     * @var ZmiennaTekstowa100Type|string $ImieINazwiskoWystawcyDokumentu
      */
     public $ImieINazwiskoWystawcyDokumentu;
 

@@ -4,6 +4,9 @@ namespace pl\kir\sds\soap;
 
 use DateTimeInterface;
 
+/**
+ * Sekcja opisana w rozdziale 7.27 Specyfikacji technicznej
+ */
 final class PodsumowaniePrzedmiotuUslugaType {
 
     /**
@@ -32,7 +35,7 @@ final class PodsumowaniePrzedmiotuUslugaType {
     public $TerminPlatnosci;
 
     /**
-     * @var string|ZmiennaTekstowa255Type $SposobRodzajPlatnosci
+     * @var string|ZmiennaTekstowa100Type $SposobRodzajPlatnosci
      */
     public $SposobRodzajPlatnosci;
 

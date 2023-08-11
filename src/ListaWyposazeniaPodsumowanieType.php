@@ -2,6 +2,9 @@
 
 namespace pl\kir\sds\soap;
 
+/**
+ * Sekcja opisana w rozdziale 7.34 Specyfikacji technicznej
+ */
 final class ListaWyposazeniaPodsumowanieType {
 
     /**
