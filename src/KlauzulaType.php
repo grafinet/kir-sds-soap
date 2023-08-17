@@ -8,9 +8,9 @@ namespace pl\kir\sds\soap;
 class KlauzulaType {
 
     /**
-     * @var string|LiczbaPorzadkowaType $ListaPorzadkowaKlauzuli
+     * @var string|LiczbaPorzadkowaType $LiczbaPorzadkowaKlauzuli
      */
-    public $ListaPorzadkowaKlauzuli;
+    public $LiczbaPorzadkowaKlauzuli;
 
     /**
      * @var string|PoleOpisoweType $TrescKlauzuli

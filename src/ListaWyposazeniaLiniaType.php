@@ -8,9 +8,9 @@ namespace pl\kir\sds\soap;
 final class ListaWyposazeniaLiniaType {
 
     /**
-     * @var string|LiczbaPorzadkowaType $ListaPorzadkowa
+     * @var string|LiczbaPorzadkowaType $LiczbaPorzadkowa
      */
-    public $ListaPorzadkowa;
+    public $LiczbaPorzadkowa;
 
     /**
      * @var string|ZmiennaTekstowa100Type $KodWyposazenia
