@@ -102,11 +102,6 @@ final class DanePrzedmiotuZapytanieKonfiguracjaType {
     public $NumerSilnika;
 
     /**
-     * @var string|ZmiennaTekstowa100Type $KartaPojazdu
-     */
-    public $KartaPojazdu;
-
-    /**
      * @var string|ZmiennaTekstowa100Type $Homologacja
      */
     public $Homologacja;

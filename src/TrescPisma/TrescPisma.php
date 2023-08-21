@@ -9,6 +9,8 @@ use function array_is_list;
 use function is_array;
 use function is_object;
 use function sprintf;
+use function str_starts_with;
+use function substr;
 
 /**
  * @const string NAMESPACE_URI
@@ -64,6 +66,9 @@ abstract class TrescPisma
                     $this->appendNodes($dom, $currentNode, $propertyValue);
                     $parentNode->append($currentNode);
                 }
+            }
+            elseif (str_starts_with($propertyName, '__')) {
+                $parentNode->setAttribute(substr($propertyName, 2), (string)$propertyValue);
             }
             else {
                 $parentNode->append(

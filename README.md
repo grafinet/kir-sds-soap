@@ -34,7 +34,7 @@ $req = new WyslijDokumentRequest;
 
 $req->dokument = new DokumentType();
 $req->dokument->typKomunikatu = TypDokumentuType::TYPE_1301->value;
-$req->dokument->nazwaKomunikatu = 'test zamówienia';
+$req->dokument->nazwaKomunikatu = 'Zamówienie';
 $req->dokument->idKomunikatu = new idKomunikatuType('1234');
 $req->dokument->potwierdzenieOdbioru = TakNieType::TYPE_TAK->value;
 $req->dokument->wersjaKomunikatu = new wersjaKomunikatuType('0.0.1');
