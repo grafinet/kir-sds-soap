@@ -2056,7 +2056,7 @@
       <xs:element name="kodSDS" type="tns:KodSDSType"/>
       <xs:element name="typKomunikatu" type="tns:TypDokumentuType"/>
       <xs:element name="kodUczestnika" type="tns:ZmiennaTekstowa512Type"/>
-      <xs:element name="dataKomunikatu" type="xs:date"/>
+      <xs:element name="dataKomunikatu" type="xs:dateTime"/>
       <xs:element name="pobrany" type="tns:TakNieType"/>
     </xs:sequence>
   </xs:complexType>

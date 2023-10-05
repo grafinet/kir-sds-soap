@@ -14,7 +14,7 @@
         <xs:element name="DokumentyPowiazane" type="tns:DokumentyPowiazaneType"/>
         <xs:element maxOccurs="unbounded" name="DaneDostawcy" type="tns:DaneDostawcyType"/>
         <xs:element maxOccurs="unbounded" name="DaneNabywcy" type="tns:DaneNabywcyType"/>
-        <xs:element maxOccurs="unbounded" minOccurs="0" name="DaneOdbiorcy" type="tns:DaneOdbiorcyType"/>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="DaneOdbiorcy " type="tns:DaneOdbiorcyType"/>
         <xs:element maxOccurs="unbounded" name="PrzedmiotUsluga" type="tns:PrzedmiotUslugaZapytanieType"/>
         <xs:element name="Podsumowanie" type="tns:PodsumowaniePrzedmiotuUslugaType"/>
         <xs:element maxOccurs="unbounded" minOccurs="0" name="Klauzule" type="tns:KlauzulaType"/>

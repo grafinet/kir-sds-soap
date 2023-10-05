@@ -24,6 +24,7 @@
               <xs:enumeration value="11"/>
               <xs:enumeration value="12"/>
               <xs:enumeration value="13"/>
+
             </xs:restriction>
           </xs:simpleType>
         </xs:element>

@@ -10,7 +10,7 @@
   <wsdl:types>
     <xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych"
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-               version="1.7.13">
+               version="1.7.45">
       <xs:import schemaLocation="BazoweTypy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"/>
       <xs:import schemaLocation="Dokument.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Dokument"/>
       <xs:import schemaLocation="ZapytanieOfertowe.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZapytanieOfertowe"/>
@@ -52,15 +52,18 @@
       <xs:element name="PobierzDokumentRequest">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="idKomunikatu" type="base:idKomunikatuType"/>
-            <xs:element name="kodSDS" type="base:KodSDSType"/>
+            <xs:element name="idKomunikatu" minOccurs="0" type="base:idKomunikatuType"/>
+            <xs:element name="kodSDS" minOccurs="0" type="base:KodSDSType"/>
+            <xs:element name="dataKomunikatuPo" minOccurs="0" type="xs:dateTime"/>
+            <xs:element name="dataKomunikatuPrzed" minOccurs="0" type="xs:dateTime"/>
+            <xs:element name="czyZwrocicAktualnyStatus" minOccurs="0" type="xs:boolean" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="PobierzDokumentResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="dokument" minOccurs="0" type="dok:DokumentType"/>
+            <xs:element name="dokument" minOccurs="0" maxOccurs="unbounded" type="dok:DokumentType"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -70,8 +73,8 @@
             <xs:element name="kodSDS" minOccurs="0" type="base:KodSDSType"/>
             <xs:element name="typKomunikatu" minOccurs="0" type="base:TypDokumentuType"/>
             <xs:element name="kodUczestnika" minOccurs="0" type="base:ZmiennaTekstowa512Type"/>
-            <xs:element name="dataKomunikatuPo" minOccurs="0" type="xs:date"/>
-            <xs:element name="dataKomunikatuPrzed" minOccurs="0" type="xs:date"/>
+            <xs:element name="dataKomunikatuPo" minOccurs="0" type="xs:dateTime"/>
+            <xs:element name="dataKomunikatuPrzed" minOccurs="0" type="xs:dateTime"/>
           </xs:sequence>
           <xs:attributeGroup ref="base:StronicowanieRequestAttributeGroup"/>
         </xs:complexType>
