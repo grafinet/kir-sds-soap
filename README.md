@@ -46,12 +46,12 @@ $req->dokument->NadawcaKomunikatu->Uczestnik = new UczestnikType();
 $req->dokument->NadawcaKomunikatu->Uczestnik->KodUczestnika = '1';
 $req->dokument->NadawcaKomunikatu->Uczestnik->NazwaUczestnika = 'testowy';
 $req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika = new AdresType();
-$req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika->KodKraju = KodKrajuType::TYPE_PL->value;
 $req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika->Miejscowosc = 'Warszawa';
 $req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika->Ulica = 'Testowa';
 $req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika->NrDomu = '1';
 $req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika->NrLokalu = '2';
 $req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika->KodPocztowy = new ZmiennaTekstowa100Type('01-234');
+$req->dokument->NadawcaKomunikatu->Uczestnik->AdresUczestnika->KodKraju = KodKrajuType::TYPE_PL->value;
 
 $req->dokument->NadawcaKomunikatu->Uzytkownik = new UzytkownikType();
 $req->dokument->NadawcaKomunikatu->Uzytkownik->KodUzytkownika = new ZmiennaTekstowa100Type('TESTOWY-1');
@@ -59,12 +59,12 @@ $req->dokument->NadawcaKomunikatu->Uzytkownik->KodUzytkownika = new ZmiennaTekst
 $req->dokument->AdresatKomunikatu = new UczestnikType();
 $req->dokument->AdresatKomunikatu->KodUczestnika = '2';
 $req->dokument->AdresatKomunikatu->AdresUczestnika = new AdresType();
-$req->dokument->AdresatKomunikatu->AdresUczestnika->KodKraju = KodKrajuType::TYPE_PL->value;
 $req->dokument->AdresatKomunikatu->AdresUczestnika->Miejscowosc = 'Warszawa';
 $req->dokument->AdresatKomunikatu->AdresUczestnika->Ulica = 'Testowa';
 $req->dokument->AdresatKomunikatu->AdresUczestnika->NrDomu = '3';
 $req->dokument->AdresatKomunikatu->AdresUczestnika->NrLokalu = '4';
 $req->dokument->AdresatKomunikatu->AdresUczestnika->KodPocztowy = new ZmiennaTekstowa100Type('01-235');
+$req->dokument->AdresatKomunikatu->AdresUczestnika->KodKraju = KodKrajuType::TYPE_PL->value;
 
 $zamowienie = new TrescPisma\Zamowienie();
 $zamowienie->DaneDostawcy = new DaneDostawcyType();

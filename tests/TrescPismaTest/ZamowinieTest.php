@@ -26,6 +26,9 @@ use pl\kir\sds\soap\TypDostawcy;
 use pl\kir\sds\soap\TypNabywcy;
 use pl\kir\sds\soap\TypOdbiorcy;
 use pl\kir\sds\soap\UzytkownikType;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class ZamowinieTest extends TestCase
 {
@@ -35,7 +38,7 @@ class ZamowinieTest extends TestCase
         $this->assertSame('<zam:TrescPisma xmlns:zam="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Zamowienie" Zawartosc="Tresc"></zam:TrescPisma>', (string)$zam);
     }
 
-    public function testMinimalDataValidatedAgainstXsd()
+    public function zamowienieDataProvider(): array
     {
         $zamowienie = new Zamowienie();
         $zamowienie->Naglowek = new NaglowekType();
@@ -110,14 +113,35 @@ class ZamowinieTest extends TestCase
         $zamowienie->Stopka->Uzytkownik = new UzytkownikType();
         $zamowienie->Stopka->Uzytkownik->KodUzytkownika = '123456';
         $zamowienie->Stopka->ImieINazwisko = 'Imię Nazwisko';
+        return [
+            [$zamowienie, __DIR__ . '/../../resources/Zamowienie.xsd'],
+        ];
+    }
+
+    /**
+     * @dataProvider zamowienieDataProvider
+     */
+    public function testMinimalDataValidatedAgainstXsd($zamowienie, $xsd)
+    {
         $xmlString = (string)$zamowienie;
 
         libxml_use_internal_errors(true);
         $xml = new DOMDocument();
         $xml->loadXML($xmlString);
 
-        $this->assertTrue($xml->schemaValidate(__DIR__ . '/../../resources/Zamowienie.xsd'), implode("\n", $this->libxml_display_errors()));
+        $this->assertTrue($xml->schemaValidate($xsd), implode("\n", $this->libxml_display_errors()));
     }
+
+    /**
+     * @dataProvider zamowienieDataProvider
+     */
+    public function testXmlDeserializesToClass($zamowienie, $xsd)
+    {
+        $serializer = new Serializer([new ObjectNormalizer()], [new XmlEncoder]);
+        $document = $serializer->deserialize((string)$zamowienie, Zamowienie::class, XmlEncoder::FORMAT);
+        $this->assertInstanceOf(Zamowienie::class, $document);
+    }
+
     private function libxml_display_error($error)
     {
         $return = "";
