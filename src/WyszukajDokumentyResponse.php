@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap;
 final class WyszukajDokumentyResponse {
 
     /**
-     * @var SzczegolyDokumentuType $dokumenty
+     * @var SzczegolyDokumentuType[] $dokumenty
      */
     public $dokumenty;
 

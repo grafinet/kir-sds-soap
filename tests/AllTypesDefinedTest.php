@@ -5,18 +5,54 @@ use pl\kir\sds\soap\SzczegolyDealeraType;
 
 class AllTypesDefinedTest extends TestCase
 {
-    public function complexTypesDataProvider(): array
+    /**
+     * @dataProvider baseSimpleTypesDataProvider
+     */
+    public function testBaseSimpleTypes($typeName)
     {
-        $names = [];
+        $this->assertTrue(
+            file_exists(__DIR__ . '/../src/' . $typeName . '.php'),
+            "Missing simpleType class: {$typeName}"
+        );
+        $class = 'pl\\kir\\sds\\soap\\' . $typeName;
+        $this->assertTrue(class_exists($class));
+    }
 
-        foreach (glob(__DIR__ . '/../resources/*.xsd') as $xsd) {
-            $file = realpath($xsd);
-            if (basename($file) == 'BazoweTypy.xsd') {
-                continue;
-            }
-            $names[] = [explode('.', basename($file))[0]];
-        }
-        return $names;
+    /**
+     * @dataProvider baseComplexTypesDataProvider
+     */
+    public function testBaseComplexTypes($typeName, $elements, $attributes = [])
+    {
+        $this->assertTrue(
+            file_exists(__DIR__ . '/../src/' . $typeName . '.php'),
+            "Missing complexType class: {$typeName}"
+        );
+        $class = 'pl\\kir\\sds\\soap\\' . $typeName;
+        $this->assertTrue(class_exists($class));
+        $this->ensureProperties(
+            new ReflectionClass($class),
+            $elements,
+            $attributes
+        );
+    }
+
+    /**
+     * @dataProvider wsdlComplexTypesDataProvider
+     */
+    public function testWsdlComplexTypes($typeName, $elements, $attributes = [], $extraAtrributes = [])
+    {
+        $this->assertTrue(
+            file_exists(__DIR__ . '/../src/' . $typeName . '.php'),
+            "Missing complexType class: {$typeName}"
+        );
+        $class = 'pl\\kir\\sds\\soap\\' . $typeName;
+        $this->assertTrue(class_exists($class));
+        $this->ensureProperties(
+            new ReflectionClass($class),
+            $elements,
+            $attributes,
+            $extraAtrributes
+        );
     }
 
     /**
@@ -56,7 +92,7 @@ class AllTypesDefinedTest extends TestCase
         );
     }
     
-    private function ensureProperties(ReflectionClass $reflection, DOMNodeList $elements, iterable $attributes = [])
+    private function ensureProperties(ReflectionClass $reflection, DOMNodeList $elements, iterable $attributes = [], $extraAtrributes = [])
     {
         $properties = [];
         foreach ($reflection->getProperties() as $prop) {
@@ -70,6 +106,14 @@ class AllTypesDefinedTest extends TestCase
             if ($element instanceof DOMElement && ($name = $element->attributes->getNamedItem('name'))) {
                 $property = trim($name->nodeValue);
                 $this->assertTrue(isset($properties[$property]), "Missing property {$property} in {$reflection->getName()}");
+                if (($maxOccurs = $element->attributes->getNamedItem('maxOccurs'))) {
+                    if ($maxOccurs->nodeValue == 'unbounded' || (int)$maxOccurs->nodeValue > 1) {
+                         $this->assertTrue(
+                             str_contains($properties[$property]->getDocComment(), '[]'),
+                             "Docblock for {$property} in {$reflection->getName()} should specify array type"
+                         );
+                    }
+                }
                 unset($properties[$property]);
             }
         }
@@ -89,7 +133,15 @@ class AllTypesDefinedTest extends TestCase
                     unset($properties[$inherited]);
                 }
             }
-        } else
+        }
+        if ($extraAtrributes) {
+            foreach ($extraAtrributes as $extraAtrribute) {
+                if (isset($properties[$extraAtrribute])) {
+                    unset($properties[$extraAtrribute]);
+                }
+            }
+        }
+
         $this->assertEmpty($properties,
             sprintf(
                 'Unexpected properties in %s: %s',
@@ -98,7 +150,7 @@ class AllTypesDefinedTest extends TestCase
             )
         );
     }
-
+    
     private function scanBaseTypes($node = 'complexType') {
         $names = [];
         $dom = new DOMDocument();
@@ -117,42 +169,62 @@ class AllTypesDefinedTest extends TestCase
         return $names;
     }
 
-    public function baseSimpleTypesDataProvider(): array{
+    public function baseSimpleTypesDataProvider(): array
+    {
         return $this->scanBaseTypes('simpleType');
     }
 
-    public function baseComplexTypesDataProvider(): array{
+    public function baseComplexTypesDataProvider(): array
+    {
         return $this->scanBaseTypes();
     }
 
-    /**
-     * @dataProvider baseComplexTypesDataProvider
-     */
-    public function testBaseComplexTypes($typeName, $elements, $attributes = [])
+    public function wsdlComplexTypesDataProvider(): array
     {
-        $this->assertTrue(
-            file_exists(__DIR__ . '/../src/' . $typeName . '.php'),
-            "Missing complexType class: {$typeName}"
-        );
-        $class = 'pl\\kir\\sds\\soap\\' . $typeName;
-        $this->assertTrue(class_exists($class));
-        $this->ensureProperties(
-            new ReflectionClass($class),
-            $elements,
-            $attributes
-        );
+        $names = [];
+        $dom = new DOMDocument();
+        $dom->load(__DIR__ . '/../resources/SystemDokumentowStrukturyzowanych.wsdl');
+        $schema = $dom->getElementsByTagNameNS($schemaNS = 'http://www.w3.org/2001/XMLSchema', 'schema');
+        foreach ($schema->item(0)->childNodes as $baseType) {
+            if (!$baseType instanceof DOMElement || !str_ends_with($baseType->tagName, 'element')) {
+                continue;
+            }
+            if (($name = $baseType->attributes->getNamedItem('name')->nodeValue) === 'SzczegolyBleduFault') {
+                continue;
+            }
+            $extraAttributes = [];
+            /** @var DOMElement $attrGroup */
+            foreach ($baseType->getElementsByTagNameNS($schemaNS, 'attributeGroup') as $attrGroup) {
+                $ref = (string)$attrGroup->attributes->getNamedItem('ref')?->nodeValue;
+                if (str_ends_with($ref, 'StronicowanieRequestAttributeGroup')) {
+                    $extraAttributes[] = 'numerStrony';
+                    $extraAttributes[] = 'rozmiarStrony';
+                }
+                elseif (str_ends_with($ref, 'StronicowanieResponseAttributeGroup')) {
+                    $extraAttributes[] = 'calkowityRozmiar';
+                }
+            }
+            $names[] = [
+                $name,
+                $baseType->getElementsByTagNameNS($schemaNS, 'element'),
+                $baseType->getElementsByTagNameNS($schemaNS, 'attribute'),
+                $extraAttributes,
+            ];
+        }
+        return $names;
     }
 
-    /**
-     * @dataProvider baseSimpleTypesDataProvider
-     */
-    public function testBaseSimpleTypes($typeName)
+    public function complexTypesDataProvider(): array
     {
-        $this->assertTrue(
-            file_exists(__DIR__ . '/../src/' . $typeName . '.php'),
-            "Missing simpleType class: {$typeName}"
-        );
-        $class = 'pl\\kir\\sds\\soap\\' . $typeName;
-        $this->assertTrue(class_exists($class));
+        $names = [];
+
+        foreach (glob(__DIR__ . '/../resources/*.xsd') as $xsd) {
+            $file = realpath($xsd);
+            if (basename($file) == 'BazoweTypy.xsd') {
+                continue;
+            }
+            $names[] = [explode('.', basename($file))[0]];
+        }
+        return $names;
     }
 }

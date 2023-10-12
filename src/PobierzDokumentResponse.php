@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap;
 final class PobierzDokumentResponse {
 
     /**
-     * @var DokumentType $dokument
+     * @var DokumentType[] $dokument
      */
     public $dokument;
 

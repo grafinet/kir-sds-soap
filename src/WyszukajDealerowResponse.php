@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap;
 final class WyszukajDealerowResponse {
 
     /**
-     * @var SzczegolyDealeraType $dealerzy
+     * @var SzczegolyDealeraType[] $dealerzy
      */
     public $dealerzy;
 

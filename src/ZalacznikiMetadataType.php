@@ -5,7 +5,7 @@ namespace pl\kir\sds\soap;
 final class ZalacznikiMetadataType
 {
     /**
-     * @var ZalacznikMetadataType
+     * @var ZalacznikMetadataType[]
      */
     public $Zalacznik;
 }
