@@ -32,7 +32,7 @@ $sds = new SystemDokumentowStrukturyzowanychService(null, [
 
 $req = new WyslijDokumentRequest;
 
-$req->dokument = new DokumentType();
+$req->dokument = new DokumentInfoType();
 $req->dokument->typKomunikatu = TypDokumentuType::TYPE_1301->value;
 $req->dokument->nazwaKomunikatu = 'Zamówienie';
 $req->dokument->idKomunikatu = new idKomunikatuType('1234');

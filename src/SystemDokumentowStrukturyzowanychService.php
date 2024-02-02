@@ -47,6 +47,7 @@ class SystemDokumentowStrukturyzowanychService extends SoapClient
         'ZalacznikType' => ZalacznikType::class,
         'SzczegolyDokumentuType' => SzczegolyDokumentuType::class,
         'SzczegolyDealeraType' => SzczegolyDealeraType::class,
+        'DokumentInfoType' => DokumentInfoType::class,
         'DokumentType' => DokumentType::class,
         'Zalaczniki' => Zalaczniki::class,
         'TrescPisma' => TrescPisma::class,
@@ -54,6 +55,8 @@ class SystemDokumentowStrukturyzowanychService extends SoapClient
         'WyslijDokumentResponse' => WyslijDokumentResponse::class,
         'PobierzDokumentRequest' => PobierzDokumentRequest::class,
         'PobierzDokumentResponse' => PobierzDokumentResponse::class,
+        'PobierzZalacznikRequest' => PobierzZalacznikRequest::class,
+        'PobierzZalacznikResponse' => PobierzZalacznikResponse::class,
         'WyszukajDokumentyRequest' => WyszukajDokumentyRequest::class,
         'WyszukajDokumentyResponse' => WyszukajDokumentyResponse::class,
         'WyszukajDealerowRequest' => WyszukajDealerowRequest::class,
@@ -72,9 +75,9 @@ class SystemDokumentowStrukturyzowanychService extends SoapClient
                 $options['classmap'][$key] = $value;
             }
         }
-        $options = array_merge(array(
+        $options = array_merge([
             'features' => 1,
-        ), $options);
+        ], $options);
         if (!$wsdl) {
             $wsdl = self::WSDL;
         }
@@ -88,7 +91,7 @@ class SystemDokumentowStrukturyzowanychService extends SoapClient
      */
     public function wyslijDokument(WyslijDokumentRequest $request)
     {
-        return $this->__soapCall('wyslijDokument', array($request));
+        return $this->__soapCall('wyslijDokument', [$request]);
     }
 
     /**
@@ -98,7 +101,17 @@ class SystemDokumentowStrukturyzowanychService extends SoapClient
      */
     public function pobierzDokument(PobierzDokumentRequest $request)
     {
-        return $this->__soapCall('pobierzDokument', array($request));
+        return $this->__soapCall('pobierzDokument', [$request]);
+    }
+
+    /**
+     * @param PobierzZalacznikRequest $request
+     * @return PobierzZalacznikResponse
+     * @throws \SoapFault
+     */
+    public function pobierzZalacznik(PobierzZalacznikRequest $request)
+    {
+        return $this->__soapCall('pobierzZalacznik', [$request]);
     }
 
     /**
@@ -108,7 +121,7 @@ class SystemDokumentowStrukturyzowanychService extends SoapClient
      */
     public function wyszukajDokumenty(WyszukajDokumentyRequest $request)
     {
-        return $this->__soapCall('wyszukajDokumenty', array($request));
+        return $this->__soapCall('wyszukajDokumenty', [$request]);
     }
 
     /**
@@ -118,7 +131,7 @@ class SystemDokumentowStrukturyzowanychService extends SoapClient
      */
     public function wyszukajDealerow(WyszukajDealerowRequest $request)
     {
-        return $this->__soapCall('wyszukajDealerow', array($request));
+        return $this->__soapCall('wyszukajDealerow', [$request]);
     }
 
 }

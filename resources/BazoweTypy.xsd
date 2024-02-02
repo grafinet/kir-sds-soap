@@ -4,7 +4,7 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:tns="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"
            version="1.0">
-
+  
   <!-- definicje typów -->
   <xs:simpleType name="TypDokumentuType">
     <xs:restriction base="xs:int">
@@ -1346,7 +1346,7 @@
   </xs:complexType>
   <xs:complexType name="ZalacznikType">
     <xs:simpleContent>
-      <xs:extension base="xs:string">
+      <xs:extension base="tns:ZalacznikZawartoscType">
         <xs:attribute name="id">
           <xs:simpleType>
             <xs:restriction base="xs:string"/>
@@ -1355,6 +1355,9 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:simpleType name="ZalacznikZawartoscType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
   <xs:complexType name="ZalacznikMetadataType">
     <xs:sequence>
       <xs:element name="kodowanie">
@@ -1380,13 +1383,7 @@
         </xs:simpleType>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="id" use="required">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:pattern value="[1-9][0-9]?"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
+    <xs:attribute name="id" use="required" type="tns:idZalacznikaType" />
   </xs:complexType>
   <xs:simpleType name="AdresEmailType">
     <xs:restriction base="xs:string">
@@ -1402,6 +1399,11 @@
   <xs:simpleType name="idKomunikatuType">
     <xs:restriction base="xs:string">
       <xs:pattern value="[0-9a-zA-Z][-_(.)\\/0-9a-zA-Z]*[0-9a-zA-Z]{1,40}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="idZalacznikaType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-9][0-9]?"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="IloscNaLiniiType">
@@ -2047,6 +2049,15 @@
     <xs:attribute name="numerStrony" type="xs:nonNegativeInteger" use="required"/>
     <xs:attribute name="rozmiarStrony" type="xs:positiveInteger" use="required"/>
   </xs:attributeGroup>
+  <xs:attributeGroup name="StronicowanieRequest50AttributeGroup">
+    <xs:attribute name="numerStrony" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="rozmiarStrony" type="tns:rozmiarStrony50" use="required"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="rozmiarStrony50" id="rozmiarStrony50">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="50" id="positiveInteger.maxInclusive"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:attributeGroup name="StronicowanieResponseAttributeGroup">
     <xs:attribute name="calkowityRozmiar" type="xs:int" use="required"/>
   </xs:attributeGroup>

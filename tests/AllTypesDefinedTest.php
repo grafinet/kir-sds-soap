@@ -61,9 +61,9 @@ class AllTypesDefinedTest extends TestCase
     public function testComplexTypes($className)
     {
         if ($className === 'Dokument') {
-            $file = __DIR__ . '/../src/DokumentType.php';
-            $msg = "Missing type class: DokumentType";
-            $class = 'pl\\kir\\sds\\soap\\DokumentType';
+            $file = __DIR__ . '/../src/DokumentInfoType.php';
+            $msg = "Missing type class: DokumentInfoType";
+            $class = 'pl\\kir\\sds\\soap\\DokumentInfoType';
         } else {
             $file = __DIR__ . '/../src/TrescPisma/' . $className . '.php';
             $msg = "Missing 'TrescPisma' type class: {$className}";
@@ -90,9 +90,31 @@ class AllTypesDefinedTest extends TestCase
             $schemaProperties,
             $schemaAttributes
         );
+        if ($className === 'Dokument') {
+            /** @var DOMNodeList $additionalProperties */
+            $additionalProperties = $schema->item(0)->getElementsByTagNameNS($schemaNS, 'complexType')->item(1)
+                ->getElementsByTagNameNS($schemaNS, 'element');
+
+            $this->ensureProperties(
+                new ReflectionClass('pl\\kir\\sds\\soap\\DokumentType'),
+                self::mergeDomNodeLists($schemaProperties, $additionalProperties),
+                $schemaAttributes
+            );
+        }
     }
-    
-    private function ensureProperties(ReflectionClass $reflection, DOMNodeList $elements, iterable $attributes = [], $extraAtrributes = [])
+
+    private static function mergeDomNodeLists(DOMNodeList ...$nodeLists): array
+    {
+        $elements = [];
+        foreach ($nodeLists as $nodeList) {
+            foreach ($nodeList as $node) {
+                $elements[] = $node;
+            }
+        }
+        return $elements;
+    }
+
+    private function ensureProperties(ReflectionClass $reflection, DOMNodeList|array $elements, iterable $attributes = [], $extraAtrributes = [])
     {
         $properties = [];
         foreach ($reflection->getProperties() as $prop) {
@@ -196,7 +218,10 @@ class AllTypesDefinedTest extends TestCase
             /** @var DOMElement $attrGroup */
             foreach ($baseType->getElementsByTagNameNS($schemaNS, 'attributeGroup') as $attrGroup) {
                 $ref = (string)$attrGroup->attributes->getNamedItem('ref')?->nodeValue;
-                if (str_ends_with($ref, 'StronicowanieRequestAttributeGroup')) {
+                if (
+                    str_ends_with($ref, 'StronicowanieRequestAttributeGroup')
+                    || str_ends_with($ref, 'StronicowanieRequest50AttributeGroup')
+                ) {
                     $extraAttributes[] = 'numerStrony';
                     $extraAttributes[] = 'rozmiarStrony';
                 }

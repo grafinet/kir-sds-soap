@@ -33,12 +33,17 @@ final class WyszukajDokumentyRequest
     public $dataKomunikatuPrzed;
 
     /**
+     * @var bool $czyZwrocicAktualnyStatus
+     */
+    public $czyZwrocicAktualnyStatus = false;
+
+    /**
      * @var int $numerStrony
      */
     public $numerStrony;
 
     /**
-     * @var int $rozmiarStrony
+     * @var int|rozmiarStrony50 $rozmiarStrony
      */
     public $rozmiarStrony;
 
