@@ -10,7 +10,7 @@
   <wsdl:types>
     <xs:schema targetNamespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych"
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-               version="1.7.51">
+               version="1.7.52">
       <xs:import schemaLocation="BazoweTypy.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Base"/>
       <xs:import schemaLocation="Dokument.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/Dokument"/>
       <xs:import schemaLocation="ZapytanieOfertowe.xsd" namespace="https://www.kir.pl/SystemDokumentowStrukturyzowanych/ZapytanieOfertowe"/>
